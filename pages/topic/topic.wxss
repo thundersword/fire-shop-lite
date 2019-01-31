@@ -1,0 +1,177 @@
+.top-header {
+  border-bottom: 0;
+}
+
+.container {
+  margin-top: 130rpx;
+}
+
+.header-container {
+  background-color: #fff;
+}
+
+.iphone {
+  margin-top: 180rpx;
+}
+
+.topic-head {
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.topic-avatar {
+  text-align: center;
+}
+
+.head-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.head-name {
+  margin: -2px 0;
+  font-size: 22rpx;
+  color: #666;
+}
+
+.topic-content {
+  margin-top: 20px;
+}
+
+.content-title {
+  font-size: 36rpx;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.content-lin {
+  width: 55px;
+  border-top: 1px solid #bc9162;
+  margin: 0 auto;
+}
+
+.content-text {
+  margin-top: 25px;
+}
+
+.content-img {
+  width: 100%;
+  height: 220px;
+}
+
+.content-box {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 26px;
+}
+
+.wxParse-inline, .wxParse-img {
+  display: inline-block !important;
+}
+
+.wxParse-p {
+  padding-bottom: 10px;
+}
+
+.goods-container {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.goods-box {
+  width: 45%;
+  margin: 20px 0 0 13px;
+  display: inline-block;
+}
+
+.img-box image {
+  width: 100%;
+  display: block;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.img-box {
+  width: 100%;
+  background-color: #f5f5f5;
+  margin-bottom: 5px;
+  position: relative;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  overflow: hidden;
+}
+
+.goods-characteristic {
+  font-size: 22rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #f0ece1;
+  color: #a18d65;
+  height: 35px;
+  line-height: 35px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.goods-characteristic text {
+  padding-left: 5px;
+}
+
+.goods-title {
+  font-size: 28rpx;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+}
+
+.goods-price {
+  color: #b5272d;
+  font-size: 28rpx;
+  text-align: left;
+  width: 100%;
+  padding: 3px 4px;
+}
+
+.goods-price-naver {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 28px;
+  width: 100%;
+  text-align: right;
+  padding: 0 3px;
+}
+
+.goods-button {
+  position: fixed;
+  bottom: 200rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.goods-button image {
+  width: 70rpx;
+  height: 70rpx;
+  box-shadow: 0 0 20rpx #eee;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  position: relative;
+}
+
+.goods-button image button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}

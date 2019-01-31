@@ -1,0 +1,239 @@
+page {
+  background-color: #f5f5f5;
+}
+
+.container {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.userinfo {
+  background: #fff;
+  width: 100%;
+  height: 400rpx;
+  align-items: center;
+  background-image: url(https://cdn.it120.cc/apifactory/2018/03/07/fb8857533553034ee28c92bd0dd89b15.jpg);
+  background-size: 100% 115%;
+  position: relative;
+}
+
+.userinfo button {
+  position: absolute;
+  width: 100%;
+  height: 300rpx;
+  top: 0;
+  opacity: 0;
+}
+
+.userinfo-avatar {
+  border-radius: 50%;
+  float: left;
+  margin-top: 150rpx;
+  margin-left: 30rpx;
+  display: block;
+  overflow: hidden;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.iser-info-box {
+  float: left;
+  width: 70%;
+  margin-top: 150rpx;
+  margin-left: 30rpx;
+	height: 150rpx;
+	line-height: 150rpx;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  display: block;
+  font-size: 32rpx;
+  margin-bottom: 12rpx;
+}
+
+.userinfo-score {
+  font-size: 24rpx;
+  margin-top: 5px;
+  background-color: #b3a078;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.userinfo-score-day {
+  font-size: 24rpx;
+  margin-top: 5px;
+  color: #fff;
+  margin-left: 20rpx;
+}
+
+.userinfo-item {
+  width: 100%;
+  background: url(https://cdn.it120.cc/apifactory/2018/03/02/bccdaf7292464a539efa6a1ea9a11ee6.png) no-repeat 750rpx center;
+  background-size: 16rpx auto;
+  border-bottom: 1px solid #fbfbfb;
+  line-height: 100rpx;
+  padding-left: 30px;
+  background-color: #fff;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.userinfo-item image {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px -4px 0;
+}
+
+.userinfo-item navigator {
+  display: inline-block;
+  width: 90%;
+  font-size: 30rpx;
+}
+
+.user-cart-list {
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.cart-list {
+  display: inline-block;
+  width: 25%;
+  color: #666;
+  font-size: 26rpx;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.red-dot {
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: 30rpx;
+  background-color: #ff3f3e;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  top: -10rpx;
+}
+
+.cart-list image {
+  width: 50rpx;
+  height: 50rpx;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+
+.userinfo-item navigator text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.userinfo-item-box {
+  width: 100%;
+}
+
+.userinfo-item-box .userinfo-item {
+  display: inline-block;
+  width: 33.1%;
+  text-align: center;
+  height: 200rpx;
+  padding-left: 0;
+  line-height: 40rpx;
+  position: relative;
+}
+
+.userinfo-item-box .userinfo-item:nth-child(1) {
+  border-right: 1px solid #fbfbfb;
+}
+
+.userinfo-item-box .userinfo-item:nth-child(2) {
+  border-right: 1px solid #fbfbfb;
+}
+
+.userinfo-item-box .userinfo-item:nth-child(4) {
+  border-right: 1px solid #fbfbfb;
+}
+
+.userinfo-item-box .userinfo-item:nth-child(5) {
+  border-right: 1px solid #fbfbfb;
+}
+
+.userinfo-item-box .userinfo-item image {
+  width: 50rpx;
+  height: 50rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  margin-bottom: 12rpx;
+}
+
+.userinfo-item-box .userinfo-item text {
+  position: absolute;
+  bottom: 20rpx;
+  width: 100%;
+  left: 0;
+  color: #999;
+  font-size: 22rpx;
+}
+
+.userinfo-item-box .userinfo-item navigator {
+  font-size: 26rpx;
+  color: #333;
+  margin-top: 5rpx;
+}
+
+.userinfo-item-box .userinfo-item button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.userinfo-info {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 30rpx;
+}
+
+/* notice */
+
+.userinfo-notice {
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  width:100%;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.userinfo-notice image {
+  width: 36rpx;
+  height: 36rpx;
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+}
+
+.userinfo-notice .notice_swiper {
+  height: 80rpx;
+  width: 85%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #ab2b2b;
+}

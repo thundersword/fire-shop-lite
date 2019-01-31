@@ -1,0 +1,27 @@
+<view class="container {{iphone}}">
+  <view class="header-container">
+    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
+      <image class="goback" src="../../images/goback.png" />
+    </navigator>
+    <view class="header-name">分类商品</view>
+  </view>
+  <view class="goods-container">
+    <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+      <view class="img-box">
+        <image src="{{item.pic}}_m" class="image" mode="widthFix" lazy-load="true" />
+        <view class="goods-characteristic">
+          <text>{{item.characteristic}}</text>
+        </view>
+      </view>
+      <view class="goods-title">{{item.name}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">Ұ{{item.minPrice}}</view>
+        <view class="goods-price-naver">已售{{item.numberOrders}}</view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">
+    <image src="/images/empty_goods.png" class="no-order-img"></image>
+    <view class="text">还没有商品呢</view>
+  </view>
+</view>

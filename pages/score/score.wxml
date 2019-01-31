@@ -1,0 +1,37 @@
+<view class="container {{iphone}}">
+  <view class="header-container">
+    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
+      <image class="goback" src="../../images/goback.png" />
+    </navigator>
+  </view>
+  <view class="score-title">
+    <image class="score-img" src="../../images/score_bg.png"></image>
+    <view class="score-title-name">您的可用积分</view>
+    <view class="score-title-score">{{score}}</view>
+    <view class="score-times">
+      <view wx:for="{{rules}}" wx:key="rules" class="times-list {{ score_sign_continuous >= item.continuous ? 'item-on':'' }}">
+        <view class="times-score">+{{item.score}}</view>
+        <text class="times-pus"></text>
+        <view class="times-line"></view>
+        <view class="times-day">{{item.continuous}}天</view>
+      </view>
+    </view>
+  </view>
+  <view class="score-center">
+    <view bindtap="{{ci == 0 ? 'scoresign':'error'}}" class="{{ci == 0 ? 'score-btn':'score-btn-none'}}">{{ci == 0 ? '签到':'已签到'}}</view>
+  </view>
+  <view class="score-share">
+    <view class="share-list">
+      <image class="share-img" src="../../images/shopping.png"></image>
+      <view class="share-title">消费购物</view>
+      <view class="share-text">购物完成，确认收货后立返积分</view>
+      <view class="share-btn" bindtap="home">去购物</view>
+    </view>
+    <view class="share-list avict">
+      <image class="share-img" src="../../images/score.png"></image>
+      <view class="share-title">积分兑换</view>
+      <view class="share-text">积分兑好礼，20积分即可兑换礼券</view>
+      <view class="share-btn" bindtap="score">去兑换</view>
+    </view>
+  </view>
+</view>

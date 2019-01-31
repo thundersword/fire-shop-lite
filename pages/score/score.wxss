@@ -1,0 +1,154 @@
+page{
+  background-color: #ffffff;
+}
+.container{
+  width: 100%;
+  display: block;
+}
+.score-title{
+  position: relative;
+  text-align: center;
+}
+.score-img,.score-title{
+  width: 100%;
+  height: 550rpx;
+}
+.score-title-name,.score-title-score{
+  position:absolute;
+  width:100%;
+  top:160rpx;
+  font-size:30rpx;
+  color:#a39f93;
+}
+.score-title-score{
+  top: 230rpx;
+  color: #b4a078;
+  font-size: 66rpx;
+  font-weight: bold;
+}
+.score-center{
+  text-align:center;
+  padding-top:30px;
+  position:relative;
+  background-color:#ffffff;
+  padding-bottom:25px;
+}
+.score-btn{
+  color:#fff;
+  background-color:#b4a078;
+  width:170px;
+  height:35px;
+  border-radius:20px;
+  line-height:35px;
+  font-size:32rpx;
+  margin:0 auto;
+}
+.score-btn-none{
+  color:#fff;
+  background-color:#a39f93;
+  width:170px;
+  height:35px;
+  border-radius:20px;
+  line-height:35px;
+  font-size:32rpx;
+  margin:0 auto;
+}
+.score-share{
+  padding:15px;
+}
+.share-list{
+  background-color:#f4ebe2;
+  border-radius:5px;
+  padding:15px 10px;
+  height: 55px;
+  margin-bottom: 15px;
+}
+.share-img{
+  width:60px;
+  height:60px;
+  float:left;
+  margin:12px 0px;
+  padding-right:15px;
+}
+.share-title{
+  color:#e1b68c;
+  font-size:28rpx;
+  margin-top:5px;
+}
+.share-text{
+  color:#e1b68c;
+  font-size:24rpx;
+  margin-top:5px;
+}
+.share-btn{
+  float:right;
+  background-color:#e1b68c;
+  color:#ffffff;
+  font-size:26rpx;
+  padding:3px 5px;
+  border-radius:3px;
+  margin:-30px 5px;
+}
+.avict{
+  background-color:#ede6d6;
+}
+.avict image{
+  margin:20px 0;
+}
+.avict .share-title,.avict .share-text{
+  color:#b3a078;
+}
+.avict .share-btn{
+  background-color:#b3a078;
+}
+.score-times{
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  font-size: 28rpx;
+  color: #a39f93;
+  background-color: rgba(217, 211, 196, 0.5);
+}
+.times-list{
+  width: 14%;
+  display: inline-block;
+}
+.times-score{
+  padding-top: 5px;
+}
+.times-line{
+  padding-top: 7px;
+  border-bottom:1px solid rgba(0, 0, 0, 0.1);
+}
+.times-pus{
+  width:9px;
+  height:9px;
+  background-color: #a39f93;
+  display:block;
+  position:absolute;
+  margin-left:25px;
+  border-radius:50%;
+  margin-top:3px;
+}
+.times-day{
+  padding-top: 7px;
+}
+.item-on{
+  color:#ee5a52;
+}
+.item-on .times-line{
+  border-bottom: 1px solid #ee5a52;
+}
+.item-on .times-pus{
+  background-color: #ee5a52;
+}
+.score-yao{
+  width:40px;
+  height:40px;
+  margin:0 auto;
+  display:block;
+  padding-top:35px;
+  animation: shake-hard 3s ease-in-out infinite;
+}

@@ -1,0 +1,21 @@
+<view class="container {{iphone}}" style="background-color: {{bgColor}};">
+	<view class="header-container">
+	  <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
+	    <image class="goback" src="../../images/goback.png" />
+	  </navigator>
+	</view>
+		<view wx:if="{{bgPic}}" class="page-bg">
+		<image src="{{bgPic.picUrl}}" style="height: {{bgPic.remark}}rpx;"></image>
+	</view>
+	<view class="coupons-pic" style="margin-top: {{couponsTop}};">
+		<image src="../../images/coupons-pic.jpg"></image>
+		<view class="text">
+			<view class="number"><text class="money">{{coupons.moneyMax}}</text><text class="unit">元</text></view>
+			<view class="condition" wx:if="{{coupons.moneyHreshold == 0}}">无门槛优惠券</view>
+			<view class="condition" wx:if="{{coupons.moneyHreshold != 0}}">满{{coupons.moneyHreshold}}元使用</view>
+			<view class="date" wx:if="{{coupons.dateEndType == 0}}">{{coupons.dateEnd}} 前有效</view>
+			<view class="date" wx:if="{{coupons.dateEndType == 1}}">领取 {{coupons.dateEndDays}} 天内有效</view>
+			<button bindtap="getCoupons" data-id="{{coupons.id}}">立即领取</button>
+		</view>
+	</view>
+</view>

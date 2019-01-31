@@ -1,0 +1,310 @@
+/**index.wxss**/
+page{
+		background: #f2f2f2;
+}
+.container{
+	position: relative;
+}
+.scrollTop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 99999;
+  width: 100%;
+  height: 130rpx;
+  background-color: #fff;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scrollTop image {
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 46rpx;
+}
+
+.iphneTop {
+  height: 180rpx;
+}
+
+.iphneTop image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 80rpx;
+}
+
+.swiper-container .swiper_box {
+  width: 750rpx;
+  height: 750rpx;
+	border-bottom-right-radius: 20rpx;
+	border-bottom-left-radius: 20rpx;
+	overflow: hidden;
+}
+
+.swiper-container .slide-image {
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.swiper-container .dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  top: 680rpx;
+  height: 10rpx;
+}
+
+.swiper-container .dots .dot {
+  margin: 0 5rpx;
+  width: 12rpx;
+  height: 8rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  transition: all 0.6s;
+  opacity: 0.5;
+}
+
+.swiper-container .dots .dot.active {
+  width: 22rpx;
+  opacity: 1;
+}
+.index-menu-bg{
+	position: relative;
+	width: 710rpx;
+	left: 20rpx;
+	margin-top: -50rpx;
+	background: linear-gradient(#fff,#f2f2f2);
+	border-top-left-radius: 15rpx;
+	border-top-right-radius: 15rpx;
+}
+.index-menu .menu-list{
+	width: 177.5rpx;
+	text-align: center;
+	padding: 20rpx 0;
+}
+.index-menu .menu-list image{
+	height: 80rpx;
+	width: 80rpx;
+	display: inline-block;
+}
+.index-menu-bg .index-adv image{
+	width: 100%;
+	height: 178rpx;
+}
+.index-menu .menu-list .text{
+	font-size: 28rpx;
+	color: #333333;
+}
+.index-hot{
+	margin-top: 10rpx;
+}
+.index-hot .hot-item{
+	width: 350rpx;
+	height: 269rpx;
+	margin-bottom: 10rpx;
+}
+.index-hot .hot-item image{
+	width: 100%;
+	height: 100%;
+}
+.goods-container {
+  width: 100%;
+  float: left;
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.goods-container .goods-title {
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #333;
+  font-size: 32rpx;
+	display: flex;
+	justify-content: center;
+}
+.goods-container .goods-title .text{
+	display: inline-block;
+	margin-left: 10rpx;
+	margin-right: 10rpx;
+}
+.goods-container .goods-title .line{
+	width: 20rpx;
+	border-top:1rpx solid #b4282d;
+	margin-top: 45rpx;
+	height: 1rpx;
+}
+
+.goods-container .goods-title image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-bottom: -6rpx;
+  margin-left: 10rpx;
+  
+}
+
+.goods-list {
+  display: inline-block;
+  width: 45%;
+  margin-left: 26rpx;
+  height: 480rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.goods-list image {
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 6rpx;
+}
+
+.goods-list-title {
+  font-size: 30rpx;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.goods-list-text {
+  font-size: 24rpx;
+  color: #999;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.goods-list-money {
+  font-size: 30rpx;
+  color: #ab2b2b;
+}
+.show-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99999999999;
+}
+
+.show-container .show-box {
+  width: 70%;
+  margin: 0 auto;
+  height: 600rpx;
+  background-color: #fff;
+  margin-top: 40%;
+  border-radius: 10rpx;
+}
+
+.show-logo-box {
+  text-align: center;
+  width: 80%;
+  border-bottom: 1px solid #f5f5f5;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.show-logo-box image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.show-mall-name {
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.show-text-box {
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.show-text-name {
+  font-size: 30rpx;
+  color: #333;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.show-text-info {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.show-text-info text {
+  margin-right: 10rpx;
+  font-size: 26rpx;
+}
+
+.show-box button::after {
+  border-radius: 4rpx;
+  border: 0;
+}
+
+.show-box button {
+  width: 80%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  background-color: #04be01;
+  color: #fff;
+}
+
+.newcoupons-hover {
+  position: fixed;
+  bottom: 20rpx;
+  right: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  transition: all 0.6s;
+}
+
+.modal-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  background: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  z-index: 9999999;
+}
+
+.modal-body {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.modal-content {
+  z-index: 999;
+  margin-top: 40%;
+}
+
+.fenxiang {
+  width: 70%;
+  border-radius: 4px;
+  transition: all 0.6s;
+}
+
+.knowBtnImg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}

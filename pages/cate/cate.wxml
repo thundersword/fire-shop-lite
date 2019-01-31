@@ -1,0 +1,63 @@
+<view class="container {{iphone}}">
+  <view class="type-header-menu">
+    <view class="type-search">
+      <image src="../../images/search.png" />
+      <input class="input {{searchinput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品" bindfocus="searchfocus" bindconfirm="search"></input>
+      <view hidden="{{search}}" bindtap="searchclose" class="header-search-btn">取消</view>
+    </view>
+  </view>
+  <view class="type-container-boxx">
+    <view class="type-container">
+      <view wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}">
+        <view class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <view class="type-list">
+      <view class="swiper-container">
+        <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+          <block wx:for="{{banners}}" wx:key="id">
+            <swiper-item>
+              <image bindtap="toDetailsTap" data-id="{{item.businessId}}" src="{{item.picUrl}}_m" class="slide-image" mode="widthFix" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="dots">
+          <block wx:for="{{banners}}" wx:key="unique">
+            <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+          </block>
+        </view>
+      </view>
+      <view if="{{item.level == 2}}" class="type-menu">
+        <view class="type-level-box" wx:for-items="{{categorieslist}}" wx:key="id">
+          <view id="{{item.id}}" class="type-level-item " bindtap="levelClick" data-id="{{item.id}}">
+            <image class="type-img" src="{{item.icon}}"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view hidden="{{search}}" class="search-box {{iponesc}}">
+  <view hidden="{{searchidden}}" class="goods-box" wx:for-items="{{searchs}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+    <view class="img-box">
+      <image src="{{item.pic}}_m" class="image" mode="widthFix" lazy-load="true" />
+      <view class="goods-characteristic">
+        <text>{{item.characteristic}}</text>
+      </view>
+    </view>
+    <view class="goods-title">{{item.name}}</view>
+    <view style='display:flex;'>
+      <view class="goods-price">Ұ{{item.minPrice}}</view>
+      <view class="goods-price-naver">已售{{item.numberOrders}}</view>
+    </view>
+  </view>
+  <view hidden="{{nonehidden}}" class="goods-none">
+    <image src="../../images/search_empty.png" />
+    <text>您寻找的商品还未上架</text>
+  </view>
+</view>
+<view class="top-line"></view>
+<view class="bottom-lin"></view>

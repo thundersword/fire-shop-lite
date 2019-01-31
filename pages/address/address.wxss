@@ -1,0 +1,96 @@
+.container {
+  margin-top: 130rpx;
+}
+
+.header-container {
+  background-color: #fff;
+}
+
+.iphone {
+  margin-top: 180rpx;
+}
+
+page {
+  background-color: #f5f5f5;
+}
+
+.address-list {
+  width: 100%;
+}
+
+.address-list .a-address {
+  width: 720rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  background-color: #fff;
+}
+
+.a-address .left-text {
+  width: 610rpx;
+  box-sizing: border-box;
+  padding-left: 58rpx;
+}
+
+.a-address .left-text.active {
+  background: url(https://cdn.it120.cc/apifactory/2018/03/07/d14e39b0a699114fe29c1a8614f6dbec.png) no-repeat left center;
+  background-size: 28rpx auto;
+}
+
+.a-address .left-text .name-tel {
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.a-address .left-text .address-box {
+  font-size: 24rpx;
+  color: #888;
+  line-height: 36rpx;
+}
+
+.a-address .right-edit {
+  width: 109rpx;
+  height: 100%;
+  padding: 50rpx 0 50rpx 58rpx;
+  box-sizing: border-box;
+  background: url(https://cdn.it120.cc/images/weappshop/addr-edit.png) no-repeat 43rpx center;
+  background-size: 35rpx auto;
+}
+
+.bottom-box {
+  position: fixed;
+  bottom: 0;
+  background-color: #fcfcfc;
+  width: 100%;
+  text-align: center;
+  height: 48px;
+  font-size: 30rpx;
+  line-height: 48px;
+  color: #b4282d;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-box image {
+  width: 15px;
+  height: 15px;
+  margin: -2px 0;
+}
+
+.no-more-goods {
+  text-align: center;
+  margin-top: 50%;
+}
+
+.no-order-img {
+  width: 110px;
+  height: 110px;
+}
+
+.no-more-goods .text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: -5px;
+}

@@ -1,0 +1,59 @@
+/* pages/freshman/freshman.wxss */
+.page-bg{
+	width: 750rpx;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.page-bg image{
+	width: 100%;
+}
+.coupons-pic{
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+.coupons-pic image{
+	width: 430rpx;
+	height: 600rpx;
+	box-shadow: 0 2rpx 5rpx #731807;
+}
+.coupons-pic .text{
+	position: absolute;
+	top: 195rpx;
+	z-index: 2;
+	width: 430rpx;
+	text-align: center;
+	font-size: 28rpx;
+	color: #dc3b0d;
+	left: 160rpx;
+}
+.coupons-pic .text .number{
+	margin-bottom: 5rpx;
+}
+.coupons-pic .text .number .money{
+	font-size: 58rpx;
+	font-weight: bold;
+}
+.coupons-pic .text .number .unit{
+	font-size: 30rpx;
+}
+.coupons-pic .text .date{
+	margin-bottom: 10rpx;
+	font-size: 22rpx;
+	color: #A18D65;
+}
+.coupons-pic .text .condition{
+	margin-bottom: 5rpx;
+	
+}
+.coupons-pic .text button{
+	background: #dc3b0d;
+	width: 240rpx;
+	text-align: center;
+	height: 52rpx;
+	color: #fff;
+	line-height: 52rpx;
+	border-radius: 24rpx;
+	font-size: 30rpx;
+}

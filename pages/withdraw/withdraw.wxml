@@ -1,0 +1,29 @@
+<view class="container {{iphone}}">
+  <view class="header-container">
+    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
+      <image class="goback" src="../../images/goback.png" />
+    </navigator>
+  </view>
+  <view class="tixian-bg">
+    <image class="tixian-img" src="../../images/withdraw.png"></image>
+    <view class="tixian-name">
+      我的余额
+      <text class="money">¥{{balance}}</text>
+      <text class="tips">付款时优先选择余额进行支付</text>
+    </view>
+  </view>
+  <form bindsubmit="bindSave">
+    <view class="form-box">
+      <view class="row-wrap">
+        <view class="label">提现金额</view>
+        <view class="label-right">
+          <text class="lable-amount">¥</text>
+          <input name="amount" class="input" type="number" />
+        </view>
+        <view class="lable-text">提现金额100元起，1～5个工作日到账</view>
+      </view>
+    </view>
+    <button class="save-btn" formType="submit">确认提现</button>
+    <button type="default" class="cancel-btn" bindtap="bindCancel">取消</button>
+  </form>
+</view>

@@ -1,0 +1,42 @@
+<view class="container {{iphone}}">
+  <view class="header-container">
+    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
+      <image class="goback" src="../../images/goback.png" />
+    </navigator>
+    <view class="header-name">物流详情</view>
+  </view>
+  <view class="top-sec">
+    <view class="a-row">
+      <view class="label">物流公司</view>
+      <view class="text">{{orderDetailName}}</view>
+    </view>
+    <view class="a-row">
+      <view class="label">物流单号</view>
+      <view class="text">{{orderDetailNumber}}</view>
+    </view>
+  </view>
+  <view class="sec-wrap">
+    <view wx:if="{{apiwiliuList}}" class="details-info">
+      <ul>
+        <li class="a-row" wx:for="{{apiwiliuList}}" wx:key="{{index}}">
+          <view class="info">
+            <view class="date-box">{{item.AcceptStation}}</view>
+            <view class="text">{{item.AcceptTime}}</view>
+          </view>
+        </li>
+      </ul>
+      <view wx:if="{{noneapiWuliu}}" class="none">暂无物流信息</view>
+    </view>
+    <view wx:if="{{maliwiliuList}}" class="details-info">
+      <ul>
+        <li class="a-row" wx:for="{{maliwiliuList}}" wx:key="{{index}}">
+          <view class="info">
+            <view class="date-box">{{item.context}}</view>
+            <view class="text">{{item.time}}</view>
+          </view>
+        </li>
+      </ul>
+      <view wx:if="{{nonemaliWuliu}}" class="none">暂无物流信息</view>
+    </view>
+  </view>
+</view>

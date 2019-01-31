@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="hidden {{navigationbar}} {{naviphone}}">
+	<image src="{{toplogo}}" />
+</view>
+<view class="container">
+	<view class="swiper-container">
+		<swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange"
+		 circular="circular">
+			<block wx:for="{{banners}}" wx:key="id">
+				<swiper-item>
+					<image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}_m" class="slide-image" />
+				</swiper-item>
+			</block>
+		</swiper>
+		<view class="dots">
+			<block wx:for="{{banners}}" wx:key="unique">
+				<view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+			</block>
+		</view>
+	</view>
+	<view class="index-menu-bg">
+		<view class="index-menu flex">
+			<view class="menu-list" wx:for="{{sales}}" wx:key="id" bindtap="tapSales" data-id="{{item.linkUrl}}">
+			  <image src="{{item.picUrl}}" />
+			  <view class="text">{{item.title}}</view>
+			</view>
+		</view>
+		<view class="index-hot flex">
+			<block wx:for="{{hot}}" wx:key="hot">
+				<navigator hover-class="none" class="hot-item">
+					<image src="{{item.picUrl}}"></image>
+				</navigator>
+			</block>
+		</view>
+	</view>
+	<view wx:if="{{topgoods}}" class="goods-container">
+	  <view class="goods-title" bindtap="tapSales" data-id="{{topgoods.remark}}">
+	    <view class="line"></view><view class="text">{{topgoods.value}}</view><view class="line"></view>
+	  </view>
+	  <navigator url="/pages/goods-detail/goods-detail?id={{item.id}}" class="goods-list" wx:for-items="{{goods}}" wx:key="{{index}}">
+	    <image src="{{item.pic}}" />
+	    <view class="goods-list-title">{{item.name}}</view>
+	    <view class="goods-list-text">{{item.characteristic}}</view>
+	    <view class="goods-list-money">Ұ{{item.minPrice}}</view>
+	  </navigator>
+	</view>
+</view>
+<view class="show-container" hidden="{{wxlogin}}">
+  <view class="show-box">
+    <view class="show-logo-box">
+      <image src="{{toplogo}}" />
+      <view class="show-mall-name">{{topname}}</view>
+    </view>
+    <view class="show-text-box">
+      <view class="show-text-name">需要您的授权才能正常使用哦！</view>
+      <view class="show-text-info">
+        <text>·</text>请允许我们获得您的公开资讯</view>
+      <view class="show-text-info">
+        <text>·</text>我们不会公布您的这些信息</view>
+      <view class="show-text-info">
+        <text>·</text>只是为了给您提供更好的服务</view>
+    </view>
+    <button open-type="getUserInfo" bindgetuserinfo="userlogin">允许</button>
+  </view>
+</view>
