@@ -175,3 +175,15 @@
   height: 100%;
   opacity: 0;
 }
+.topic-info{
+	height: 50rpx;
+	line-height: 50rpx;
+	font-size: 22rpx;
+	color: #999;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+.topic-info .author{
+	margin-left: 10rpx;
+}

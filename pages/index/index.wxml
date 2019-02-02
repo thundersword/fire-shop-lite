@@ -27,7 +27,7 @@
 		</view>
 		<view class="index-hot flex">
 			<block wx:for="{{hot}}" wx:key="hot">
-				<navigator hover-class="none" class="hot-item">
+				<navigator hover-class="none" class="hot-item" url="{{item.linkUrl}}">
 					<image src="{{item.picUrl}}"></image>
 				</navigator>
 			</block>

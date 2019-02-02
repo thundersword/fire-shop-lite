@@ -7,13 +7,11 @@
     <view class="header-name">专栏详情</view>
   </view>
   <view class="topic-head">
-    <view class="topic-avatar">
-      <image class="head-img" src="../../images/default_avatar.png"></image>
-      <view class="head-name">{{topics.author}}</view>
-    </view>
     <view class="topic-content">
       <view class="content-title">{{topics.title}}</view>
-      <view class="content-lin"></view>
+			<view class="topic-info">
+				<view>{{topics.dateAdd}}</view><view class="author" wx:if="{{topics.author}}">{{topics.author}}</view>
+			</view>
       <view class="content-text">
         <image class="content-img" mode="widthFix" src="{{topics.pic}}"></image>
         <view class="content-box">

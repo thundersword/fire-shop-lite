@@ -76,21 +76,6 @@ Page({
 		    }
 		  }
 		})
-		//首页广告位
-		wx.request({
-		  url: app.globalData.urls + '/banner/list',
-		  data: {
-		    type: 'adv'
-		  },
-		  success: function (res) {
-				console.log(res)
-		    if (res.data.code == 0) {
-		      that.setData({
-		        adv: res.data.data[0]
-		      });
-		    }
-		  }
-		})
 		//4个热销广告位
 		wx.request({
 		  url: app.globalData.urls + '/banner/list',
