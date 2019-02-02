@@ -13,9 +13,11 @@ fire-shop-lite由上海染火网络科技有限公司开发，前端代码完全
 # 赞助
 
 觉得小程序还可以的，动动小手，互惠互利
+
 ![](https://box.kancloud.cn/121959f84f2bdf1ecfcabe531592462d_410x615.png)
 
 家里有矿的请随意
+
 ![](https://box.kancloud.cn/4186935d18019b624559662b68845856_420x420.png)
 # 联系作者
 
