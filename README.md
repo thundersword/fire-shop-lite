@@ -6,7 +6,7 @@ fire-shop-lite是一个基于“api工厂”（以下简称工厂）后台的电
 
 fire-shop-lite由上海染火网络科技有限公司开发，前端代码完全开源，您可以免费使用，并可以将其用于商业运营或进行二次开发。
 # 文档教程
-[](https://www.kancloud.cn/thundersword/fire-shop-lite/936356)
+[文档教程](https://www.kancloud.cn/thundersword/fire-shop-lite/936356)
 # 使用交流
 
 技术交流QQ群 878573318
