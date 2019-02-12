@@ -6,19 +6,6 @@ page {
 .top-header {
   border-bottom: 0;
 }
-
-.container {
-  margin-top: 130rpx;
-}
-
-.header-container {
-  background-color: #fff;
-}
-
-.iphone {
-  margin-top: 180rpx;
-}
-
 .topic-names {
   width: 100%;
   height: 130px;

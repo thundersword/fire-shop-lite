@@ -1,15 +1,6 @@
-.container {
-  margin-top: 130rpx;
-}
-
 .header-container {
   background-color: #fff;
 }
-
-.iphone {
-  margin-top: 180rpx;
-}
-
 page, .container {
   background-color: #f5f5f5;
 }

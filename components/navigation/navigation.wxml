@@ -1,0 +1,12 @@
+<view style="height:{{titleBarHeight}}px;padding-top:{{statusBarHeight}}px">
+  <view class="header" style="height:{{titleBarHeight}}px;padding-top:{{statusBarHeight}}px">
+    <view wx:if="{{showIcon}}" class="title-bar">
+      <view class="back" bindtap="headerBack"><image src="./img/left.png"></image></view>
+      <view class="line"></view>
+      <view class="home" bindtap="headerHome"><image src="./img/home.png"></image></view>
+    </view>
+    <view wx:if="{{showTitle}}" class="header-title">{{title}}</view>
+		<view wx:if="{{showSearch}}" class="search-box" bindtap="headerSearch"><image src="./img/search.png"></image><text>搜索你关注的内容</text></view>
+  </view>
+  <!-- <view class="loading-wrap"><image class="loading-gif" src="https://dn-testimage.qbox.me/Files/e0/35/e03562502eae6d5944bed747b7c21a3c2cce1ff8_1250.gif"></image></view> -->
+</view>

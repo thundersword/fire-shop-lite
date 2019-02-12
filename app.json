@@ -27,7 +27,8 @@
 		"pages/freshman/freshman"
 	],
 	"window": {
-		"navigationStyle": "custom"
+		"navigationStyle": "custom",
+		"navigationBarTextStyle":"black"
 	},
 	"tabBar": {
 		"color": "#838383",

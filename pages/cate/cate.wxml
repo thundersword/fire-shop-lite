@@ -1,11 +1,12 @@
+<navigation id='Navigation' show-search='{{true}}'></navigation>
 <view class="container {{iphone}}">
-  <view class="type-header-menu">
+  <!-- <view class="type-header-menu">
     <view class="type-search">
       <image src="../../images/search.png" />
       <input class="input {{searchinput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品" bindfocus="searchfocus" bindconfirm="search"></input>
       <view hidden="{{search}}" bindtap="searchclose" class="header-search-btn">取消</view>
     </view>
-  </view>
+  </view> -->
   <view class="type-container-boxx">
     <view class="type-container">
       <view wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}">

@@ -31,7 +31,10 @@ Page({
     },
     wxlogin: true,
     sharecode: true,
-    sharebox: true
+    sharebox: true,
+		title:"商品详情",
+    barBg: 'red',
+		color: '#ffffff'
   },
 
   //事件处理函数

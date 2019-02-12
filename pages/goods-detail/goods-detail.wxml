@@ -1,13 +1,6 @@
 <import src="../../wxParse/wxParse.wxml" />
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator wx:if="{{share}}" open-type="switchTab" url="/pages/index/index" hover-class="navigator-hover">
-      <image class="goback" src="../../images/gohome.png" />
-    </navigator>
-    <navigator wx:if="{{!share}}" open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="商品详情" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="swiper-container" wx:if="{{!goodsDetail.basicInfo.videoId}}">
     <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
       <block wx:for="{{goodsDetail.pics}}" wx:key="id">

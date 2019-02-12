@@ -1,10 +1,5 @@
-<view class="goods-container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">我的收藏</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="我的收藏" show-title="{{true}}" class=""></navigation>
+<view class="goods-container">
   <view class="goods-box" wx:for-items="{{favList}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.goodsId}}">
     <view class="img-box">
       <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />

@@ -4,7 +4,8 @@ Page({
   data: {
     statusType: ["待付款", "待发货", "待收货", "待评价", "已完成"],
     currentType: 0,
-    tabClass: ["", "", "", "", ""]
+    tabClass: ["", "", "", "", ""],
+		bodyHeight:null
   },
 
   statusTap: function (e) {
@@ -228,7 +229,20 @@ Page({
         }
       }
     })
-
+		var winInfo = wx.getSystemInfo({
+			success: function (res) {
+				var windowHeight = res.windowHeight;
+				var statusBarHeight = res.statusBarHeight;
+				var titleBarHeight = 0
+				if (res.model.indexOf('iPhone') !== -1) {
+					titleBarHeight = 44
+				} else {
+					titleBarHeight = 48
+				}
+				that.setData({ bodyHeight: windowHeight - statusBarHeight - titleBarHeight });
+			
+			}
+		});
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏

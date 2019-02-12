@@ -1,19 +1,6 @@
 .top-header {
   border-bottom: 0;
 }
-
-.container {
-  margin-top: 130rpx;
-}
-
-.header-container {
-  background-color: #fff;
-}
-
-.iphone {
-  margin-top: 180rpx;
-}
-
 .topic-head {
   padding: 10px;
   margin-bottom: 50px;

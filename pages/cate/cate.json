@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "严选分类"
+   "usingComponents": {
+  		"navigation": "/components/navigation/navigation"
+  	},
+		"disableScroll":true
 }

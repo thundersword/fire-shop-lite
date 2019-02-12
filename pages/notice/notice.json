@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "公告详情"
+  "usingComponents": {
+  		"navigation": "/components/navigation/navigation"
+  	}
 }

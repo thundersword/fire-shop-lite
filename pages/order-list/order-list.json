@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText":"订单列表"
+   "usingComponents": {
+   		"navigation": "/components/navigation/navigation"
+   	}
 }

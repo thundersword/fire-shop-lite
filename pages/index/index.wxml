@@ -1,7 +1,5 @@
 <!--index.wxml-->
-<view class="hidden {{navigationbar}} {{naviphone}}">
-	<image src="{{toplogo}}" />
-</view>
+<navigation id='Navigation' show-search='{{showSearch}}' class="fix-top" animation="{{fadeAni}}"></navigation>
 <view class="container">
 	<view class="swiper-container">
 		<swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange"

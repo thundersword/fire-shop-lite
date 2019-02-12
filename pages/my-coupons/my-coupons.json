@@ -1,3 +1,5 @@
 {
-   "navigationBarTitleText": "我的礼券"
+  "usingComponents": {
+  		"navigation": "/components/navigation/navigation"
+  	}
 }

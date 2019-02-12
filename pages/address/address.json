@@ -1,3 +1,5 @@
 {
-   "navigationBarTitleText": "我的地址"
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation"
+	}
 }

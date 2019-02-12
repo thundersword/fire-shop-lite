@@ -20,7 +20,6 @@ Page({
         id: e.id
       },
       success: function (res) {
-				console.log(res)
         if (res.data.code == 0) {
           var kb = res.data.data.keywords;
           var kbarr = kb.split(',');

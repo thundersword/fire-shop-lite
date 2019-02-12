@@ -1,10 +1,5 @@
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">我的地址</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="地址管理" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="address-list">
     <view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
       <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.id}}">

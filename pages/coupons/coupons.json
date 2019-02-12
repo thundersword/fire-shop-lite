@@ -1,4 +1,5 @@
 {
-  "navigationBarTitleText": "礼券领取中心",
-  "navigationBarTextStyle": "white"
+  "usingComponents": {
+  		"navigation": "/components/navigation/navigation"
+  	}
 }

@@ -1,20 +1,12 @@
 .top-header {
   border-bottom: 0;
 }
-
-.header-container {
-  background-color: #fff;
-}
-
 .container {
   width: 100%;
   background-color: #f5f5f5;
-  margin-top: 130rpx;
+	overflow: hidden;
 }
 
-.iphone {
-  margin-top: 180rpx;
-}
 
 .status-box {
   width: 100%;
@@ -53,17 +45,11 @@
 
 .no-order {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  top: 218rpx;
-  left: 0;
-  right: 0;
+	height: 100%;
   text-align: center;
   background-color: #f2f2f2;
-}
-
-.iphone .no-order {
-  top: 268rpx;
+	box-sizing: border-box;
+	padding-top: 88rpx;
 }
 
 .no-order-img {

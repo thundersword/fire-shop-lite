@@ -4,17 +4,10 @@ page {
   background-color: #f5f5f5;
   border-top: 1px solid #f5f5f5;
 }
-.header-container{
-  background-color: #fff;
-}
-
 .container {
   background-color: #f5f5f5;
   min-height: 100%;
-  margin-top: 130rpx;
-}
-.iphone {
-  margin-top: 180rpx;
+  margin-top: 20rpx;
 }
 .pos-fiexd {
   position: fixed;

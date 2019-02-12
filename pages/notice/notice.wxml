@@ -1,5 +1,6 @@
 <import src="../../wxParse/wxParse.wxml" />
-<view class="container {{iphone}}">
+<navigation id='Navigation' show-icon="{{true}}" title="公告详情" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="header-container">
     <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
       <image class="goback" src="../../images/goback.png" />

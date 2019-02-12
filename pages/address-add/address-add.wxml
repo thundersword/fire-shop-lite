@@ -1,10 +1,5 @@
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">新增地址</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="新增地址" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <form bindsubmit="bindSave">
     <view class="form-box">
       <view class="row-wrap">

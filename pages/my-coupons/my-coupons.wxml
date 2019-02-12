@@ -1,10 +1,5 @@
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">我的礼券</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="我的礼券" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="coupons-list">
     <view class="coupons-item" wx:for-items="{{coupons}}" wx:key="id" bindtap="gitCoupon" data-id="{{item.id}}">
       <view class="money-left">{{item.money}}

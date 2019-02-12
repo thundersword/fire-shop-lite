@@ -7,17 +7,7 @@ page {
   min-height: 100%;
   overflow: hidden;
   overflow-y: hidden;
-  margin-top: 130rpx;
 }
-
-.header-container {
-  background-color: #fff;
-}
-
-.iphone {
-  margin-top: 180rpx;
-}
-
 .sec-wrap {
   background-color: #fff;
   margin-top: 20rpx;

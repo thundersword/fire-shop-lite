@@ -1,4 +1,5 @@
 {
-  "navigationBarTitleText": "积分中心",
-  "navigationBarTextStyle": "white"
+  "usingComponents": {
+  		"navigation": "/components/navigation/navigation"
+  	}
 }

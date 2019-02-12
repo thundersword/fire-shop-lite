@@ -1,13 +1,5 @@
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator wx:if="{{share}}" open-type="switchTab" url="/pages/index/index" hover-class="navigator-hover">
-      <image class="goback" src="../../images/gohome.png" />
-    </navigator>
-    <navigator wx:if="{{!share}}" open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">订单列表</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="订单列表" show-title="{{true}}" class=""></navigation>
+<view class="container" style="height: {{bodyHeight}}px;">
   <view class="status-box">
     <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
       {{item}}

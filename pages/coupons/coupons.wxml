@@ -1,11 +1,6 @@
 <!--index.wxml-->
-<!--1px = 750/320 = 2.34rpx;-->
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="礼券" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="coupons-bg" wx:for="{{banners}}" wx:key="id">
     <image class="coupons-image" src="{{item.picUrl}}"></image>
     <view class="coupons-input">

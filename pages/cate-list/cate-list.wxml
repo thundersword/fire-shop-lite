@@ -1,10 +1,5 @@
+<navigation id='Navigation' show-icon="{{true}}" title="分类列表" show-title="{{true}}" class=""></navigation>
 <view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">分类商品</view>
-  </view>
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">

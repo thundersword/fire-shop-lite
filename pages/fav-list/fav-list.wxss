@@ -4,17 +4,7 @@ page {
 
 .goods-container {
   width: 100%;
-  margin-top: 130rpx;
 }
-
-.header-container {
-  background-color: #fff;
-}
-
-.iphone {
-  margin-top: 180rpx;
-}
-
 .goods-box {
   width: 100%;
   height: 100px;

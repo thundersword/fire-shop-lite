@@ -1,10 +1,5 @@
-<view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">严选专栏</view>
-  </view>
+<navigation id='Navigation' show-icon="{{true}}" title="专栏列表" show-title="{{true}}" class=""></navigation>
+<view class="container">
   <view class="topic-names">
     <scroll-view class="type-navbar" scroll-x="true">
       <view class="topic-names-list" wx:for="{{topics}}" wx:key="id" bindtap="tapTopic" data-id="{{item.id}}">

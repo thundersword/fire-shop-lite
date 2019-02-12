@@ -1,5 +1,4 @@
 /**app.wxss**/
-
 .container {
   height: 100%;
 }
@@ -70,4 +69,10 @@
   font-size: 28rpx;
   color: #999;
   margin-top: -5px;
+}
+.fix-top{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99999;
 }

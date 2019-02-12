@@ -1,11 +1,6 @@
 <import src="../../wxParse/wxParse.wxml" />
+<navigation id='Navigation' show-icon="{{true}}" title="专栏详情" show-title="{{true}}" class=""></navigation>
 <view class="container {{iphone}}">
-  <view class="header-container">
-    <navigator open-type="navigateBack" delta="1" hover-class="navigator-hover">
-      <image class="goback" src="../../images/goback.png" />
-    </navigator>
-    <view class="header-name">专栏详情</view>
-  </view>
   <view class="topic-head">
     <view class="topic-content">
       <view class="content-title">{{topics.title}}</view>

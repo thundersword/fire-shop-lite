@@ -1,3 +1,5 @@
 {
-   "navigationBarTitleText": "购物车"
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation"
+	}
 }
