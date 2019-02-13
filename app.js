@@ -119,6 +119,14 @@ App({
     json[param] = animation.export()
     that.setData(json)
 	},
+	isStrInArray:function(item, arr) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] == item) {
+				return true;
+			}
+		}
+		return false;
+	},
 	globalData: {
 		userInfo: null
 	}

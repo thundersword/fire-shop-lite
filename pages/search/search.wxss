@@ -1,0 +1,167 @@
+/* pages/search/search.wxss */
+.type-header-menu {
+  height: 120rpx;
+  width: 100%;
+  background-color: #fff;
+  z-index: 99999;
+  border-bottom: 1rpx solid #f8f8f8;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.type-header-menu .type-search {
+  width: 690rpx;
+  margin-left: 30rpx;
+  position: relative;
+  height: 66rpx;
+  overflow: hidden;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+}
+
+.type-header-menu .type-search image {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 14rpx;
+  left: 16rpx;
+}
+
+.type-header-menu .type-search .input {
+  width: 625rpx;
+  height: 60rpx;
+  background-color: #f5f5f5;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding-left: 65rpx;
+  display: inline-block;
+  transition: all 0.6s;
+}
+
+.type-header-menu .type-search .active {
+  width: 525rpx;
+  transition: all 0.6s;
+}
+
+.type-header-menu .type-search .header-search-btn {
+  float: right;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #b5272d;
+  font-size: 30rpx;
+  width: 100rpx;
+  text-align: center;
+}
+.goods-none {
+  margin-top: 25%;
+}
+
+.goods-none image {
+  width: 200rpx;
+  height: 200rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.goods-none text {
+  font-size: 28rpx;
+  display: block;
+  color: #999;
+  text-align: center;
+  margin-top: 10rpx;
+}
+.goods-box {
+  width: 45%;
+  margin: 20px 0 0 13px;
+  display: inline-block;
+}
+.img-box image {
+  width: 100%;
+  display: block;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.img-box {
+  width: 100%;
+  background-color: #f5f5f5;
+  margin-bottom: 5px;
+  position: relative;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  overflow: hidden;
+}
+.goods-characteristic {
+  font-size: 22rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #f0ece1;
+  color: #a18d65;
+  height: 35px;
+  line-height: 35px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.goods-characteristic text {
+  padding-left: 5px;
+}
+
+.goods-title {
+  font-size: 28rpx;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+}
+
+.goods-price {
+  color: #b5272d;
+  font-size: 28rpx;
+  text-align: left;
+  width: 100%;
+  padding: 3px 4px;
+}
+
+.goods-price-naver {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 28px;
+  width: 100%;
+  text-align: right;
+  padding: 0 3px;
+}
+.search-cont-box{
+	padding: 0 30rpx;
+}
+.search-cont-box .title-and-btn{
+	display: flex;
+	justify-content: space-between;
+	padding: 30rpx 0 20rpx 0;
+}
+.search-cont-box .title-and-btn .btn image{
+	height: 48rpx;
+	width: 48rpx;
+}
+.search-cont-box .title-and-btn .title{
+	color: #777;
+	font-size: 28rpx;
+}
+.search-cont-box .keywords-li{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.search-cont-box .keywords-li .item{
+	font-size: 22rpx;
+	color: #777;
+	border: 1rpx solid #777;
+	padding: 4rpx 12rpx;
+	border-radius: 5rpx;
+	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+}

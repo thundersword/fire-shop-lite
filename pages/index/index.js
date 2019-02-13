@@ -17,7 +17,7 @@ Page({
 	},
 	onShow(){
 		var that = this
-		app.fadeInOut(this,'fadeAni',0)
+		// app.fadeInOut(this,'fadeAni',0)
 		setTimeout(function () {
 		  if (app.globalData.usinfo == 0) {
 		    that.setData({
@@ -29,6 +29,7 @@ Page({
 	},
 	onLoad: function() {
 		var that = this;
+		app.fadeInOut(this,'fadeAni',0)
 		if (app.globalData.iphone == true) {
 			that.setData({
 				iphone: true
@@ -194,7 +195,7 @@ Page({
 	  })
 	},
 	onPageScroll: function(t) {
-		if(t.scrollTop >= 280){
+		if(t.scrollTop >= 180){
 			wx.setNavigationBarColor({
 				frontColor: '#000000',
 				backgroundColor: '#ffffff'
@@ -207,33 +208,5 @@ Page({
 			})
 			app.fadeInOut(this,'fadeAni',0)
 		}
-// 		if (this.data.iphone == true && t.scrollTop >= 280) {
-// 			wx.setNavigationBarColor({
-// 				frontColor: '#000000',
-// 				backgroundColor: '#ffffff'
-// 			})
-// 			this.setData({
-// 				navigationbar: "scrollTop",
-// 				naviphone: "iphneTop"
-// 			})
-// 		}
-// 		if (t.scrollTop >= 280) {
-// 			wx.setNavigationBarColor({
-// 				frontColor: '#000000',
-// 				backgroundColor: '#ffffff'
-// 			})
-// 			this.setData({
-// 				navigationbar: "scrollTop"
-// 			})
-// 		} else {
-// 			wx.setNavigationBarColor({
-// 				frontColor: '#ffffff',
-// 				backgroundColor: '#ffffff'
-// 			})
-// 			this.setData({
-// 				navigationbar: "",
-// 				naviphone: ""
-// 			})
-// 		}
 	}
 })
