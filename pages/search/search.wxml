@@ -4,12 +4,12 @@
 	<view class="type-header-menu">
 		<view class="type-search">
 			<image src="../../images/search.png" />
-			<input class="input {{searchinput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品"
-			 bindfocus="searchfocus" bindconfirm="search"></input>
-			<view hidden="{{search}}" bindtap="searchclose" class="header-search-btn">取消</view>
+			<input class="input {{searchInput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品"
+			 bindfocus="searchFocus" bindconfirm="search" focus="{{true}}"></input>
+			<view hidden="{{search}}" bindtap="searchClose" class="header-search-btn">取消</view>
 		</view>
 	</view>
-	<view class="search-cont-box" wx:if="{{recentSearch.length}}">
+	<view class="search-cont-box" wx:if="{{recentSearch.length && searchHidden}}">
 		<view class="title-and-btn">
 			<view class="title">最近搜索</view>
 			<view class="btn" bindtap="clearHistory">
@@ -24,7 +24,7 @@
 	</view>
 </view>
 <view hidden="{{search}}" class="search-box {{iponesc}}">
-	<view hidden="{{searchidden}}" class="goods-box" wx:for-items="{{searchs}}" wx:key="{{index}}" bindtap="toDetailsTap"
+	<view hidden="{{searchHidden}}" class="goods-box" wx:for-items="{{searchs}}" wx:key="{{index}}" bindtap="toDetailTap"
 	 data-id="{{item.id}}">
 		<view class="img-box">
 			<image src="{{item.pic}}_m" class="image" mode="widthFix" lazy-load="true" />
@@ -38,7 +38,7 @@
 			<view class="goods-price-naver">已售{{item.numberOrders}}</view>
 		</view>
 	</view>
-	<view hidden="{{nonehidden}}" class="goods-none">
+	<view hidden="{{noneHidden}}" class="goods-none">
 		<image src="../../images/search_empty.png" />
 		<text>您寻找的商品还未上架</text>
 	</view>

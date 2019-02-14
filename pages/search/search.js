@@ -7,8 +7,8 @@ Page({
 	 */
 	data: {
 		search: true,
-		nonehidden: true,
-		searchidden: true,
+		noneHidden: true,
+		searchHidden: true,
 		recentSearch: [],
 		searchValue: '',
 	},
@@ -57,29 +57,36 @@ Page({
 					}
 					that.setData({
 						searchs: searchs,
-						searchidden: false,
-						nonehidden: true
+						searchHidden: false,
+						noneHidden: true
 					});
 				} else {
 					that.setData({
-						searchidden: true,
-						nonehidden: false
+						searchHidden: true,
+						noneHidden: false
 					});
 				}
 			}
 		})
 
 	},
-	searchfocus: function() {
+	searchFocus: function() {
 		this.setData({
 			search: false,
-			searchinput: true
+			searchInput: true
 		})
 	},
-	searchclose: function() {
+	searchClose: function() {
+		// this.getRecentSearch()
 		this.setData({
 			search: true,
-			searchinput: false
+			searchInput: false,
+			searchHidden:true
+		})
+	},
+	toDetailTap:function(e){
+		wx.navigateTo({
+			url:"/pages/goods-detail/goods-detail?id=" + e.currentTarget.dataset.id
 		})
 	},
 	/**
@@ -101,7 +108,6 @@ Page({
 	 */
 	onShow: function() {
 		this.getRecentSearch();
-		console.log(wx.getStorageSync('recentSearch'))
 	},
 
 	/**
