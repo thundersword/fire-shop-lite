@@ -13,6 +13,27 @@ fire-shop-lite是一个基于“api工厂”（以下简称工厂）后台的电
 4.首页自定义广告位
 5.新人专享领券
 ……
+# 截图
+> 首页
+
+![](https://box.kancloud.cn/6939f7f4de36192e9b89ffec6d629adb_410x729.jpg)
+
+> 首页第二屏
+
+![](https://box.kancloud.cn/47bde79ce8acea0a9c045699795ba853_410x729.jpg)
+
+> 分类页
+
+![](https://box.kancloud.cn/649f1c96cd44cc70863e7041cb8a8fb2_410x729.jpg)
+
+> 购物车
+
+![](https://box.kancloud.cn/2d237b4a331ac80510afa33613593a45_410x729.jpg)
+
+> 用户中心
+
+![](https://box.kancloud.cn/17a05be85c862d1ff086e6dff1fd5164_410x729.jpg)
+
 # 扫码体验
 ![](https://box.kancloud.cn/30042147f89891e33b01bddfd2029690_258x258.jpg)
 # 版权声明
