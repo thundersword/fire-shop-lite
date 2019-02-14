@@ -19,7 +19,7 @@ page {
   background: #fff;
   width: 100%;
   height: 400rpx;
-  align-items: center;
+  text-align: center;
   background-image: url(https://cdn.it120.cc/apifactory/2018/03/07/fb8857533553034ee28c92bd0dd89b15.jpg);
   background-size: 100% 115%;
   position: relative;
@@ -35,29 +35,25 @@ page {
 
 .userinfo-avatar {
   border-radius: 50%;
-  float: left;
-  margin-top: 150rpx;
-  margin-left: 30rpx;
-  display: block;
+  margin-top: 130rpx;
+  display: inline-block;
   overflow: hidden;
   width: 150rpx;
   height: 150rpx;
 }
 
 .iser-info-box {
-  float: left;
-  width: 70%;
-  margin-top: 150rpx;
-  margin-left: 30rpx;
-	height: 150rpx;
-	line-height: 150rpx;
+  height: 100rpx;
+	text-align: center;
+	display: block;
 }
 
 .userinfo-nickname {
   color: #fff;
-  display: block;
   font-size: 32rpx;
-  margin-bottom: 12rpx;
+	text-align: center;
+	margin-bottom: 10rpx;
+	display: block;
 }
 
 .userinfo-score {

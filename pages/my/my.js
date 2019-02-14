@@ -32,6 +32,7 @@ Page({
     this.getUserAmount();
     this.checkScoreSign();
     this.getInfo();
+		this.getUserInfo();
     //更新订单状态
     var that = this;
     wx.request({
@@ -147,6 +148,20 @@ Page({
       }
     })
   },
+	getUserInfo: function (cb) {
+      var that = this
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.setData({
+                userInfo: res.userInfo
+              });
+            }
+          })
+        }
+      })
+},
   scoresign: function () {
     var that = this;
     wx.request({

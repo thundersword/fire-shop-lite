@@ -4,7 +4,7 @@
     <view class="iser-info-box">
       <open-data class="userinfo-nickname" type="userNickName"></open-data>
       <text wx:if="{{userInfo && score_sign_continuous == 0}}" class="userinfo-score-day" bindtap="score">今日未签到</text>
-      <text wx:if="{{userInfo && score_sign_continuous > 0}}" class="userinfo-score-day">已连续签到{{score_sign_continuous}}天</text>
+      <text wx:if="{{userInfo && score_sign_continuous > 0}}" class="userinfo-score-day" bindtap="score">已连续签到{{score_sign_continuous}}天</text>
     </view>
 	</view>
   <view class="userinfo-notice" wx:if="{{noticeList}}">
