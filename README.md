@@ -44,6 +44,8 @@ fire-shop-lite由上海染火网络科技有限公司开发，前端代码完全
 # 使用交流
 
 技术交流QQ群 878573318
+
+![](https://box.kancloud.cn/7c84f8cccee146b86a7b9edaa23d4796_540x740.png)
 # 赞助
 
 觉得小程序还可以的，动动小手，互惠互利
