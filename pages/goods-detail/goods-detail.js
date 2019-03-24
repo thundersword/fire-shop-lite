@@ -360,12 +360,13 @@ Page({
       shopCarInfo: shopCarInfo,
       shopNum: shopCarInfo.shopNum
     });
-
     // 写入本地存储
     wx.setStorage({
       key: "shopCarInfo",
       data: shopCarInfo
     })
+		//更新tabar购物车数字角标
+		app.getShopCartNum()
     this.closePopupTap();
     wx.showToast({
       title: '加入购物车成功',

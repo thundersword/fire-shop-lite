@@ -328,6 +328,8 @@ Page({
       return !curGoods.active;
     });
     this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), list);
+		//更新tabbar购物车数字角标
+		app.getShopCartNum()
   },
   toPayOrder: function () {
     wx.showLoading();

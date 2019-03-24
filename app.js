@@ -127,6 +127,30 @@ App({
 		}
 		return false;
 	},
+	getShopCartNum:function(){
+		var that = this
+		wx.getStorage({
+		  key: 'shopCarInfo',
+		  success: function (res) {
+		    if (res.data) {
+		      if (res.data.shopNum > 0) {
+		        wx.setTabBarBadge({
+		          index: 2,
+		          text: '' + res.data.shopNum + ''
+		        })
+		      } else {
+		        wx.removeTabBarBadge({
+		          index: 2,
+		        })
+		      }
+		    } else {
+		      wx.removeTabBarBadge({
+		        index: 2,
+		      })
+		    }
+		  }
+		})
+	},
 	globalData: {
 		userInfo: null
 	}

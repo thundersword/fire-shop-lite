@@ -26,6 +26,8 @@ Page({
 		    wx.hideTabBar();
 		  }
 		}, 800)
+		//获取购物车商品数量
+		app.getShopCartNum()
 	},
 	onLoad: function() {
 		var that = this;
