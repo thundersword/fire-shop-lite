@@ -69,7 +69,6 @@ page {
   font-size: 24rpx;
   margin-top: 5px;
   color: #fff;
-  margin-left: 20rpx;
 }
 
 .userinfo-item {
