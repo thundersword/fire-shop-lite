@@ -1,12 +1,12 @@
 <navigation id='Navigation' show-icon="{{true}}" title="订单列表" show-title="{{true}}" class=""></navigation>
-<view class="container" style="height: {{bodyHeight}}px;">
+<view class="container">
   <view class="status-box">
     <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
       {{item}}
       <view class="{{tabClass[index]}}"></view>
     </view>
   </view>
-  <view class="no-order" hidden="{{orderList ? true : false}}">
+  <view class="no-order" hidden="{{orderList ? true : false}}" style="height: {{bodyHeight}}px;">
     <image src="/images/empty_order.png" class="no-order-img"></image>
     <view class="text">还没有订单呢</view>
   </view>

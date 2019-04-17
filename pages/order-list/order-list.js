@@ -239,7 +239,13 @@ Page({
 				} else {
 					titleBarHeight = 48
 				}
-				that.setData({ bodyHeight: windowHeight - statusBarHeight - titleBarHeight });
+				var query = wx.createSelectorQuery();
+				query.select('.status-box').boundingClientRect()
+				query.exec((res) => {
+				  var listHeight = res[0].height; // 获取list高度
+					that.setData({ bodyHeight: windowHeight - statusBarHeight - titleBarHeight - listHeight });
+				})
+				
 			
 			}
 		});
