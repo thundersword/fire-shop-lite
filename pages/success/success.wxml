@@ -1,7 +1,7 @@
 <navigation id='Navigation' show-icon="{{true}}" title="确认付款" show-title="{{true}}" class=""></navigation>
 <view class="container">
   <view class="order-box">
-    <image src="../../../images/profile_tegral.png" />
+    <image src="../../images/profile_tegral.png" />
     <view class="order-info">
       <view class="order-money">商品总额：
         <text>¥ {{money}}</text>
@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="adds-box">
-    <image src="../../../images/profile_address.png" />
+    <image src="../../images/profile_address.png" />
     <view class="adds-info">
       <view class="name-tel">{{curAddressData.linkMan}} {{curAddressData.mobile}}</view>
       <view class="addr-text">{{curAddressData.address}}</view>
