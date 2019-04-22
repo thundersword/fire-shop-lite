@@ -143,13 +143,13 @@ Page({
 	},
 	toDetailsTap: function(e) {
 		wx.navigateTo({
-			url: "/pages/goods-details/goods-detail?id=" + e.currentTarget.dataset.id
+			url: "/pages/goods-detail/goods-detail?id=" + e.currentTarget.dataset.id
 		})
 	},
 	tapBanner: function(e) {
 		if (e.currentTarget.dataset.id != 0) {
 			wx.navigateTo({
-				url: "/pages/goods-details/goods-detail?id=" + e.currentTarget.dataset.id
+				url: "/pages/goods-detail/goods-detail?id=" + e.currentTarget.dataset.id
 			})
 		}
 	},
