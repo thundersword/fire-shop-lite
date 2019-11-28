@@ -60,8 +60,9 @@ page {
 }
 
 button[type="default"] {
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
+  border: 1rpx solid #ddd;
 }
 
 .addr-details {

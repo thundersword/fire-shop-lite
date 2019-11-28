@@ -1,125 +1,98 @@
-var app = getApp()
+const app = getApp()
+const WXAPI = require('apifm-wxapi')
 Page({
-  data: {
-    score: 0,//积分
-    score_sign_continuous: 0,//连续签到次数
-    ci: 0 //今天是否已签到
-  },
+	data: {
+		score: 0, //积分
+		score_sign_continuous: 0, //连续签到次数
+		ci: 0, //今天是否已签到
+		isHidden: true, //是否隐藏登录弹窗
+		token: null,
+	},
 
-  onShow() {
-    this.checkScoreSign();
-  },
-  //签到按钮
-  scoresign: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urls + '/score/sign',
-      data: {
-        token: app.globalData.token
-      },
-      success: function (res) {
-        if (res.data.code == 0) {
-          that.onLoad();
-          that.checkScoreSign();
-        }
-        wx.showToast({
-          title: '签到成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    })
-  },
-  checkScoreSign: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urls + '/score/today-signed',
-      data: {
-        token: app.globalData.token
-      },
-      success: function (res) {
+	onShow() {
+		if (this.data.token) {
+			this.checkScoreSign();
+			this.getUserScore();
+		}
 
-        if (res.data.code == 0) {
-          that.setData({
-            ci: 1
-          });
-        }
-        wx.request({
-          url: app.globalData.urls + '/score/sign/logs',
-          data: {
-            token: app.globalData.token,
-          },
-          success: function (res) {
-            if (res.data.code == 0) {
-              that.setData({
-                score_sign_continuous: res.data.data.result[0].continuous
-              });
-            }
-          }
-        })
-      }
-    })
+	},
+	showAuth() {
+		this.setData({
+			isHidden: false
+		})
+	},
+	afterAuth(e) {
+		this.setData({
+			isHidden: true,
+			token: e.detail
+		})
+		this.checkScoreSign();
+		this.getUserScore();
+	},
+	//签到按钮
+	scoresign: function() {
+		if (!this.data.token) return this.showAuth()
+		WXAPI.scoreSign(this.data.token).then(res => {
+			if (res.code == 0) {
+				this.onLoad();
+				this.checkScoreSign();
+			}
+			wx.showToast({
+				title: '签到成功',
+				icon: 'success',
+				duration: 2000
+			})
+		})
+	},
+	checkScoreSign: function() {
+		WXAPI.scoreTodaySignedInfo(this.data.token).then(res => {
+			console.log(res)
+			if (res.code == 0) {
+				this.setData({
+					ci: 1,
+					score_sign_continuous: res.data.continuous
+				});
+			}
+		})
+	},
+	getUserScore() {
+		WXAPI.userAmount(this.data.token).then(res => {
+			if (res.code == 0) {
+				this.setData({
+					balance: res.data.balance,
+					freeze: res.data.freeze,
+					score: res.data.score
+				});
+			}
+		})
+	},
+	onLoad: function() {
+		var that = this;
+		if (app.globalData.iphone == true) {
+			that.setData({
+				iphone: 'iphone'
+			})
+		}
+		//获取积分
 
-  },
-  onLoad: function () {
-    var that = this;
-    if (app.globalData.iphone == true) { that.setData({ iphone: 'iphone' }) }
-    that.checkScoreSign();
-    //获取积分
-    wx.request({
-      url: app.globalData.urls + '/user/amount',
-      data: {
-        token: app.globalData.token
-      },
-      success: function (res) {
-        if (res.data.code == 0) {
-          that.setData({
-            balance: res.data.data.balance,
-            freeze: res.data.data.freeze,
-            score: res.data.data.score
-          });
-        }
-      }
-    })
-    //获取签到规则
-    wx.request({
-      url: app.globalData.urls + '/score/sign/rules',
-      data: {
-      },
-      success: function (res) {
-
-        if (res.data.code == 0) {
-          that.setData({
-            rules: res.data.data
-          });
-        }
-      }
-    })
-    //获取签到记录
-
-    /*wx.request({
-      url: app.siteInfo.url + app.siteInfo.subDomain + '/score/sign/logs',
-      data: {
-        token:app.globalData.token,
-      },
-      success: function (res) {
-        if (res.data.code == 0) {
-          that.setData({
-            score_sign_continuous: res.data.data.result[0].continuous
-          });
-        }
-      }
-    })*/
-  },
-  score: function () {
-    wx.navigateTo({
-      url: "/pages/coupons/coupons"
-    })
-  },
-  home: function () {
-    wx.switchTab({
-      url: '../index/index'
-    })
-  }
+		//获取签到规则
+		WXAPI.scoreSignRules().then(res => {
+			if (res.code == 0) {
+				that.setData({
+					rules: res.data
+				});
+			}
+		})
+	},
+	score: function() {
+		wx.navigateTo({
+			url: "/pages/coupons/coupons"
+		})
+	},
+	home: function() {
+		wx.switchTab({
+			url: '../index/index'
+		})
+	}
 
 })

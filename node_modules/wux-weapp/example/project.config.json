@@ -1,0 +1,186 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.2",
+	"appid": "wx816264ac1982a645",
+	"projectname": "wux-weapp",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 20,
+			"list": [
+				{
+					"id": 0,
+					"name": "picker",
+					"pathName": "pages/picker/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "popup-select",
+					"pathName": "pages/popup-select/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "form",
+					"pathName": "pages/form/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker",
+					"pathName": "pages/date-picker/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "select",
+					"pathName": "pages/select/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "picker-view",
+					"pathName": "pages/picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "calendar",
+					"pathName": "pages/calendar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker-view",
+					"pathName": "pages/date-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cascader-picker-view",
+					"pathName": "pages/cascader-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cascader",
+					"pathName": "pages/cascader/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "multi-picker-view",
+					"pathName": "pages/multi-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker-view",
+					"pathName": "pages/date-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "input-number",
+					"pathName": "pages/input-number/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "select",
+					"pathName": "pages/select/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "dialog",
+					"pathName": "pages/dialog/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "filterbar",
+					"pathName": "pages/filterbar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "gallery",
+					"pathName": "pages/gallery/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "card",
+					"pathName": "pages/card/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "upload",
+					"pathName": "pages/upload/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "notice-bar",
+					"pathName": "pages/notice-bar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "virtual-list",
+					"pathName": "pages/virtual-list/index",
+					"scene": null
+				}
+			]
+		}
+	}
+}

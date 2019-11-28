@@ -62,18 +62,20 @@ swiper-item image {
   background-color: #fff;
   width: 100%;
   font-size: 26rpx;
-  height: 90rpx;
+  height: 120rpx;
   line-height: 90rpx;
   color: #333;
   border-bottom: 30rpx solid #f5f5f5;
+  padding: 0 30rpx;
+  box-sizing: border-box;
 }
 
 .row-arrow image {
-  width: 20rpx;
-  height: 42rpx;
+  width: 15rpx;
+  height: 30rpx;
   float: right;
-  margin-right: 30rpx;
-  margin-top: 24rpx;
+  /* margin-right: 30rpx; */
+  margin-top: 30rpx;
 }
 
 .goods-left {

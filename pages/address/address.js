@@ -1,66 +1,68 @@
 //index.js
 //获取应用实例
-var app = getApp()
+const app = getApp()
+const WXAPI = require('apifm-wxapi')
 Page({
-  data: {
-    addressList:[]
-  },
+	data: {
+		addressList: [],
+		isHidden: true,
+		token: null,
+	},
+	afterAuth(e) {
+		this.setData({
+			token: e.detail
+		})
+		this.initShippingAddress()
+	},
+	selectTap: function(e) {
+		var id = e.currentTarget.dataset.id;
+		WXAPI.updateAddress({
+			token: this.data.token,
+			id: id,
+			isDefault: 'true'
+		}).then(res => {
+			wx.navigateBack()
+		})
+	},
 
-  selectTap: function (e) {
-    var id = e.currentTarget.dataset.id;
-    wx.request({
-      url: app.globalData.urls +'/user/shipping-address/update',
-      data: {
-        token:app.globalData.token,
-        id:id,
-        isDefault:'true'
-      },
-      success: (res) =>{
-        wx.navigateBack({})
-      }
-    })
-  },
+	addAddess: function() {
+		wx.navigateTo({
+			url: "/pages/address-add/address-add"
+		})
+	},
 
-  addAddess : function () {
-    wx.navigateTo({
-      url:"/pages/address-add/address-add"
-    })
-  },
-  
-  editAddess: function (e) {
-    wx.navigateTo({
-      url: "/pages/address-add/address-add?id=" + e.currentTarget.dataset.id
-    })
-  },
-  
-  onLoad: function () {
-    var that = this;
-    if (app.globalData.iphone == true) { that.setData({ iphone: 'iphone' }) }
-  },
-  onShow : function () {
-    this.initShippingAddress();
-  },
-  initShippingAddress: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.urls +'/user/shipping-address/list',
-      data: {
-        token:app.globalData.token
-      },
-      success: (res) =>{
-        if (res.data.code == 0) {
-          that.setData({
-            addressList:res.data.data,
-            loadingMoreHidden: true
-          });
-        } else if (res.data.code == 700){
-          that.setData({
-            addressList: null,
-            loadingMoreHidden: false
-          });
-        }
-      }
-    })
-  }
+	editAddess: function(e) {
+		wx.navigateTo({
+			url: "/pages/address-add/address-add?id=" + e.currentTarget.dataset.id
+		})
+	},
+
+	onLoad: function() {
+		var that = this;
+		if (app.globalData.iphone == true) {
+			that.setData({
+				iphone: 'iphone'
+			})
+		}
+	},
+	onShow: function() {
+		if(this.data.token) this.initShippingAddress()
+	},
+	initShippingAddress: function() {
+		WXAPI.queryAddress(this.data.token).then(res => {
+			console.log(res)
+			if (res.code == 0) {
+				this.setData({
+					addressList: res.data,
+					loadingMoreHidden: true
+				});
+			} else if (res.code == 700) {
+				this.setData({
+					addressList: null,
+					loadingMoreHidden: false
+				});
+			}
+		})
+	}
 
 })

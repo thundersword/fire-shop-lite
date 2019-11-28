@@ -19,3 +19,4 @@
 		</view>
 	</view>
 </view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth"></auth>

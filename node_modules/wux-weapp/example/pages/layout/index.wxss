@@ -1,0 +1,5 @@
+/* pages/layout/index.wxss */
+.placeholder {
+    margin: 10rpx;
+    width: auto;
+}

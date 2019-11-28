@@ -203,7 +203,7 @@
       </view>
       <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
       <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow"> 立即购买</view>
-      <view class="popup-join-btn" wx:if="{{shopType =='pingtuan'}}" bindtap="buyPingtuan"> 立即开团</view>
+      <!-- <view class="popup-join-btn" wx:if="{{shopType =='pingtuan'}}" bindtap="buyPingtuan"> 立即开团</view> -->
     </view>
   </view>
 </view>
@@ -253,3 +253,4 @@
     </view>
   </view>
 </view>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth"></auth>

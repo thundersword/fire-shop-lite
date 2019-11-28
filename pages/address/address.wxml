@@ -1,25 +1,25 @@
 <navigation id='Navigation' show-icon="{{true}}" title="地址管理" show-title="{{true}}" class=""></navigation>
 <view class="container">
-  <view class="address-list">
-    <view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
-      <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.id}}">
-        <view class="name-tel">
-          {{item.linkMan}} {{item.mobile}}
-        </view>
-        <view class="address-box">
-          {{item.provinceStr}}{{item.cityStr}}{{item.areaStr?item.areaStr:""}}{{item.address}}
-        </view>
-      </view>
-      <view class="right-edit" bindtap="editAddess" data-id="{{item.id}}"></view>
-    </view>
-  </view>
-  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">
-    <image src="/images/address_empty.png" class="no-order-img"></image>
-    <view class="text">还没有添加地址呢</view>
-  </view>
-  <view class="bottom-box" bindtap="addAddess">
-    <image src="../../images/address_add.png"></image>
-    新增地址
-  </view>
-
+	<view class="address-list">
+		<view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
+			<view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.id}}">
+				<view class="name-tel">
+					{{item.linkMan}} {{item.mobile}}
+				</view>
+				<view class="address-box">
+					{{item.provinceStr}}{{item.cityStr}}{{item.areaStr?item.areaStr:""}}{{item.address}}
+				</view>
+			</view>
+			<view class="right-edit" bindtap="editAddess" data-id="{{item.id}}"></view>
+		</view>
+	</view>
+	<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">
+		<image src="/images/address_empty.png" class="no-order-img"></image>
+		<view class="text">还没有添加地址呢</view>
+	</view>
+	<view class="bottom-box" bindtap="addAddess">
+		<image src="../../images/address_add.png"></image>
+		新增地址
+	</view>
 </view>
+<auth is-hidden="{{true}}" bind:afterAuth="afterAuth"></auth>

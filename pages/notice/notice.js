@@ -1,24 +1,18 @@
-var app = getApp();
-var WxParse = require('../../wxParse/wxParse.js');
+const WxParse = require('../../wxParse/wxParse.js');
+const app = getApp()
+const WXAPI = require('apifm-wxapi')
 Page({
-  data: {
+	data: {
 
-  },
-  onLoad: function (e) {
-    var that = this;
-    wx.request({
-      url: app.globalData.urls + '/notice/detail',
-      data: {
-        id: e.id
-      },
-      success: function (res) {
-        if (res.data.code == 0) {
-          that.setData({
-            notice: res.data.data
-          });
-          WxParse.wxParse('article', 'html', res.data.data.content, that, 5);
-        }
-      }
-    })
-  }
+	},
+	onLoad: function(e) {
+		WXAPI.noticeDetail(e.id).then(res => {
+			if (res.code == 0) {
+				this.setData({
+					notice: res.data
+				});
+				WxParse.wxParse('article', 'html', res.data.content, this, 5);
+			}
+		})
+	}
 })

@@ -1,5 +1,6 @@
 // pages/search/search.js
 const app = getApp()
+const WXAPI = require('apifm-wxapi')
 Page({
 
 	/**
@@ -43,29 +44,24 @@ Page({
 				})
 			}
 		}
-
-		wx.request({
-			url: app.globalData.urls + '/shop/goods/list',
-			data: {
-				nameLike: keywords
-			},
-			success: function(res) {
-				if (res.data.code == 0) {	
-					var searchs = [];
-					for (var i = 0; i < res.data.data.length; i++) {
-						searchs.push(res.data.data[i]);
-					}
-					that.setData({
-						searchs: searchs,
-						searchHidden: false,
-						noneHidden: true
-					});
-				} else {
-					that.setData({
-						searchHidden: true,
-						noneHidden: false
-					});
+		WXAPI.goods({
+			nameLike: keywords
+		}).then( res => {
+			if (res.code == 0) {
+				let searchs = [];
+				for (var i = 0; i < res.data.length; i++) {
+					searchs.push(res.data[i]);
 				}
+				that.setData({
+					searchs: searchs,
+					searchHidden: false,
+					noneHidden: true
+				});
+			} else {
+				that.setData({
+					searchHidden: true,
+					noneHidden: false
+				});
 			}
 		})
 

@@ -1,5 +1,5 @@
 {
-	"description": "项目配置文件",
+	"description": "项目配置文件。",
 	"packOptions": {
 		"ignore": []
 	},
@@ -9,16 +9,24 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.0",
+	"libVersion": "2.9.3",
 	"appid": "wx20828d207755dfc8",
 	"projectname": "fire-shop-lite",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -33,8 +41,30 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 23,
+			"list": [
+				{
+					"id": 0,
+					"name": "购物车结算",
+					"pathName": "pages/pay-order/pay-order",
+					"query": "orderType=cart",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "订单列表",
+					"pathName": "pages/order-list/order-list",
+					"query": "currentType=0",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "编辑收货地址",
+					"pathName": "pages/address-add/address-add",
+					"query": "id=86018",
+					"scene": null
+				}
+			]
 		}
 	}
 }

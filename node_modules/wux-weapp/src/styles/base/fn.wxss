@@ -1,0 +1,13 @@
+// mixin
+@import "mixin/button.wxss";
+@import "mixin/common.wxss";
+@import "mixin/hairline.wxss";
+@import "mixin/setArrow.wxss";
+@import "mixin/setOnepx.wxss";
+@import "mixin/text.wxss";
+@import "mixin/toolbar.wxss";
+
+// variable
+@import "variable/color.wxss";
+@import "variable/global.wxss";
+@import "variable/safeArea.wxss";

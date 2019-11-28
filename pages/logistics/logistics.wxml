@@ -1,37 +1,35 @@
 <navigation id='Navigation' show-icon="{{true}}" title="物流详情" show-title="{{true}}" class=""></navigation>
 <view class="container">
-  <view class="top-sec">
-    <view class="a-row">
-      <view class="label">物流公司</view>
-      <view class="text">{{orderDetailName}}</view>
-    </view>
-    <view class="a-row">
-      <view class="label">物流单号</view>
-      <view class="text">{{orderDetailNumber}}</view>
-    </view>
-  </view>
-  <view class="sec-wrap">
-    <view wx:if="{{apiwiliuList}}" class="details-info">
-      <ul>
-        <li class="a-row" wx:for="{{apiwiliuList}}" wx:key="{{index}}">
-          <view class="info">
-            <view class="date-box">{{item.AcceptStation}}</view>
-            <view class="text">{{item.AcceptTime}}</view>
-          </view>
-        </li>
-      </ul>
-      <view wx:if="{{noneapiWuliu}}" class="none">暂无物流信息</view>
-    </view>
-    <view wx:if="{{maliwiliuList}}" class="details-info">
-      <ul>
-        <li class="a-row" wx:for="{{maliwiliuList}}" wx:key="{{index}}">
-          <view class="info">
-            <view class="date-box">{{item.context}}</view>
-            <view class="text">{{item.time}}</view>
-          </view>
-        </li>
-      </ul>
-      <view wx:if="{{nonemaliWuliu}}" class="none">暂无物流信息</view>
-    </view>
-  </view>
+	<view class="top-sec">
+		<view class="a-row">
+			<view class="label">物流公司</view>
+			<view class="text">{{orderDetail.logistics.shipperName}}</view>
+		</view>
+		<view class="a-row">
+			<view class="label">物流单号</view>
+			<view class="text">{{orderDetail.logistics.trackingNumber}}</view>
+		</view>
+	</view>
+	<view class="sec-wrap">
+		<view class="details-info">
+			<view class="line-box"></view>
+			<block wx:if="{{logisticsTraces}}">
+				<view class="a-row" wx:for-items="{{logisticsTraces}}" wx:key="{{index}}">
+					<view class="dot">
+						<view class="active-dot" hidden="{{index== 0 ? false : true}}">
+							<view class="yuan-red"></view>
+						</view>
+						<view class="default-dot" hidden="{{index== 0 ? true : false}}"></view>
+					</view>
+					<view class="info">
+						<view class="date-box">{{item.AcceptTime}}</view>
+						<view class="text">{{item.AcceptStation}}</view>
+					</view>
+				</view>
+			</block>
+			<block wx:else>
+				<view class="none">暂无物流信息</view>
+			</block>
+		</view>
+	</view>
 </view>
