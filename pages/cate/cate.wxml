@@ -1,13 +1,13 @@
 <navigation id='Navigation' show-search='{{true}}'></navigation>
 <view class="container">
   <view class="type-container-boxx">
-    <view class="type-container">
-      <view wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}">
-        <view class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}">
-          {{item.name}}
-        </view>
-      </view>
-    </view>
+	  <scroll-view scroll-y="true" scroll-into-view="true" scroll-with-animation="true" class="type-container">
+  		<view scroll-y="true" wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}">
+  			<view class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}">
+  				{{item.name}}
+  			</view>
+  		</view>
+      </scroll-view>
     <view class="type-list">
       <view class="swiper-container">
         <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
