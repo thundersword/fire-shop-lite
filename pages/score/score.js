@@ -36,6 +36,7 @@ Page({
 			if (res.code == 0) {
 				this.onLoad();
 				this.checkScoreSign();
+				this.getUserScore();
 			}
 			wx.showToast({
 				title: '签到成功',

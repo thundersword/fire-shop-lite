@@ -87,14 +87,20 @@ page {
   top: 12vh;
   height: 88vh;
 }
-
-.type-container {
-  width: 25%;
+.scroll-view-container{
+	width: 25%;
+	height: 100%;
+	border-right: 1px solid #f5f5f5;
+	background-color: #fff;
+	display: inline-block;
+	float: left;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.scroll-view-container .type-container {
+  width: 110%;
   height: 100%;
-  border-right: 1px solid #f5f5f5;
-  background-color: #fff;
-  display: inline-block;
-  float: left;
+  padding-right: 10%;
 }
 
 .type-box:nth-child(1) {
@@ -118,12 +124,19 @@ page {
   color: #ab2b2b;
   font-size: 30rpx;
 }
-
-.type-list {
-  width: 74%;
-  height: 100%;
-  overflow: scroll;
-  float: left;
+.list-container{
+	width: 75%;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.list-container .type-list {
+	overflow: scroll;
+	width: 110%;
+	height: 100%;
+	box-sizing: border-box;
+	padding-right: 10%;
 }
 
 .goods-title {

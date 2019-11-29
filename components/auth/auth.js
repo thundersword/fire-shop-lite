@@ -31,10 +31,10 @@ Component({
 					wx.removeStorageSync('token')
 					this.login();
 				} else {
-					wx.showToast({
-						title:'登录成功',
-						icon:'success'
-					})
+					// wx.showToast({
+					// 	title:'登录成功',
+					// 	icon:'success'
+					// })
 					app.globalData.token = token
 					this.triggerEvent('afterAuth',token)
 				}
