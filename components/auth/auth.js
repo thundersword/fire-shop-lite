@@ -7,19 +7,19 @@ Component({
 			value: true,
 		}
 	},
-	lifetimes:{
-		attached(){
+	lifetimes: {
+		attached() {
 			this.checkToken()
 			const that = this
 			wx.getStorage({
-				key:'logo',
+				key: 'logo',
 				success(res) {
 					that.setData({
-						logo:res.data
+						logo: res.data
 					})
 				}
 			})
-			
+
 		}
 	},
 	methods: {
@@ -36,14 +36,14 @@ Component({
 					// 	icon:'success'
 					// })
 					app.globalData.token = token
-					this.triggerEvent('afterAuth',token)
+					this.triggerEvent('afterAuth', token)
 				}
 			})
 			return true;
 		},
-		close(){
+		close() {
 			this.setData({
-				isHidden:true,
+				isHidden: true,
 			})
 		},
 		bindGetUserInfo(e) {
@@ -70,11 +70,11 @@ Component({
 						this.login();
 					} else {
 						wx.showToast({
-							title:'登录成功',
-							icon:'success'
+							title: '登录成功',
+							icon: 'success'
 						})
 						app.globalData.token = token
-						this.triggerEvent('afterAuth',token)
+						this.triggerEvent('afterAuth', token)
 					}
 				})
 				return;
@@ -98,17 +98,46 @@ Component({
 							return;
 						}
 						wx.showToast({
-							title:'登录成功',
-							icon:'success'
+							title: '登录成功',
+							icon: 'success'
 						})
 						wx.setStorageSync('token', res.data.token)
 						wx.setStorageSync('uid', res.data.uid)
 						// 回到原来的地方放
 						app.globalData.token = res.data.token
-						that.triggerEvent('afterAuth',res.data.token)
+						that.triggerEvent('afterAuth', res.data.token)
 					})
 				}
 			})
 		},
+		registerUser: function() {
+			let that = this;
+			wx.login({
+				success: function(res) {
+					let code = res.code; // 微信登录接口返回的 code 参数，下面注册接口需要用到
+					wx.getUserInfo({
+						success: function(res) {
+							let iv = res.iv;
+							let encryptedData = res.encryptedData;
+							let referrer = '' // 推荐人
+							let referrer_storge = wx.getStorageSync('referrer');
+							if (referrer_storge) {
+								referrer = referrer_storge;
+							}
+							// 下面开始调用注册接口
+							WXAPI.register_complex({
+								code: code,
+								encryptedData: encryptedData,
+								iv: iv,
+								referrer: referrer
+							}).then(function(res) {
+								wx.hideLoading();
+								that.login();
+							})
+						}
+					})
+				}
+			})
+		}
 	}
 })
