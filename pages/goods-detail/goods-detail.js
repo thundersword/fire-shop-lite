@@ -594,6 +594,7 @@ Page({
 		})
 	},
 	getcode: function() {
+		if(!this.data.token) return this.showAuth()
 		var that = this;
 		wx.showLoading({
 			title: '生成中...',

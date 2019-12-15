@@ -32,6 +32,7 @@ Page({
 	 *授权登录成功后回调
 	 */
 	afterAuth(e) {
+		console.log(e)
 		this.setData({
 			isHidden: true,
 			token: e.detail
@@ -39,9 +40,11 @@ Page({
 		this.initShippingAddress();
 	},
 	onShow: function() {
-		//console.log(this.data.orderType)
-		var that = this;
-		var shopList = [];
+		
+		if(this.data.token) this.initShippingAddress()
+		
+		const that = this;
+		let shopList = [];
 
 		//立即购买下单
 		if ("buyNow" == that.data.orderType) {
@@ -239,14 +242,13 @@ Page({
 	},
 	initShippingAddress: function() {
 		WXAPI.defaultAddress(this.data.token).then(res => {
-			console.log(res)
 			if (res.code == 0) {
 				this.setData({
 					curAddressData: res.data.info
 				});
 			} else {
 				this.setData({
-					isHidden: false,
+					// isHidden: false,
 					curAddressData: null
 				});
 			}

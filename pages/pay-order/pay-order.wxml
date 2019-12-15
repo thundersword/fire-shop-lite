@@ -76,5 +76,5 @@
     </view>
     </form>
 </view>
-<auth isHidden="{{isHidden}}" bind:afterAuth="afterAuth"></auth>
+<auth is-hidden="{{isHidden}}" bind:afterAuth="afterAuth"></auth>
 <wux-dialog id="wux-dialog" />
