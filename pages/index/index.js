@@ -20,6 +20,7 @@ Page({
 	//事件处理函数
 	onShow() {
 		app.fadeInOut(this, 'fadeAni', 0)
+		app.setShopCartBadge()
 	},
 	onLoad: function() {
 		//首页幻灯片

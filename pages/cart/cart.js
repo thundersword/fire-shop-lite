@@ -7,9 +7,25 @@ Page({
 			totalPrice: 0,
 			allSelect: true,
 			noSelect: false,
-			list: []
+			list: [],
 		},
 		delBtnWidth: 120, //删除按钮宽度单位（rpx）
+		isHidden: true, //是否隐藏登录弹窗
+		token:null,
+	},
+	showAuth(){
+		this.setData({
+			isHidden:false
+		})
+	},
+	/*
+	*授权登录成功后回调
+	*/
+	afterAuth(e){
+		this.setData({
+			isHidden:true,
+			token:e.detail
+		})
 	},
 
 	//获取元素自适应后的实际宽度
@@ -38,7 +54,7 @@ Page({
 		})
 	},
 	onLoad: function() {
-		var that = this;
+		const that = this;
 		if (app.globalData.iphone == true) {
 			that.setData({
 				iphone: 'iphone'
@@ -65,37 +81,10 @@ Page({
 				}
 			}
 		})
-		// WXAPI.queryConfigValue({
-		// 	key: 'shopcart'
-		// }).then( res => {
-		// 	console.log(res)
-		// 	if (res.code == 0) {
-		// 		let kb = res.data.value;
-		// 		let kbarr = kb.split(',');
-		// 		that.setData({
-		// 			sales: res.data
-		// 		});
-		// 		let sales = [];
-		// 		for (let i = 0; i < kbarr.length; i++) {
-		// 			WXAPI.goodsDetail({
-		// 				id: kbarr[i]
-		// 			}).then( res => {
-		// 				console.log(res)
-		// 				if (res.code == 0) {
-		// 					sales.push(res.data.basicInfo);
-		// 				}
-		// 				that.setData({
-		// 					sales: sales
-		// 				});
-		// 			})
-		// 		}
-		// 	}
-		// })
 		that.initEleWidth();
-		that.onShow();
 	},
 	onShow: function() {
-		var that = this;
+		const that = this;
 		wx.getStorage({
 			key: 'shopCarInfo',
 			success: function(res) {
@@ -118,29 +107,10 @@ Page({
 				}
 			}
 		})
-		wx.request({
-			url: app.globalData.urls + '/order/statistics',
-			data: {
-				token: app.globalData.token
-			},
-			success: function(res) {
-				if (res.data.code == 0) {
-					if (res.data.data.count_id_no_pay > 0) {
-						wx.setTabBarBadge({
-							index: 3,
-							text: '' + res.data.data.count_id_no_pay + ''
-						})
-					} else {
-						wx.removeTabBarBadge({
-							index: 3,
-						})
-					}
-				}
-			}
-		})
-		var shopList = [];
+		
+		let shopList = [];
 		// 获取购物车数据
-		var shopCarInfoMem = wx.getStorageSync('shopCarInfo');
+		let shopCarInfoMem = wx.getStorageSync('shopCarInfo');
 		if (shopCarInfoMem && shopCarInfoMem.shopList) {
 			shopList = shopCarInfoMem.shopList
 		}

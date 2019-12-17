@@ -33,34 +33,7 @@ Page({
 			swiperCurrent: e.detail.current
 		})
 	},
-	// search: function(e) {
-	// 	var that = this
-	// 	wx.request({
-	// 		url: app.globalData.urls + '/shop/goods/list',
-	// 		data: {
-	// 			nameLike: e.detail.value
-	// 		},
-	// 		success: function(res) {
-	// 			if (res.data.code == 0) {
-	// 				var searchs = [];
-	// 				for (var i = 0; i < res.data.data.length; i++) {
-	// 					searchs.push(res.data.data[i]);
-	// 				}
-	// 				that.setData({
-	// 					searchs: searchs,
-	// 					searchidden: false,
-	// 					nonehidden: true
-	// 				});
-	// 			} else {
-	// 				that.setData({
-	// 					searchidden: true,
-	// 					nonehidden: false
-	// 				});
-	// 			}
-	// 		}
-	// 	})
 
-	// },
 	searchfocus: function() {
 		this.setData({
 			search: false,
@@ -173,26 +146,6 @@ Page({
 					wx.removeTabBarBadge({
 						index: 2,
 					})
-				}
-			}
-		})
-		wx.request({
-			url: app.globalData.urls + '/order/statistics',
-			data: {
-				token: app.globalData.token
-			},
-			success: function(res) {
-				if (res.data.code == 0) {
-					if (res.data.data.count_id_no_pay > 0) {
-						wx.setTabBarBadge({
-							index: 3,
-							text: '' + res.data.data.count_id_no_pay + ''
-						})
-					} else {
-						wx.removeTabBarBadge({
-							index: 3,
-						})
-					}
 				}
 			}
 		})

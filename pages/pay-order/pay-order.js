@@ -326,27 +326,6 @@ Page({
 		}).catch(res => {
 			console.log(res)
 		})
-		// var that = this;
-		// wx.request({
-		// 	url: app.globalData.urls + '/discounts/my',
-		// 	data: {
-		// 		token: app.globalData.token,
-		// 		status: 0
-		// 	},
-		// 	success: function(res) {
-		// 		if (res.data.code == 0) {
-		// 			var coupons = res.data.data.filter(entity => {
-		// 				return entity.moneyHreshold <= that.data.allGoodsAndYunPrice;
-		// 			});
-		// 			if (coupons.length > 0) {
-		// 				that.setData({
-		// 					hasNoCoupons: false,
-		// 					coupons: coupons
-		// 				});
-		// 			}
-		// 		}
-		// 	}
-		// })
 	},
 	bindChangeCoupon: function(e) {
 		const selIndex = e.detail.value[0] - 1;

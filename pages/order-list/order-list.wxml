@@ -37,7 +37,7 @@
 					<view class="btn topay-btn" hidden="{{item.status==0? false: true}}" bindtap="toPayTap" data-id="{{item.id}}"
 					 data-money="{{item.amountReal}}">立即支付</view>
 					<view class="btn topay-btn" hidden="{{item.status==3? false: true}}" bindtap="orderDetail" data-id="{{item.id}}">去评价</view>
-					<form bindsubmit="toConfirmTap" report-submit="true" data-id="{{item.id}}">
+					<form bindsubmit="toConfirmTap" report-submit="true" data-id="{{item.id}}" data-number="{{item.orderNumber}}">
 						<view wx:if="{{item.status==2}}">
 							<button class="btn topay-btn" formType="submit">确认收货</button>
 						</view>

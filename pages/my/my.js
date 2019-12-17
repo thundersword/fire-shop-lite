@@ -119,27 +119,6 @@ Page({
 			}
 		})
 	},
-	scoresign: function() {
-		var that = this;
-		wx.request({
-			url: app.globalData.urls + '/score/sign',
-			data: {
-				token: app.globalData.token
-			},
-			success: function(res) {
-				if (res.data.code == 0) {
-					that.getUserAmount();
-					that.checkScoreSign();
-				} else {
-					wx.showModal({
-						title: '错误',
-						content: res.data.msg,
-						showCancel: false
-					})
-				}
-			}
-		})
-	},
 	getOrderStatistics(){
 		WXAPI.orderStatistics(this.data.token).then( res => {
 			if (res.code == 0) {

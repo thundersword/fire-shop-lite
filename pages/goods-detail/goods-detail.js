@@ -35,9 +35,9 @@ Page({
 		title: "商品详情",
 		barBg: 'red',
 		color: '#ffffff',
-		isHidden:true,
-		token:null,
-		id:null
+		isHidden: true,
+		token: null,
+		id: null
 	},
 
 	//事件处理函数
@@ -46,18 +46,18 @@ Page({
 			swiperCurrent: e.detail.current
 		})
 	},
-	showAuth(){
+	showAuth() {
 		this.setData({
-			isHidden:false
+			isHidden: false
 		})
 	},
 	/*
-	*授权登录成功后回调
-	*/
-	afterAuth(e){
+	 *授权登录成功后回调
+	 */
+	afterAuth(e) {
 		this.setData({
-			isHidden:true,
-			token:e.detail
+			isHidden: true,
+			token: e.detail
 		})
 		this.getFav(this.data.id)
 	},
@@ -131,7 +131,7 @@ Page({
 				});
 			}
 		})
-		WXAPI.goodsDetail(that.data.id).then( res => {
+		WXAPI.goodsDetail(that.data.id).then(res => {
 			let selectSizeTemp = "";
 			if (res.data.properties) {
 				for (var i = 0; i < res.data.properties.length; i++) {
@@ -165,14 +165,14 @@ Page({
 		});
 	},
 	toAddShopCar: function() {
-		if(!this.data.token) return this.showAuth()
+		if (!this.data.token) return this.showAuth()
 		this.setData({
 			shopType: "addShopCar"
 		})
 		this.bindGuiGeTap();
 	},
 	tobuy: function() {
-		if(!this.data.token) return this.showAuth();
+		if (!this.data.token) return this.showAuth();
 		this.setData({
 			shopType: "tobuy"
 		});
@@ -270,7 +270,7 @@ Page({
 	 * 加入购物车
 	 */
 	addShopCar: function() {
-		if(!this.data.token) return this.showAuth()
+		if (!this.data.token) return this.showAuth()
 		if (this.data.goodsDetail.properties && !this.data.canSubmit) {
 			if (!this.data.canSubmit) {
 				wx.showModal({
@@ -318,7 +318,7 @@ Page({
 	 * 立即购买
 	 */
 	buyNow: function() {
-		if(!this.data.token) return this.showAuth()
+		if (!this.data.token) return this.showAuth()
 		const that = this;
 		if (that.data.goodsDetail.properties && !that.data.canSubmit) {
 			wx.hideLoading();
@@ -498,9 +498,9 @@ Page({
 	},
 	getFav(goodsId) {
 		console.log('run')
-		WXAPI.goodsFavCheck(this.data.token, goodsId).then( res => {
+		WXAPI.goodsFavCheck(this.data.token, goodsId).then(res => {
 			console.log(res)
-			if(res.code == 0){
+			if (res.code == 0) {
 				this.setData({
 					favicon: 1
 				})
@@ -508,9 +508,9 @@ Page({
 		})
 	},
 	fav: function() {
-		if(!this.data.token) return this.showAuth()
+		if (!this.data.token) return this.showAuth()
 		const that = this;
-		WXAPI.goodsFavPut(this.data.token,this.data.goodsDetail.basicInfo.id).then( res => {
+		WXAPI.goodsFavPut(this.data.token, this.data.goodsDetail.basicInfo.id).then(res => {
 			if (res.code == 0) {
 				wx.showToast({
 					title: '收藏成功',
@@ -525,7 +525,7 @@ Page({
 		})
 	},
 	del: function() {
-		WXAPI.goodsFavDelete(this.data.token,'',this.data.goodsDetail.basicInfo.id).then( res => {
+		WXAPI.goodsFavDelete(this.data.token, '', this.data.goodsDetail.basicInfo.id).then(res => {
 			if (res.code == 0) {
 				wx.showToast({
 					title: '取消收藏',
@@ -540,20 +540,13 @@ Page({
 		})
 	},
 	getVideoSrc: function(videoId) {
-		var that = this;
-		// wx.request({
-		// 	url: app.globalData.urls + '/media/video/detail',
-		// 	data: {
-		// 		videoId: videoId
-		// 	},
-		// 	success: function(res) {
-		// 		if (res.data.code == 0) {
-		// 			that.setData({
-		// 				videoMp4Src: res.data.data.fdMp4
-		// 			});
-		// 		}
-		// 	}
-		// })
+		WXAPI.videoDetail(videoId).then(res => {
+			if (res.code == 0) {
+				that.setData({
+					videoMp4Src: res.data.fdMp4
+				});
+			}
+		})
 	},
 	gohome: function() {
 		wx.switchTab({
@@ -586,7 +579,7 @@ Page({
 		wx.stopPullDownRefresh();
 	},
 	onShow: function() {
-		
+
 	},
 	getShareBox: function() {
 		this.setData({
@@ -594,7 +587,7 @@ Page({
 		})
 	},
 	getcode: function() {
-		if(!this.data.token) return this.showAuth()
+		if (!this.data.token) return this.showAuth()
 		var that = this;
 		wx.showLoading({
 			title: '生成中...',
@@ -603,7 +596,7 @@ Page({
 			scene: "i=" + that.data.goodsDetail.basicInfo.id + ",u=" + app.globalData.uid + ",s=1",
 			page: "pages/goods-detail/goods-detail",
 			expireHours: 1
-		}).then( res => {
+		}).then(res => {
 			if (res.code == 0) {
 				wx.downloadFile({
 					url: res.data,

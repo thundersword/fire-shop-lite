@@ -59,6 +59,7 @@ App({
 				wx.setStorageSync('logo', res.data[0].picUrl)
 			}
 		})
+		//设置购物车tab数字角标
 	},
 	fadeInOut: function(that, param, opacity) {
 		const animation = wx.createAnimation({
@@ -105,44 +106,52 @@ App({
 		})
 	},
 	sendTempleMsg: function(orderId, trigger, template_id, form_id, page, postJsonString) {
-		var that = this;
-		wx.request({
-			url: that.globalData.urls + "/template-msg/put",
-			method: "POST",
-			header: {
-				"content-type": "application/x-www-form-urlencoded"
-			},
-			data: {
-				token: that.globalData.token,
-				type: 0,
-				module: "order",
-				business_id: orderId,
-				trigger: trigger,
-				template_id: template_id,
-				form_id: form_id,
-				url: page,
-				postJsonString: postJsonString
-			}
-		});
+		WXAPI.sendTempleMsg({
+			token: this.globalData.token,
+			type: 0,
+			module: "order",
+			business_id: orderId,
+			trigger: trigger,
+			template_id: template_id,
+			form_id: form_id,
+			url: page,
+			postJsonString: postJsonString
+		}).then( res => console.log(res))
 	},
 	sendTempleMsgImmediately: function(template_id, form_id, page, postJsonString) {
-		var that = this;
-		wx.request({
-			url: that.globalData.urls + "/template-msg/put",
-			method: "POST",
-			header: {
-				"content-type": "application/x-www-form-urlencoded"
-			},
-			data: {
-				token: that.globalData.token,
-				type: 0,
-				module: "immediately",
-				template_id: template_id,
-				form_id: form_id,
-				url: page,
-				postJsonString: postJsonString
+		WXAPI.sendTempleMsg({
+			token: this.globalData.token,
+			type: 0,
+			module: "immediately",
+			template_id: template_id,
+			form_id: form_id,
+			url: page,
+			postJsonString: postJsonString
+		}).then( res => console.log(res))
+	},
+	setShopCartBadge(){
+		wx.getStorage({
+			key: 'shopCarInfo',
+			success: function(res) {
+				if (res.data) {
+					console.log(res.data)
+					if (res.data.shopNum > 0) {
+						wx.setTabBarBadge({
+							index: 2,
+							text: '' + res.data.shopNum + ''
+						})
+					} else {
+						wx.removeTabBarBadge({
+							index: 2,
+						})
+					}
+				} else {
+					wx.removeTabBarBadge({
+						index: 2,
+					})
+				}
 			}
-		});
+		})
 	},
 	globalData: {
 		userInfo: null,

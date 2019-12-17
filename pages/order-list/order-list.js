@@ -1,6 +1,7 @@
 const wxpay = require('../../utils/pay.js')
 const app = getApp()
 const WXAPI = require('apifm-wxapi')
+const CONFIG = require('../../config.js')
 Page({
 	data: {
 		statusType: ["待付款", "待发货", "待收货", "待评价", "已完成"],
@@ -213,6 +214,7 @@ Page({
 	toConfirmTap: function(e) {
 		let that = this;
 		let orderId = e.currentTarget.dataset.id;
+		let orderNumber = e.currentTarget.dataset.number
 		let formId = e.detail.formId;
 		wx.showModal({
 			title: '确认您已收到商品？',
@@ -220,32 +222,26 @@ Page({
 			success: function(res) {
 				if (res.confirm) {
 					wx.showLoading();
-					wx.request({
-						url: app.globalData.urls + '/order/delivery',
-						data: {
-							token: app.globalData.token,
-							orderId: orderId
-						},
-						success: (res) => {
-							if (res.data.code == 0) {
-								that.onShow();
-								// 模板消息，提醒用户进行评价
-								let postJsonString = {};
-								postJsonString.keyword1 = {
-									value: that.data.orderDetail.orderInfo.orderNumber,
-									color: '#173177'
-								}
-								let keywords2 = '您已确认收货，期待您的再次光临！';
-								if (app.globalData.order_reputation_score) {
-									keywords2 += '立即好评，系统赠送您' + app.globalData.order_reputation_score + '积分奖励。';
-								}
-								postJsonString.keyword2 = {
-									value: keywords2,
-									color: '#173177'
-								}
-								app.sendTempleMsgImmediately(app.siteInfo.assessorderkey, formId,
-									'/pages/order-detail/order-detail?id=' + orderId, JSON.stringify(postJsonString));
+					WXAPI.orderDelivery(app.globalData.token,orderId).then( res => {
+						if (res.code == 0) {
+							wx.hideLoading();
+							that.onShow();
+							// 模板消息，提醒用户进行评价
+							let postJsonString = {};
+							postJsonString.keyword1 = {
+								value: orderNumber,
+								color: '#173177'
 							}
+							let keywords2 = '您已确认收货，期待您的再次光临！';
+							if (app.globalData.order_reputation_score) {
+								keywords2 += '立即好评，系统赠送您' + app.globalData.order_reputation_score + '积分奖励。';
+							}
+							postJsonString.keyword2 = {
+								value: keywords2,
+								color: '#173177'
+							}
+							app.sendTempleMsgImmediately(CONFIG.assessOrderkey, formId,
+								'/pages/order-detail/order-detail?id=' + orderId, JSON.stringify(postJsonString));
 						}
 					})
 				}
