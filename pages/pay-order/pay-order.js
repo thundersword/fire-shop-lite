@@ -179,47 +179,7 @@ Page({
 				this.getMyCoupons();
 				return;
 			}
-			// 配置模板消息推送
-			let postJsonString = {};
-			postJsonString.keyword1 = {
-				value: res.data.dateAdd,
-				color: '#173177'
-			}
-			postJsonString.keyword2 = {
-				value: res.data.amountReal + '元',
-				color: '#173177'
-			}
-			postJsonString.keyword3 = {
-				value: res.data.orderNumber,
-				color: '#173177'
-			}
-			postJsonString.keyword4 = {
-				value: '订单已关闭',
-				color: '#173177'
-			}
-			postJsonString.keyword5 = {
-				value: '您可以重新下单，请在' + CONFIG.orderExpireTime + '分钟内完成支付',
-				color: '#173177'
-			}
-			app.sendTempleMsg(res.data.id, -1,
-				CONFIG.closeOrderkey, e.detail.formId,
-				'pages/index/index', JSON.stringify(postJsonString));
-			postJsonString = {};
-			postJsonString.keyword1 = {
-				value: '您的订单已发货，请注意查收',
-				color: '#173177'
-			}
-			postJsonString.keyword2 = {
-				value: res.data.orderNumber,
-				color: '#173177'
-			}
-			postJsonString.keyword3 = {
-				value: res.data.dateAdd,
-				color: '#173177'
-			}
-			app.sendTempleMsg(res.data.id, 2,
-				CONFIG.deliveryOrderkey, e.detail.formId,
-				'pages/order-detail/order-detail?id=' + res.data.id, JSON.stringify(postJsonString));
+			
 			$wuxDialog().confirm({
 				title: '订单支付确认',
 				content: '您的订单金额为' + res.data.amountReal + '元',
