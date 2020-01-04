@@ -91,6 +91,22 @@ Page({
 		}
 		return aaa;
 	},
+	goCreateOrder(){
+	  wx.requestSubscribeMessage({
+	    tmplIds: ['BN8ZfWouxCZuCvFlOCYL7TLHhffN7KH5Etl3UaD9EqM',
+	      'kzqXs2Nr5MqTMH8obIHIaD1OzvyMFxJBYZrExLEFXWA'],
+	    success(res) {
+	      
+	    },
+	    fail(e) {
+	      console.error(e)
+	    },
+	    complete: (e) => {
+			// return console.log(e)
+	      this.createOrder(true)
+	    },
+	  })
+	},
 
 	createOrder: function(e) {
 		wx.showLoading();
