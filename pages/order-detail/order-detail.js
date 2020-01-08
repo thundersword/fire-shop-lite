@@ -37,6 +37,7 @@ Page({
 		var that = this;
 		wx.showLoading();
 		WXAPI.orderDetail(wx.getStorageSync('token'), that.data.orderId).then(function(res) {
+			// console.log(res)
 			wx.hideLoading()
 			if (res.code != 0) {
 				wx.showModal({
@@ -81,23 +82,12 @@ Page({
 					WXAPI.orderDelivery(app.globalData.token, orderId).then( res => {
 						wx.hideLoading();
 						if (res.code == 0) {
-							that.onShow();
-							// 模板消息，提醒用户进行评价
-							let postJsonString = {};
-							postJsonString.keyword1 = {
-								value: that.data.orderDetail.orderInfo.orderNumber,
-								color: '#173177'
-							}
-							let keywords2 = '您已确认收货，期待您的再次光临！';
-							if (app.globalData.order_reputation_score) {
-								keywords2 += '立即好评，系统赠送您' + app.globalData.order_reputation_score + '积分奖励。';
-							}
-							postJsonString.keyword2 = {
-								value: keywords2,
-								color: '#173177'
-							}
-							app.sendTempleMsgImmediately(CONFIG.assessorderkey, formId,
-								'/pages/order-detail/order-detail?id=' + orderId, JSON.stringify(postJsonString));
+							wx.showToast({
+								title:"确认成功"
+							})
+							setTimeout(() => {
+								wx.navigateBack()
+							},1500)
 						}
 					})
 				}
@@ -133,23 +123,13 @@ Page({
 			console.log(res)
 			wx.hideLoading();
 			if (res.code == 0) {
-				that.onShow();
-				// 模板消息，通知用户已评价
-				let postJsonString = {};
-				postJsonString.keyword1 = {
-					value: that.data.orderDetail.orderInfo.orderNumber,
-					color: '#173177'
-				}
-				let keywords2 = '感谢您的评价，期待您的再次光临！';
-				if (app.globalData.order_reputation_score) {
-					keywords2 += app.globalData.order_reputation_score + '积分奖励已发放至您的账户。';
-				}
-				postJsonString.keyword2 = {
-					value: keywords2,
-					color: '#173177'
-				}
-				app.sendTempleMsgImmediately(CONFIG.successorderkey, formId,
-					'/pages/order-detail/order-detail?id=' + that.data.orderId, JSON.stringify(postJsonString));
+				wx.showToast({
+					title:"评价完成"
+				})
+				setTimeout( () => {
+					wx.navigateBack()
+				},1500)
+					
 			}
 		})
 	}

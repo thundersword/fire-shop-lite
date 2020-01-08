@@ -105,30 +105,6 @@ App({
 			}
 		})
 	},
-	sendTempleMsg: function(orderId, trigger, template_id, form_id, page, postJsonString) {
-		WXAPI.sendTempleMsg({
-			token: this.globalData.token,
-			type: 0,
-			module: "order",
-			business_id: orderId,
-			trigger: trigger,
-			template_id: template_id,
-			form_id: form_id,
-			url: page,
-			postJsonString: postJsonString
-		}).then( res => console.log(res))
-	},
-	sendTempleMsgImmediately: function(template_id, form_id, page, postJsonString) {
-		WXAPI.sendTempleMsg({
-			token: this.globalData.token,
-			type: 0,
-			module: "immediately",
-			template_id: template_id,
-			form_id: form_id,
-			url: page,
-			postJsonString: postJsonString
-		}).then( res => console.log(res))
-	},
 	setShopCartBadge(){
 		wx.getStorage({
 			key: 'shopCarInfo',

@@ -222,26 +222,10 @@ Page({
 			success: function(res) {
 				if (res.confirm) {
 					wx.showLoading();
-					WXAPI.orderDelivery(app.globalData.token,orderId).then( res => {
-						if (res.code == 0) {
+					WXAPI.orderDelivery(app.globalData.token,orderId).then( result => {
+						if (result.code == 0) {
 							wx.hideLoading();
-							that.onShow();
-							// 模板消息，提醒用户进行评价
-							let postJsonString = {};
-							postJsonString.keyword1 = {
-								value: orderNumber,
-								color: '#173177'
-							}
-							let keywords2 = '您已确认收货，期待您的再次光临！';
-							if (app.globalData.order_reputation_score) {
-								keywords2 += '立即好评，系统赠送您' + app.globalData.order_reputation_score + '积分奖励。';
-							}
-							postJsonString.keyword2 = {
-								value: keywords2,
-								color: '#173177'
-							}
-							app.sendTempleMsgImmediately(CONFIG.assessOrderkey, formId,
-								'/pages/order-detail/order-detail?id=' + orderId, JSON.stringify(postJsonString));
+							that.getOrderList();
 						}
 					})
 				}
