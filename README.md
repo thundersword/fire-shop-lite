@@ -46,11 +46,21 @@ fire-shop-lite是一个基于“api工厂”（以下简称工厂）后台的电
 
 # 扫码体验
 ![](https://box.kancloud.cn/30042147f89891e33b01bddfd2029690_258x258.jpg)
+# 初始化测试数据
+[注册](https://www.it120.cc/?referrer=9384)并登录后台api工厂后台，左侧菜单 “工厂设置” --> “数据克隆” --> “将别人的数据克隆给我”
+
+对方商户ID填写 9436
+
+点击 “立即克隆” ，然后退出后台重新登录
+
+你将立即享有初始化测试数据，方便你进行测试
+
 # 版权声明
 
 fire-shop-lite由上海染火网络科技有限公司开发，前端代码完全开源，您可以免费使用，并可以将其用于商业运营或进行二次开发。
 # 文档教程
 [文档教程](https://www.kancloud.cn/thundersword/fire-shop-lite/936356)
+因api工厂改版，教程部分路径和截图会对应不上，建议先通过克隆初始化数据后再修改。
 # 使用交流
 
 技术交流QQ群 878573318
@@ -58,13 +68,10 @@ fire-shop-lite由上海染火网络科技有限公司开发，前端代码完全
 ![](https://box.kancloud.cn/7c84f8cccee146b86a7b9edaa23d4796_540x740.png)
 # 赞助
 
-觉得小程序还可以的，动动小手，互惠互利
+| 微信赞赏 | 支付宝打赏 | 领个红包也是情 |
+| :------: | :------: |:------: |
+| <img src="https://dcdn.it120.cc/2020/01/08/070ae84e-4a9f-488c-ab01-c2d2675bd8c3.jpg" width="200px"> | <img src="https://dcdn.it120.cc/2020/01/08/af520c20-599d-42d8-9aac-3b322c2234d1.jpg" width="200px"> | <img src="https://box.kancloud.cn/121959f84f2bdf1ecfcabe531592462d_410x615.png" width="200px">|
 
-![](https://box.kancloud.cn/121959f84f2bdf1ecfcabe531592462d_410x615.png)
-
-家里有矿的请随意
-
-![](https://box.kancloud.cn/4186935d18019b624559662b68845856_420x420.png)
 # 联系作者
 
 加好友请备注一下“fireshop”哦
