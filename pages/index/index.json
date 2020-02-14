@@ -2,6 +2,5 @@
 	"usingComponents": {
 		"navigation": "/components/navigation/navigation",
 		"authorize": "/components/auth/auth"
-	},
-	"navigationBarTextStyle": "white"
+	}
 }

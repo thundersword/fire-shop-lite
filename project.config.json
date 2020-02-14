@@ -58,10 +58,17 @@
 					"scene": null
 				},
 				{
-					"id": 1,
+					"id": 2,
 					"name": "编辑收货地址",
 					"pathName": "pages/address-add/address-add",
 					"query": "id=86018",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "商品详情",
+					"pathName": "pages/goods-detail/goods-detail",
+					"query": "id=115291",
 					"scene": null
 				}
 			]

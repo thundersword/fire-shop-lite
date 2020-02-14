@@ -1,7 +1,6 @@
 {
-   "usingComponents": {
-   		"navigation": "/components/navigation/navigation",
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation",
 		"auth": "/components/auth/auth"
-   	},
-	"navigationBarTextStyle":"black"
+	}
 }

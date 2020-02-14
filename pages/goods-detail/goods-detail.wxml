@@ -207,26 +207,6 @@
     </view>
   </view>
 </view>
-
-<view class="show-container" hidden="{{wxlogin}}">
-  <view class="show-box">
-    <view class="show-logo-box">
-      <image src="{{toplogo}}" />
-      <view class="show-mall-name">{{topname}}</view>
-    </view>
-    <view class="show-text-box">
-      <view class="show-text-name">需要您的授权才能正常使用哦！</view>
-      <view class="show-text-info">
-        <text>·</text>请允许我们获得您的公开资讯</view>
-      <view class="show-text-info">
-        <text>·</text>我们不会公布您的这些信息</view>
-      <view class="show-text-info">
-        <text>·</text>只是为了给您提供更好的服务</view>
-    </view>
-    <button open-type="getUserInfo" bindgetuserinfo="userlogin">允许</button>
-  </view>
-</view>
-
 <view class="show-share" hidden="{{sharebox}}">
   <view class="show-close-share" bindtap="closeshare"></view>
   <view class="show-share-box">

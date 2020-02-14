@@ -1,5 +1,6 @@
 {
   "enablePullDownRefresh": false,
   "disableScroll": true,
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "white",
+  "navigationStyle":"custom"
 }
