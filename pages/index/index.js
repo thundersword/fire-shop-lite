@@ -24,7 +24,7 @@ Page({
 		dotStyle: "square-dot", //swiper指示点样式可选square-dot round-dot
 		navigation: [],
 		banners: [],
-		disableSearchJump: false,
+		disableSearchJump: true,
 	},
 	tapNav(e){
 		const url = e.currentTarget.dataset.url

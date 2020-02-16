@@ -21,6 +21,17 @@ Component({
 		show: {
 			type: Boolean,
 			value: true
+		},
+		goods: {
+			type: String,
+			value:'',
+			observer:function(value){
+				if(value != ''){
+					this.getList(value)
+				}else{
+					this.getList()
+				}
+			}
 		}
 	},
 
@@ -39,18 +50,34 @@ Component({
 	 * 组件的方法列表
 	 */
 	methods: {
-		getList() {
-			WXAPI.goods({
-				recommendStatus: 1,
-				orderBy: this.properties.orderBy,
-				pageSize: this.properties.count
-			}).then(res => {
-				if (res.code == 0) {
-					this.setData({
-						list: res.data
+		getList(value) {
+			if (value && value != "") {
+				let goodsIdArr = value.split(',')
+				let goodsArr = []
+				for (let i = 0; i < goodsIdArr.length; i++) {
+					WXAPI.goodsDetail(goodsIdArr[i]).then(res => {
+						if (res.code == 0) {
+							goodsArr.push(res.data.basicInfo);
+						}
+						this.setData({
+							list: goodsArr,
+						});
 					})
 				}
-			})
+			} else {
+				WXAPI.goods({
+					recommendStatus: 1,
+					orderBy: this.properties.orderBy,
+					pageSize: this.properties.count
+				}).then(res => {
+					if (res.code == 0) {
+						this.setData({
+							list: res.data
+						})
+					}
+				})
+			}
+
 		}
 	}
 })

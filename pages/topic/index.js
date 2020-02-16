@@ -3,7 +3,9 @@ const app = getApp()
 const WXAPI = require('apifm-wxapi')
 
 Page({
-	data: {},
+	data: {
+		relatedGoods:''
+	},
 
 	toDetailsTap: function(e) {
 		wx.navigateTo({
@@ -19,8 +21,6 @@ Page({
 		let topictitle = this.data.topictitle;
 		WXAPI.cmsArticleDetail(e.id).then( res => {
 			if (res.code == 0) {
-				let kb = res.data.keywords;
-				let kbarr = kb.split(',');
 				this.setData({
 					topics: res.data,
 					topictitle: res.data.title
@@ -28,19 +28,14 @@ Page({
 				wx.setNavigationBarTitle({
 					title:res.data.title
 				})
-				let goods = [];
-				for (let i = 0; i < kbarr.length; i++) {
-					WXAPI.goodsDetail(kbarr[i]).then( res => {
-						if (res.code == 0) {
-							goods.push(res.data.basicInfo);
-						}
-						this.setData({
-							goods: goods,
-							topid: e.id
-						});
+				
+				WxParse.wxParse('article', 'html', res.data.content, this, 5);
+				
+				if(res.data.extInfo && res.data.extInfo.relatedGoods){
+					this.setData({
+						relatedGoods: res.data.extInfo.relatedGoods
 					})
 				}
-				WxParse.wxParse('article', 'html', res.data.content, this, 5);
 			}
 		})
 	},

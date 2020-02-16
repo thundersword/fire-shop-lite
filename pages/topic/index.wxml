@@ -11,10 +11,10 @@
         <view class="content-box">
           <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>
-        <guess-u-like></guess-u-like>
       </view>
     </view>
   </view>
+  <guess-u-like goods="{{relatedGoods}}" title="关联推荐"></guess-u-like>
 </view>
 
 <view class="goods-button">
