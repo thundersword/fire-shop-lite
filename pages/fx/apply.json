@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "申请成为分销商",
+  "usingComponents":{
+  	  "auth":"/components/auth/auth"
+  }
+}

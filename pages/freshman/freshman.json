@@ -1,9 +1,0 @@
-{
-	"navigationBarTitleText": "新人专享",
-	"navigationBarTextStyle": "white",
-	"disableScroll": true,
-	"usingComponents": {
-		"navigation": "/components/navigation/navigation",
-		"auth": "/components/auth/auth"
-	}
-}

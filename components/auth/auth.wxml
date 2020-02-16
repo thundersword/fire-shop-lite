@@ -1,10 +1,24 @@
-<view class='pop-up' hidden='{{isHidden}}'>
-   <image src='{{logo}}'></image>
-   <view class='title'>授权提醒</view>
-   <view class='tip'>请授权头像等信息，以便为您提供更好的服务</view>
-   <view class='bottom'>
-	  <button class="btn btn-reset" bindtap='close'>取消</button>
-      <button class='btn btn-confirm'  type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">授权</button>
-   </view>
+<view class="cu-modal {{isHidden?'':'show'}}" catchtouchmove="true">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">授权提醒</view>
+			<!-- <view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view> -->
+		</view>
+		<view class="padding-xl bg-white text-center">
+			<view class="logo">
+				<image src='{{logo}}'></image>
+			</view>
+			<view class="padding-top text-green">
+				为了给您提供更好的服务，请允许小程序获取您的公开信息
+			</view>
+		</view>
+		<view class="cu-bar bg-white">
+			<view class="flex justify-between border-top padding-lr padding-tb-sm" style="width: 100%;">
+				<button class="cu-btn line-grey text-grey round" bindtap="close">再看看</button>
+				<button class="cu-btn bg-green round" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">去授权</button>
+			</view>
+		</view>
+	</view>
 </view>
-<view class='mask' hidden='{{isHidden}}' catchtouchmove="true" bindtap='close'></view>

@@ -1,1 +1,0 @@
-<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ in }}" classNames="{{ classNames }}" bind:click="onClick" wrapStyle="{{ { zIndex } }}" disableScroll />

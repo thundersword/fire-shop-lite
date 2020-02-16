@@ -1,0 +1,13 @@
+.contdown .icon{
+	width: 60rpx;
+	height: 60rpx;
+}
+.contdown .num{
+	width: 45rpx;
+	height: 45rpx;
+	line-height: 45rpx;
+	font-size: 24rpx;
+	text-align: center;
+	border-radius: 5rpx;
+	margin: 0 8rpx;
+}

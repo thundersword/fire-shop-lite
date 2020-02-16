@@ -1,0 +1,18 @@
+<view class="sales-goods" wx:if="{{list}}" hidden="{{!show}}">
+	<view class="sales-title">{{title}}</view>
+	<view class="goods-list">
+		<navigator class="goods-box" wx:for="{{list}}" wx:key="id" url="/pages/goods-details/index?id={{item.id}}">
+			<view class="img-box">
+				<image src="{{item.pic}}" class="image" mode="aspectFill"/>
+				<view class="goods-characteristic">
+					<text>{{item.characteristic}}</text>
+				</view>
+			</view>
+			<view class="goods-title">{{item.name}}</view>
+			<view style='display:flex;'>
+				<view class="goods-price">Ұ{{item.minPrice}}</view>
+				<view class="goods-price-naver">已售{{item.numberOrders}}</view>
+			</view>
+		</navigator>
+	</view>
+</view>

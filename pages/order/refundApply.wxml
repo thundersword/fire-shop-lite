@@ -1,0 +1,69 @@
+<view class="page">
+	<form bindsubmit="bindSave" report-submit="true">
+		<view class="page">
+			<view class="padding bg-orange light text-center" wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 0}}">已申请，等待处理</view>
+			<view class="padding bg-orange light text-center" wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 2}}">本次申请已拒绝，请联系客服</view>
+			<view class="padding bg-orange light text-center" wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 3}}">正在处理中</view>
+			<view class="padding bg-orange light text-center" wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 4}}">已成功退换货</view>
+			<view class="cu-form-group margin-top">
+				<view class="title">服务类型</view>
+				<picker bindchange="typeChange" value="{{type}}" range="{{typeItems}}">
+					<view class="picker">
+						{{type?typeItems[type]:'请选择服务类型'}}
+					</view>
+				</picker>
+			</view>
+			<view class="cu-form-group" wx:if="{{type == 0}}">
+				<view class="title">选择货物状态</view>
+				<picker bindchange="logisticsStatusChange" value="{{logisticsStatus}}" range="{{logisticsStatusItems}}">
+					<view class="picker">
+						{{logisticsStatus?logisticsStatusItems[logisticsStatus]:'请选择货物状态'}}
+					</view>
+				</picker>
+			</view>
+			<view class="cu-form-group">
+				<view class="title">售后原因</view>
+				<picker bindchange="reasonChange" value="{{reasonIndex}}" range="{{reasons}}">
+					<view class="picker">{{reasonIndex?reasons[reasonIndex]:"请选择售后原因"}}</view>
+				</picker>
+			</view>
+			<view class="cu-form-group" wx:if="{{type != 2}}">
+				<view class="title">退款金额</view>
+				<input type="text" name='amount' value='{{amount}}' />
+			</view>
+			<view class="cu-form-group align-start">
+				<view class="title">售后说明</view>
+				<textarea name='remark' placeholder="请输入退款说明" />
+				</view>
+			<view class="cu-bar bg-white margin-top">
+					<view class="action">
+						图片上传
+					</view>
+					<view class="action">
+						{{files.length}}/{{maxImgCount}}
+					</view>
+				</view>
+				<view class="cu-form-group">
+					<view class="grid col-4 grid-square flex-sub">
+						<view class="bg-img" wx:for="{{files}}" wx:key="index" bindtap="ViewImage" data-url="{{item}}">
+							<image src='{{item}}' mode='aspectFill'></image>
+							<view class="cu-tag bg-red" catchtap="delImg" data-index="{{index}}">
+								<text class="cuIcon-close"></text>
+							</view>
+						</view>
+						<view class="solids" bindtap="chooseImage" wx:if="{{files.length<maxImgCount}}">
+							<text class="cuIcon-cameraadd"></text>
+						</view>
+					</view>
+				</view>
+
+    <view class="padding flex flex-direction">
+      <button wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 0}}" class="cu-btn bg-orange lg" bindtap='refundApplyCancel'>撤回本次申请</button>
+      <button wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 3}}" class="cu-btn bg-orange lg" disabled>等待处理</button>
+      <button wx:if="{{refundApplyDetail && refundApplyDetail.baseInfo.status == 4}}" class="cu-btn bg-gray lg" disabled>处理完毕</button>
+      <button wx:else class="cu-btn lg bg-red margin-top" formType="submit">立即申请售后</button>
+    </view>
+  </view>
+  </form>
+</view>
+<float-menu />

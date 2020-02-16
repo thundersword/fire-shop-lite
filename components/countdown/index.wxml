@@ -1,0 +1,13 @@
+<view class="contdown flex justify-center align-center" wx:if="{{!isOver}}">
+	<view class="icon">
+		<image src="../../images/clock.png"></image>
+	</view>
+	<text class="num bg-olive">{{dateEnd.day}}</text><text class="unit">天</text>
+	<text class="num bg-olive">{{dateEnd.hour}}</text><text class="unit">时</text>
+	<text class="num bg-olive">{{dateEnd.minute}}</text><text class="unit">分</text>
+	<text class="num bg-olive">{{dateEnd.seconds}}</text><text class="unit">秒</text>
+	<text class="end">后截止</text>
+</view>
+<view class="text-center text-grey text-lg" wx:else>
+	<text class="cuIcon-remind"></text>活动已结束！
+</view>

@@ -1,0 +1,26 @@
+<view class="page">
+	<scroll-view class="topic-cat" scroll-x="true">
+		<view class="margin-right item text-center" wx:for="{{topics}}" wx:key="id" bindtap="tapTopic" data-id="/pages/topic/index?id={{item.id}}">
+			<view class="thumb">
+				<image class="img" src="{{item.icon}}" mode="scaleToFill"></image>
+			</view>
+			<view class="name text-center text-cut">{{item.name}}</view>
+		</view>
+	</scroll-view>
+	<view class="topic-contents">
+		<view class="topic-content-list" wx:for="{{contents}}" wx:key="id" bindtap="tapContents" data-id="{{item.id}}">
+			<image class="content-images" mode="widthFix" src="{{item.pic}}"></image>
+			<view class="content-bg"></view>
+			<view class="content-text">
+				<view class="content-title">{{item.title}}</view>
+				<view class="content-subtitle">{{item.descript}}</view>
+				<view class="content-button">查看详情</view>
+			</view>
+		</view>
+		<view hidden="{{contents.length > 0 ? true : false}}" class="no-more-goods">
+			<image src="/images/empty_comment.png" class="no-order-img"></image>
+			<view class="text">还没有相关话题呢</view>
+		</view>
+	</view>
+
+</view>

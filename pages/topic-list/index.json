@@ -1,0 +1,6 @@
+{
+	"navigationBarTitleText": "专栏",
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation"
+	}
+}

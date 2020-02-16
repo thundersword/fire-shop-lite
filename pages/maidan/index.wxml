@@ -1,0 +1,20 @@
+<view class="page">
+	<form bindsubmit="bindSave" report-submit="true">
+		<view class="cu-form-group margin-top">
+			<view class="title">消费金额</view>
+			<input name="amount" type="digit" class="weui-input" placeholder="请询问服务员后输入" />
+		</view>
+		<block wx:if='{{rechargeSendRules.length}}'>
+			<view class="charge-rule-wrap">
+				<view wx:for='{{rechargeSendRules}}' wx:key="id" wx:for-item="item" class="btn charge-detail">
+					<text>消费满 {{item.consume}} 元</text>
+					<text>减 {{item.discounts}} 元</text>
+				</view>
+			</view>
+		</block>
+		<view class="flex flex-direction padding">
+			<button class="cu-btn bg-green lg" formType="submit">确认支付</button>
+		</view>
+	</form>
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

@@ -1,0 +1,15 @@
+<view class="goods-container">
+	<navigator class="goods-box" wx:for="{{favList}}" wx:key="id" url="/pages/goods-details/index?id={{item.goodsId}}">
+		<view class="img-box">
+			<image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+		</view>
+		<view class="goods-title">{{item.goodsName}}</view>
+		<view class="good-money">收藏时间：{{item.dateAdd}}</view>
+		<view class="title-opacity">查看详细</view>
+	</navigator>
+	<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">
+		<image src="/images/empty_collection.png" class="no-order-img"></image>
+		<view class="text">还没有任何收藏呢</view>
+	</view>
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

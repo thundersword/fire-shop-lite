@@ -1,0 +1,40 @@
+<!--components/share/index.wxml-->
+<view class="goods-button" bindtap="switchShow">
+	<image src="{{icon}}"></image>
+</view>
+<view class="cu-modal bottom-modal {{show?'show':''}}" style="z-index: {{zIndex}};">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white">
+			<view></view>
+			<view class="action text-blue" bindtap="switchShow">取消</view>
+		</view>
+		<view class="padding-xl">
+			<view class="flex share-list">
+				<view class="item">
+					<view><text class="cuIcon-weixin text-green lg"></text></view>
+					<view><text class="">微信</text></view>
+					<button open-type="share" class="share-btn" bindtap="switchShow"></button>
+				</view>
+				<view class="item margin-left-lg">
+					<poster id="poster" bindtap="onCreatePoster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+						<view><text class="cuIcon-picfill text-red lg"></text></view>
+						<view><text class="">海报</text></view>
+					</poster>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="cu-modal  {{showPic?'show':''}}" style="z-index: {{zIndex + 1}};">
+	<view class="cu-dialog" style="width:{{dialogWidth}}rpx;background: none;">
+		<view style="height: {{dialogHeight}}rpx;width: {{dialogWidth}}rpx;">
+			<image src="{{poster}}" style="height: 100%;width: 100%;"></image>
+		</view>
+		<view class="cu-bar flex justify-between">
+			<!-- <view class="action flex justify-between" style="background: none;width: 100%;"> -->
+				<button class="cu-btn line-white text-white" bindtap="hidePicModal">关闭</button>
+				<button class="cu-btn line-green text-white" bindtap="saveToAlbum">保存到相册</button>
+			<!-- </view> -->
+		</view>
+	</view>
+</view>

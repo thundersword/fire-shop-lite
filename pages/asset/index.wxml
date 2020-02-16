@@ -1,0 +1,59 @@
+<view wx:if="{{ rechargeOpen }}" class="flex text-center bg-red padding">
+	<view class='flex-sub'>
+		<view>可用余额(元)</view>
+		<view>{{balance}}</view>
+	</view>
+	<view class='flex-sub'>
+		<view>冻结金额(元)</view>
+		<view>{{freeze}}</view>
+	</view>
+	<view class='flex-sub'>
+		<view>累计消费(元)</view>
+		<view>{{totleConsumed}}</view>
+	</view>
+</view>
+<view class="flex padding bg-red justify-end" wx:if="{{ rechargeOpen}}">
+	<navigator url="/pages/recharge/index" class="cu-btn line-white">充值</navigator>
+	<navigator url="/pages/withdraw/index" class="cu-btn line-white margin-left">提现</navigator>
+	<navigator url="/pages/deposit/pay" class="cu-btn line-white margin-left">押金</navigator>
+</view>
+<scroll-view scroll-x class="bg-white nav">
+	<view class="flex text-center">
+		<view class="cu-item flex-sub {{activeIndex == index ?'text-red cur':''}}" wx:for="{{tabs}}" wx:key="index" bindtap="tabClick"
+		 data-id="{{index}}" id="{{index}}">
+			{{item}}
+		</view>
+	</view>
+</scroll-view>
+<view class="tab-content" hidden="{{activeIndex != 0}}">
+	<view class='no-data' wx:if="{{!cashlogs}}">暂无资金明细~</view>
+	<view class='cashlogs bg-white padding-top-xs' wx:if="{{cashlogs}}" wx:for="{{cashlogs}}" wx:key="id">
+		<view class='profile'>
+			<view class='typeStr'>{{ item.typeStr }}</view>
+			<view class='dateAdd'>{{ item.dateAdd }}</view>
+		</view>
+		<view class='amount' style="color: {{ (item.behavior ==0 ) ? 'red' : 'green' }}"> {{ (item.behavior ==0 ) ? '+' : '-' }}
+			{{ item.amount }} </view>
+	</view>
+</view>
+<view class="tab-content" hidden="{{activeIndex != 1}}">
+	<view class='no-data' wx:if="{{!withDrawlogs}}">暂无提现记录~</view>
+	<view class='cashlogs bg-white padding-top-xs' wx:if="{{withDrawlogs}}" wx:for-items="{{withDrawlogs}}" wx:key="id">
+		<view class='profile'>
+			<view class='typeStr'>{{ item.statusStr }}</view>
+			<view class='dateAdd'>{{ item.dateAdd }}</view>
+		</view>
+		<view class='amount' style="color: red"> {{ item.money }} </view>
+	</view>
+</view>
+<view class="tab-content" hidden="{{activeIndex != 2}}">
+	<view class='no-data' wx:if="{{!depositlogs}}">暂无押金记录~</view>
+	<view class='cashlogs bg-white padding-top-xs' wx:if="{{depositlogs}}" wx:for-items="{{depositlogs}}" wx:key="id">
+		<view class='profile'>
+			<view class='typeStr'>{{ item.statusStr }}</view>
+			<view class='dateAdd'>{{ item.dateAdd }}</view>
+		</view>
+		<view class='amount' style="color: red"> {{ item.amount }} </view>
+	</view>
+</view>
+<float-menu />

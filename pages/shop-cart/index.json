@@ -1,0 +1,7 @@
+{
+   "navigationBarTitleText": "购物车",
+   "usingComponents":{
+	   "auth": "/components/auth/auth",
+	   "guess-u-like": "/components/guess-u-like/index"
+   }
+}

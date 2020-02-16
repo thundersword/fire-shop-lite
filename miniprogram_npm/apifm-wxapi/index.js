@@ -315,6 +315,9 @@ module.exports = {
   goodsCategory: function goodsCategory() {
     return request('/shop/goods/category/all', true, 'get');
   },
+  goodsCategoryDetail: function goodsCategoryDetail(id) {
+    return request('/shop/goods/category/info', true, 'get', { id: id });
+  },
   goods: function goods(data) {
     return request('/shop/goods/list', true, 'post', data);
   },
@@ -677,7 +680,7 @@ module.exports = {
     return request('/cms/category/list', true, 'get', {});
   },
   cmsCategoryDetail: function cmsCategoryDetail(id) {
-    return request('/cms/category/detail', true, 'get', { id: id });
+    return request('/cms/category/info', true, 'get', { id: id });
   },
   cmsArticles: function cmsArticles(data) {
     return request('/cms/news/list', true, 'post', data);
@@ -904,7 +907,9 @@ module.exports = {
     });
   },
   scoreDeductionRules: function scoreDeductionRules() {
-    return request('/score/deduction/rules', true, 'get', {});
+    var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    return request('/score/deduction/rules', true, 'get', { type: type });
   },
   voteItems: function voteItems(data) {
     return request('/vote/items', true, 'post', data);
@@ -996,6 +1001,39 @@ module.exports = {
   },
   cmsArticleFavDeleteByNewsId: function cmsArticleFavDeleteByNewsId(token, newsId) {
     return request('/cms/news/fav/delete', true, 'post', { token: token, newsId: newsId });
+  },
+  shippingCarInfo: function shippingCarInfo(token) {
+    return request('/shopping-cart/info', true, 'get', {
+      token: token
+    });
+  },
+  shippingCarInfoAddItem: function shippingCarInfoAddItem(token, goodsId, number, sku) {
+    return request('/shopping-cart/add', true, 'post', {
+      token: token, goodsId: goodsId, number: number, sku: JSON.stringify(sku)
+    });
+  },
+  shippingCarInfoModifyNumber: function shippingCarInfoModifyNumber(token, key, number) {
+    return request('/shopping-cart/modifyNumber', true, 'post', {
+      token: token, key: key, number: number
+    });
+  },
+  shippingCarInfoRemoveItem: function shippingCarInfoRemoveItem(token, key) {
+    return request('/shopping-cart/remove', true, 'post', {
+      token: token, key: key
+    });
+  },
+  shippingCarInfoRemoveAll: function shippingCarInfoRemoveAll(token) {
+    return request('/shopping-cart/empty', true, 'post', {
+      token: token
+    });
+  },
+  growthLogs: function growthLogs(data) {
+    return request('/growth/logs', true, 'post', data);
+  },
+  exchangeScoreToGrowth: function exchangeScoreToGrowth(token, deductionScore) {
+    return request('/growth/exchange', true, 'post', {
+      token: token, deductionScore: deductionScore
+    });
   }
 };
 

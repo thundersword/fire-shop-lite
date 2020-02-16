@@ -1,0 +1,4 @@
+购物车优化
+
+为了能用用户头像生成海报，需将下面域名加入downloadFile
+wx.qlogo.cn

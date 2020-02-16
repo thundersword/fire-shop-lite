@@ -3,6 +3,7 @@
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
  *               垂直微信小程序开发交流社区
  * 
+Latest commit 405d856 on 9 Nov 2017
  * github地址: https://github.com/icindy/wxParse
  * 
  * for: 微信小程序富文本解析
@@ -100,6 +101,7 @@ function calMoreImageInfo(e, idx, that, bindName) {
     [keyH]: recal.imageheight,
   })
 }
+
 // 计算视觉优先的图片宽高
 function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
   //获取图片的原始长宽
@@ -148,9 +150,11 @@ function wxParseTemArray(temArrayName,bindNameReg,total,that){
 function emojisInit(reg='',baseSrc="/wxParse/emojis/",emojis){
    HtmlToJson.emojisInit(reg,baseSrc,emojis);
 }
+
 module.exports = {
   wxParse: wxParse,
-  html2json: HtmlToJson
+  wxParseTemArray:wxParseTemArray,
+  emojisInit:emojisInit
 }
 
 

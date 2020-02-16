@@ -1,0 +1,265 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+	<view class="swiper-container" wx:if="{{!goodsDetail.basicInfo.videoId}}">
+		<swiper class="screen-swiper {{dotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true"
+		 interval="5000" duration="500">
+			<swiper-item wx:for="{{goodsDetail.pics}}" wx:key="id">
+				<image src="{{item.pic}}" class="slide-image" mode="aspectFill" lazy-load="true" />
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class="swiper-container" wx:if="{{goodsDetail.basicInfo.videoId}}">
+		<video src="{{videoMp4Src}}" autoplay="true" loop="true" style='width:100%'></video>
+	</view>
+	<view class="goods-info">
+		<view class="goods-left">
+			<view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
+			<view class="goods-characteristic">{{goodsDetail.basicInfo.characteristic}}</view>
+		</view>
+		<block wx:if="{{goodsDetail.basicInfo.pingtuan == false}}">
+			<view class="goods-price">¥ {{selectSizePrice}}</view>
+			<view class="goods-originalPrice">¥ {{goodsDetail.basicInfo.originalPrice}}</view>
+			<view class="piangjia">
+				已售 {{goodsDetail.basicInfo.numberOrders}}
+			</view>
+		</block>
+	</view>
+	<block wx:if="{{curGoodsKanjia}}">
+		<view class="bg-gray" style="width: 100%;padding: 20rpx 0;">
+			<countdown date="{{curGoodsKanjia.dateEnd}}"></countdown>
+			<view class="pt-box bg-gradual-red shadow">
+				<view class="goods-ptuan">
+					底价 ¥
+					<text>{{curGoodsKanjia.minPrice}}</text>
+				</view>
+				<view class="goods-ptuan-info">
+					<text class="txa">限量{{curGoodsKanjia.number}}件</text>
+					<text class="txb">原价 ¥ {{curGoodsKanjia.originalPrice}}</text>
+				</view>
+				<view class="goods-right">
+					<button class="cu-btn bg-cyan round" bindtap="joinKanjia" wx:if="{{curGoodsKanjia && (!curKanjiaprogress || curKanjiaprogress.kanjiaInfo.uid != curuid)}}">发起砍价</button>
+					<button class="cu-btn bg-cyan round" open-type="share" wx:else>邀请老铁</button>
+				</view>
+			</view>
+		</view>
+	</block>
+	<view class="cur-kj-progress padding padding-bottom-xs" wx:if="{{curKanjiaprogress}}">
+		<view class="name">帮<text class="text-bold">{{curKanjiaprogress.joiner.nick}}</text>砍价吧</view>
+		<view class="flex justify-between padding-tb-sm">
+			<view class="cur"><text class="text-xs">原价:¥</text><text class="text-bold text-red">{{curGoodsKanjia.originalPrice}}</text></view>
+			<view class="target"><text class="text-xs">目标:¥</text><text class="text-bold text-red">{{curGoodsKanjia.minPrice}}</text></view>
+		</view>
+		<view class="cu-progress round striped active">
+			<view class="bg-red" style="width:{{kanjiaPercent}}%;">
+				¥{{curKanjiaprogress.kanjiaInfo .curPrice}}
+			</view>
+		</view>
+		<view class="padding-tb flex justify-between" style="width: 100%;">
+			<button class="cu-btn bg-cyan round" open-type="share">找人帮忙</button>
+			<button class="cu-btn bg-orange round" bindtap="helpKanjia" disabled="{{myHelpDetail}}">{{myHelpDetail?"您已砍过":"猛砍一刀"}}</button>
+		</view>
+	</view>
+	<view class="cur-kj-list padding-lr" wx:if="curKanjiaprogress && curKanjiaprogress.helps && curKanjiaprogress.helps.length>0}}">
+		<view wx:for="{{curKanjiaprogress.helps}}" wx:key="*this" class="list-item flex align-center margin-bottom-sm">
+			<view class="cu-avatar round">
+				<image class="weui-media-box__thumb" src="{{item.avatarUrl}}"></image>
+			</view>
+			<view class="nickname padding-lr-sm"><text class="text-bold text-cut" style="max-width: 500rpx;">{{item.nick}}</text>帮砍一刀</view>
+			<view style="margin-left: auto;" class="text-right"><text class="text-red">¥{{item.cutPrice}}</text></view>
+		</view>
+	</view>
+	<view class="padding-lr padding-bottom flex justify-center" wx:if="{{curGoodsKanjia && curKanjiaprogress}}" style="width: 100%;">
+	    <button class="cu-btn bg-red round" bindtap="tobuy">用当前价购买</button>
+	  </view>
+	<block wx:if="{{goodsDetail.basicInfo.pingtuan == true}}">
+		<view class="bg-gray" style="width: 100%;padding: 20rpx 0;">
+			<countdown date="{{pingtuanSet.dateEnd}}"></countdown>
+			<view class="pt-box bg-gradual-red shadow">
+				<view class="goods-ptuan">
+					拼团价 ¥
+					<text>{{goodsDetail.basicInfo.pingtuanPrice}}</text>
+				</view>
+				<view class="goods-ptuan-info">
+					<text class="txa">{{pingtuanSet.numberPersion}}人开团</text>
+					<text class="txb">原价 ¥ {{selectSizePrice}}</text>
+				</view>
+				<view class="goods-right">
+					<button class="cu-btn bg-cyan round" open-type="share" wx:if="{{isInPintuan}}">邀请好友</button>
+					<button class="cu-btn bg-cyan round" bindtap="toPingtuan" wx:else>一键开团</button>
+				</view>
+			</view>
+		</view>
+	</block>
+	<view class="pt-rule-box bg-gray" wx:if="{{goodsDetail.basicInfo.pingtuan == true}}">
+		<view class="flex bg-brown light padding">
+			<view class="item flex-sub flex flex-direction align-center padding-lr-xs">
+				<view class="icon">
+					<image src="../../images/pingtuan/1.png"></image>
+				</view>
+				<text class="text-xs text-center">开团或参与网友发起的拼团</text>
+			</view>
+			<view class="item flex-sub flex flex-direction align-center padding-lr-xs">
+				<view class="icon">
+					<image src="../../images/pingtuan/2.png"></image>
+				</view>
+				<text class="text-xs text-center">邀请好友一起参与拼团</text>
+			</view>
+			<view class="item flex-sub flex flex-direction align-center padding-lr-xs">
+				<view class="icon">
+					<image src="../../images/pingtuan/3.png"></image>
+				</view>
+				<text class="text-xs text-center">参与人数达到{{pingtuanSet.numberPersion}}人拼团成功</text>
+			</view>
+			<view class="item flex-sub flex flex-direction align-center padding-lr-xs">
+				<view class="icon">
+					<image src="../../images/pingtuan/4.png"></image>
+				</view>
+				<text class="text-xs text-center">{{pingtuanSet.timeoutHours}}小时未成团自动退款</text>
+			</view>
+		</view>
+	</view>
+	<view class="pt-user-box padding" wx:if="{{pingtuanList}}">
+		<view class="pt-title">以下网友团可参与，组团成功立即发货</view>
+		<view class="pt-list flex align-center" wx:for="{{pingtuanList}}" wx:key="{{index}}">
+			<image src="{{item.apiExtUser.avatarUrl}}" />
+			<view class="pt-user-infox">
+				<view class="pt-username text-cut">
+					<text>还差{{pingtuanSet.numberPersion - item.helpNumber}}人成团</text>
+				</view>
+			</view>
+			<button class="cu-btn round sm pt-btn bg-red" data-pingtuanopenid="{{item.id}}" bindtap="toPingtuan" data-uid="{{item.uid}}"
+			 disabled="{{isInPintuan}}">立即参团</button>
+		</view>
+	</view>
+	<view class="bg-gray padding-top-xs" wx:if="{{hasMoreSelect}}" style="width: 100%;">
+		<view class="row-arrow" bindtap="bindGuiGeTap">
+			{{selectSize}}
+			<image src="../../images/arrow-right.png"></image>
+		</view>
+	</view>
+	<view class="bg-gray" style="height: 10rpx;width: 100%;"></view>
+	<view class="tab-header" bindtap="tabChange">
+		<view class="{{tab.curHdIndex=='0'? 'active' : ''}}" id="tab-hd01" data-id="0">商品介绍</view>
+		<view class="{{tab.curHdIndex=='1'? 'active' : ''}}" id="tab-hd02" data-id="1">商品评价</view>
+	</view>
+	<view class="tab-container">
+		<view class="tab-item {{tab.curBdIndex=='0'? 'active' : ''}}">
+			<view class="goods-text">
+				<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+			</view>
+		</view>
+		<view class="tab-item {{tab.curBdIndex=='1'? 'active' : ''}}">
+			<view class="reputation-none" wx:if="{{!reputation}}">
+				<image src="../../images/empty_comment.png" /> 还没有人评价
+			</view>
+			<view class="goods-reputa-list" wx:for="{{reputation}}" wx:key="id">
+				<view class="goods-reputa-avatar">
+					<image class="goods-avatar" src="{{item.user.avatarUrl}}"></image>
+				</view>
+				<view class="goods-reputa-mark">
+					<view class="goods-reputa-user">
+						{{item.user.nick}}
+						<text>{{item.goods.goodReputationStr}}</text>
+					</view>
+					<view class="goods-mark">{{item.goods.goodReputationRemark}}</view>
+					<view class="goods-mark-day">
+						{{item.goods.dateReputation}}
+						<text>{{item.goods.property}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<block wx:if="{{goodsDetail.basicInfo.pingtuan == true}}">
+		<view class="footer-box">
+			<view class="box-list">
+				<image src="../../images/goods_service.png"></image>
+				<button open-type="contact" session-from="weapp"></button>
+			</view>
+			<view class="box-list" bindtap="{{favicon == 0 ? 'addToFav':'delFav'}}">
+				<image wx:if="{{favicon == 0}}" src="../../images/goods_collect.png"></image>
+				<image wx:if="{{favicon == 1}}" src="../../images/goods_collect_checked.png"></image>
+			</view>
+			<block wx:if="{{isInPintuan}}">
+				<view class="box-title buy-now shares" bindtap="goPingtuanTap">
+					已参团
+				</view>
+			</block>
+			<block wx:if="{{!isInPintuan}}">
+				<view class="box-title ono bg-orange" bindtap="tobuy">
+					<view class="boxshop-yuan">¥ {{selectSizePrice}}</view>
+					<view class="box-shop-cart">原价购买</view>
+				</view>
+				<view class="box-title buy-now twt" bindtap="toPingtuan">
+					<view class="boxshop-yuan">¥ {{goodsDetail.basicInfo.pingtuanPrice}}</view>
+					<view class="box-shop-cart">一键开团</view>
+				</view>
+			</block>
+		</view>
+	</block>
+	<block wx:if="{{goodsDetail.basicInfo.pingtuan == false}}">
+		<view class="footer-box">
+			<view class="box-list">
+				<image src="../../images/goods_service.png"></image>
+				<button open-type="contact" session-from="weapp"></button>
+			</view>
+			<view class="box-list" bindtap="goShopCar">
+				<image src="../../images/shopping_cart.png"></image>
+				<view class="shop-num">{{shopNum}}</view>
+			</view>
+			<view class="box-list" bindtap="{{favicon == 0 ? 'fav':'del'}}">
+				<image wx:if="{{favicon == 0}}" src="../../images/goods_collect.png"></image>
+				<image wx:if="{{favicon == 1}}" src="../../images/goods_collect_checked.png"></image>
+			</view>
+			<view class="box-title">
+				<view class="box-shop-cart npx bg-orange" bindtap="tobuy">立即购买</view>
+			</view>
+			<view class="box-title buy-now">
+				<view class="box-now-buy npx" bindtap="toAddShopCar">加入购物车</view>
+			</view>
+		</view>
+	</block>
+	<view class="show-popup" hidden="{{hideShopPopup}}">
+		<view class="popup-mask" bindtap="closePopupTap"></view>
+		<view class="popup-contents">
+			<view class="pop-goods-info">
+				<view class="pop-img-box">
+					<image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail" />
+				</view>
+				<view class="pop-goods-des">
+					<view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+					<view class="pop-goods-price">¥ {{selectSizePrice}}</view>
+
+				</view>
+				<view class="pop-goods-close" bindtap="closePopupTap"></view>
+			</view>
+			<view class="size-label-box">
+				<block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
+					<view class="label">{{property.name}}</view>
+					<view class="label-item-box">
+						<view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id"
+						 bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}"
+						 data-propertychildindex="{{index}}" data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
+							{{item.name}}
+						</view>
+					</view>
+				</block>
+			</view>
+			<view class="buy-num-box">
+				<view class="num-label">购买数量</view>
+				<view class="num-box">
+					<view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+					<view class="num-input">
+						<input type="number" value="{{buyNumber}}" disabled />
+					</view>
+					<view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+				</view>
+			</view>
+			<view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
+			<view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow"> 立即购买</view>
+			<view class="popup-join-btn" wx:if="{{shopType =='toPingtuan'}}" bindtap="buyNow" data-shopType="{{shopType}}"> 立即开团</view>
+		</view>
+	</view>
+</view>
+<share show="{{showShare}}" goods-info="{{goodsDetail.basicInfo}}"></share>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

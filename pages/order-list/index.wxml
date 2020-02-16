@@ -1,0 +1,46 @@
+<view class="container">
+  <view wx:if='{{!hasRefund}}' class="status-box">
+    <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
+      {{item}}
+      <view class="{{tabClass[index]}}"></view>
+    </view>
+  </view>
+  <view class="no-order" hidden="{{orderList ? true : false}}">
+    <image src="/images/no-order.png" class="no-order-img"></image>
+    <view class="text">暂无订单</view>
+  </view>
+  <view class="order-list" hidden="{{orderList ? false : true}}">
+    <navigator class="a-order" wx:for="{{orderList}}" wx:key="id" url="/pages/order-details/index?id={{item.id}}">
+      <view class="padding" hover-class="none">
+		  <view class="flex justify-between align-center">
+			  <view><text>{{item.orderNumber}}</text><button class="cu-btn sm bg-gray margin-left" catchtap="copyOrderNumber" data-num="{{item.orderNumber}}">复制</button></view>
+			  <view class="text-red">{{item.statusStr}}</view>
+		  </view>
+      </view>
+      <scroll-view class="goods-img-container" scroll-x="true">
+        <view class="img-box margin-right-sm" wx:for="{{goodsMap[item.id]}}" wx:key="id">
+          <image src="{{item.pic}}" class="goods-img"></image>
+        </view>
+      </scroll-view>
+      <view class="goods-price">
+        共 {{item.goodsNumber}} 件商品 合计：
+        <text class="p" wx:if="{{item.score <= 0}}">¥ {{item.amountReal}}</text>
+        <text class="p" wx:if="{{item.score > 0}}">¥ {{item.amountReal}} + {{item.score}} 积分</text>
+      </view>
+      <view class="goods-info">
+        <view class="goods-des">
+          <view class="remark" wx:if="{{item.remark && item.remark != ''}}">{{item.remark}}</view>
+          <view>{{item.dateAdd}} </view>
+        </view>
+      </view>
+      <view class="price-box">
+        <view class="btn" hidden="{{item.status==0? false : true}}" catchtap="cancelOrderTap" data-id="{{item.id}}">取消订单</view>
+        <view class="btn active" hidden="{{item.status==0? false : true}}" catchtap="toPayTap" data-id="{{item.id}}" data-money="{{item.amountReal}}" data-score="{{item.score}}">马上付款</view>
+        <view class="btn active" hidden="{{(item.status==0 || item.status==-1) ? true : false}}" catchtap="refundApply" data-id="{{item.id}}" data-amount='{{item.amountReal}}'>退换货</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
+</view>
+<float-menu />
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

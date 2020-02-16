@@ -1,8 +1,0 @@
-{
-	"navigationBarTitleText": "我要提现",
-	"navigationBarTextStyle": "white",
-	"usingComponents": {
-		"navigation": "/components/navigation/navigation",
-		"auth": "/components/auth/auth"
-	}
-}

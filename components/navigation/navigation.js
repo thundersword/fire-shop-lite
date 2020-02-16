@@ -27,40 +27,44 @@ Component({
 		statusBarHeight: 0,
 		titleBarHeight: 0,
 	},
-
+	lifetimes: {
+		attached: function() {
+			// 因为很多地方都需要用到，所有保存到全局对象中
+			if (app.globalData && app.globalData.statusBarHeight && app.globalData.titleBarHeight) {
+				this.setData({
+					statusBarHeight: app.globalData.statusBarHeight,
+					titleBarHeight: app.globalData.titleBarHeight
+				});
+			} else {
+				let that = this
+				wx.getSystemInfo({
+					success: function(res) {
+						if (!app.globalData) {
+							app.globalData = {}
+						}
+						if (res.model.indexOf('iPhone') !== -1) {
+							app.globalData.titleBarHeight = 44 + res.statusBarHeight
+						} else {
+							app.globalData.titleBarHeight = 48 + res.statusBarHeight
+						}
+						app.globalData.statusBarHeight = res.statusBarHeight
+						that.setData({
+							statusBarHeight: app.globalData.statusBarHeight,
+							titleBarHeight: app.globalData.titleBarHeight
+						});
+					},
+					failure() {
+						that.setData({
+							statusBarHeight: 0,
+							titleBarHeight: 0
+						});
+					}
+				})
+			}
+		},
+	},
 	ready: function() {
-		// 因为很多地方都需要用到，所有保存到全局对象中
-		if (app.globalData && app.globalData.statusBarHeight && app.globalData.titleBarHeight) {
-			this.setData({
-				statusBarHeight: app.globalData.statusBarHeight,
-				titleBarHeight: app.globalData.titleBarHeight
-			});
-		} else {
-			let that = this
-			wx.getSystemInfo({
-				success: function(res) {
-					if (!app.globalData) {
-						app.globalData = {}
-					}
-					if (res.model.indexOf('iPhone') !== -1) {
-						app.globalData.titleBarHeight = 44
-					} else {
-						app.globalData.titleBarHeight = 48
-					}
-					app.globalData.statusBarHeight = res.statusBarHeight
-					that.setData({
-						statusBarHeight: app.globalData.statusBarHeight,
-						titleBarHeight: app.globalData.titleBarHeight
-					});
-				},
-				failure() {
-					that.setData({
-						statusBarHeight: 0,
-						titleBarHeight: 0
-					});
-				}
-			})
-		}
+
 	},
 
 	methods: {
@@ -81,7 +85,7 @@ Component({
 		},
 		headerSearch() {
 			wx.navigateTo({
-				url: '/pages/search/search'
+				url: '/pages/search/index'
 			})
 		}
 	}

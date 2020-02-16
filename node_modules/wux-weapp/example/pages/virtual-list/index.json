@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "VirtualList",
-    "usingComponents": {
-        "wux-button": "../../dist/button/index"
-    }
-}

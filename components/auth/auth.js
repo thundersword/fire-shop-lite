@@ -1,6 +1,9 @@
 const app = getApp();
 const WXAPI = require('apifm-wxapi')
 Component({
+	options: {
+	  addGlobalClass: true
+	},
 	properties: {
 		isHidden: {
 			type: Boolean,
@@ -45,6 +48,7 @@ Component({
 			this.setData({
 				isHidden: true,
 			})
+			this.triggerEvent('closeAuth')
 		},
 		bindGetUserInfo(e) {
 			if (!e.detail.userInfo) {

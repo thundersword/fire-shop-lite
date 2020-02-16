@@ -1,0 +1,45 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+	<view class="type-header-menu">
+		<view class="type-search">
+			<image src="../../images/search.png" />
+			<input class="input {{searchInput == true ? 'active':''}}" type="text" confirm-type="search" placeholder="搜索商品"
+			 bindfocus="searchFocus" bindconfirm="search" focus="{{true}}"></input>
+			<view hidden="{{search}}" bindtap="searchClose" class="header-search-btn">取消</view>
+		</view>
+	</view>
+	<view class="search-cont-box" wx:if="{{recentSearch.length && searchHidden}}">
+		<view class="title-and-btn">
+			<view class="title">最近搜索</view>
+			<view class="btn" bindtap="clearHistory">
+				<image src="../../images/del.png" />
+			</view>
+		</view>
+		<view class="keywords-li">
+			<block wx:for="{{recentSearch}}" wx:key="index">
+				<view bindtap="goSearch" class="item" data-text="{{item}}">{{item}}</view>
+			</block>
+		</view>
+	</view>
+</view>
+<view hidden="{{search}}" class="search-box {{iponesc}}">
+	<navigator url="/pages/goods-details/index?id={{item.id}}" hidden="{{searchHidden}}" class="goods-box" wx:for="{{searchs}}" wx:key="id" >
+		<view class="img-box">
+			<image src="{{item.pic}}" class="image" mode="widthFix" lazy-load="true" />
+			<view class="goods-characteristic">
+				<text>{{item.characteristic}}</text>
+			</view>
+		</view>
+		<view class="goods-title">{{item.name}}</view>
+		<view style='display:flex;'>
+			<view class="goods-price">Ұ{{item.minPrice}}</view>
+			<view class="goods-price-naver">已售{{item.numberOrders}}</view>
+		</view>
+	</navigator>
+	<view hidden="{{noneHidden}}" class="goods-none">
+		<image src="../../images/search_empty.png" />
+		<text>您寻找的商品还未上架</text>
+	</view>
+</view>
+<view class="top-line"></view>
+<view class="bottom-lin"></view>
