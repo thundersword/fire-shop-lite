@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "FabButton",
-    "usingComponents": {
-        "wux-fab-button": "../../dist/fab-button/index"
-    }
-}

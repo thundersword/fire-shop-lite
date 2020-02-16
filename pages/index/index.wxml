@@ -1,65 +1,102 @@
-<!--index.wxml-->
-<navigation id='Navigation' show-search='{{showSearch}}' class="fix-top" animation="{{fadeAni}}"></navigation>
-<view class="container">
-	<view class="swiper-container">
-		<swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange"
-		 circular="circular">
-			<block wx:for="{{banners}}" wx:key="id">
-				<swiper-item>
-					<image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}_m" class="slide-image" />
-				</swiper-item>
-			</block>
-		</swiper>
-		<view class="dots">
-			<block wx:for="{{banners}}" wx:key="unique">
-				<view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-			</block>
+<navigation id='Navigation' show-search='{{true}}' class="fix-top" animation="{{fadeAni}}"></navigation>
+<view class="swiper-container">
+	<swiper class="screen-swiper {{dotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true"
+	 interval="5000" duration="500">
+		<swiper-item wx:for="{{banners}}" wx:key="id">
+			<image src="{{item.picUrl}}" mode="aspectFill" bindtap="tapBanner" data-id="{{item.businessId}}"></image>
+		</swiper-item>
+	</swiper>
+</view>
+<view class="index-menu-bg padding bg-white">
+	<view class="index-menu flex">
+		<view class="menu-list" wx:for="{{navigation}}" wx:key="id" bindtap="tapSales" data-id="{{item.linkUrl}}">
+			<image src="{{item.picUrl}}" />
+			<view class="text">{{item.title}}</view>
 		</view>
 	</view>
-	<view class="index-menu-bg">
-		<view class="index-menu flex">
-			<view class="menu-list" wx:for="{{sales}}" wx:key="id" bindtap="tapSales" data-id="{{item.linkUrl}}">
-				<image src="{{item.picUrl}}" />
-				<view class="text">{{item.title}}</view>
+	<view class="index-hot flex flex-wrap justify-between">
+		<block wx:for="{{hot}}" wx:key="hot">
+			<navigator hover-class="none" class="hot-item" url="{{item.linkUrl}}">
+				<image src="{{item.picUrl}}"></image>
+			</navigator>
+		</block>
+	</view>
+</view>
+<view class="pingtuan" wx:if="{{pingtuanList.length > 0}}">
+	<view class="goods-title bg-cyan light">
+		<view class="line"></view>
+		<view class="text">正在拼团</view>
+		<view class="line"></view>
+	</view>
+	<scroll-view scroll-x="true" class="scroll" enable-flex="true">
+		<navigator hover-class="none" url="/pages/goods-details/index?id={{item.id}}" class="scroll-item shadow shadow-lg bg-white margin-left margin-top" wx:for="{{pingtuanList}}" wx:key="id">
+			<view class="thumb">
+				<image src="{{item.pic}}" mode="aspectFill"></image>
 			</view>
-		</view>
-		<view class="index-hot flex">
-			<block wx:for="{{hot}}" wx:key="hot">
-				<navigator hover-class="none" class="hot-item" url="{{item.linkUrl}}">
-					<image src="{{item.picUrl}}"></image>
-				</navigator>
-			</block>
-		</view>
+			<view class="text padding-sm">
+				<view class="title text-cut text-black">{{item.name}}</view>
+				<view class="desc text-cut text-gray text-sm" style="height: 50rpx;">{{item.characteristic}}</view>
+				<view class="flex">
+					<view class="flex-sub flex justify-start">
+						<view>
+							<text class="rmb text-black">¥</text><text class="text-xl text-red">{{item.pingtuanPrice}}</text>
+						</view>
+						<view class="margin-left">
+							<text class="rmb">¥</text><text style="text-decoration: line-through;">{{item.minPrice}}</text>
+						</view>
+					</view>
+					<view class="flex-sub flex justify-end">
+						<button class="cu-btn round bg-red sm tex-xs">去拼团</button>
+					</view>
+				</view>
+			</view>
+		</navigator>
+	</scroll-view>
+</view>
+<view class="pingtuan" wx:if="{{pingtuanList.length > 0}}">
+	<view class="goods-title bg-yellow light">
+		<view class="line"></view>
+		<view class="text">正在砍价</view>
+		<view class="line"></view>
 	</view>
-	<view wx:if="{{topgoods}}" class="goods-container">
-		<view class="goods-title">
-			<view class="line"></view>
-			<view class="text">{{topgoods}}</view>
-			<view class="line"></view>
-		</view>
-		<navigator url="/pages/goods-detail/goods-detail?id={{item.id}}" class="goods-list" wx:for-items="{{goods}}" wx:key="{{index}}">
-			<image src="{{item.pic}}" />
+	<scroll-view scroll-x="true" class="scroll" enable-flex="true">
+		<navigator hover-class="none" url="/pages/goods-details/index?id={{item.id}}" class="scroll-item shadow shadow-lg bg-white margin-left margin-top" wx:for="{{kanjiaList}}" wx:key="id">
+			<view class="thumb">
+				<image src="{{item.pic}}" mode="aspectFill"></image>
+			</view>
+			<view class="text padding-sm">
+				<view class="title text-cut text-black">{{item.name}}</view>
+				<view class="desc text-cut text-gray text-sm" style="height: 50rpx;">{{item.characteristic}}</view>
+				<view class="flex">
+					<view class="flex-sub flex justify-start">
+						<view>
+							<text class="rmb text-black">¥</text><text class="text-xl text-red">{{item.kanjiaPrice}}</text>
+						</view>
+						<view class="margin-left">
+							<text class="rmb">¥</text><text style="text-decoration: line-through;">{{item.minPrice}}</text>
+						</view>
+					</view>
+					<view class="flex-sub flex justify-end">
+						<button class="cu-btn round bg-red sm tex-xs">去砍价</button>
+					</view>
+				</view>
+			</view>
+		</navigator>
+	</scroll-view>
+</view>
+<view wx:if="{{goodsRecommend.length > 0}}" class="goods-container">
+	<view class="goods-title bg-olive light" style="margin-bottom: 30rpx;">
+		<view class="line"></view>
+		<view class="text">{{recommendGoodsTitle}}</view>
+		<view class="line"></view>
+	</view>
+	<view class="goods-list flex justify-between padding-top padding-lr flex-wrap" >
+		<navigator url="/pages/goods-details/index?id={{item.id}}" class="list-item" wx:for="{{goodsRecommend}}" wx:key="id">
+			<image src="{{item.pic}}" mode="aspectFill"></image>
 			<view class="goods-list-title">{{item.name}}</view>
 			<view class="goods-list-text">{{item.characteristic}}</view>
 			<view class="goods-list-money">Ұ{{item.minPrice}}</view>
 		</navigator>
 	</view>
 </view>
-<view class="show-container" hidden="{{wxlogin}}">
-	<view class="show-box">
-		<view class="show-logo-box">
-			<image src="{{toplogo}}" />
-			<view class="show-mall-name">{{topname}}</view>
-		</view>
-		<view class="show-text-box">
-			<view class="show-text-name">需要您的授权才能正常使用哦！</view>
-			<view class="show-text-info">
-				<text>·</text>请允许我们获得您的公开资讯</view>
-			<view class="show-text-info">
-				<text>·</text>我们不会公布您的这些信息</view>
-			<view class="show-text-info">
-				<text>·</text>只是为了给您提供更好的服务</view>
-		</view>
-		<button open-type="getUserInfo" bindgetuserinfo="userlogin">允许</button>
-	</view>
-</view>
+<view class="cu-load bg-gray {{loadingMoreHidden?'loading':'over'}}"></view>

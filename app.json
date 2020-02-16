@@ -2,33 +2,51 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/my/my",
-    "pages/cart/cart",
-    "pages/goods-detail/goods-detail",
-    "pages/template-cart/template-cart",
-    "pages/topic/topic",
-    "pages/topic-list/topic-list",
-    "pages/coupons/coupons",
-    "pages/my-coupons/my-coupons",
-    "pages/score/score",
-    "pages/withdraw/withdraw",
-    "pages/fav-list/fav-list",
-    "pages/address/address",
-    "pages/address-add/address-add",
-    "pages/order-list/order-list",
-    "pages/cate-list/cate-list",
-    "pages/order-detail/order-detail",
-    "pages/notice/notice",
-    "pages/cate/cate",
-    "pages/logistics/logistics",
-    "pages/pay-order/pay-order",
-    "pages/freshman/freshman",
-    "pages/search/search"
+    "pages/notice/index",
+    "pages/notice/show",
+    "pages/category/index",
+    "pages/goods/list",
+    "pages/goods-details/index",
+    "pages/shop-cart/index",
+    "pages/to-pay-order/index",
+    "pages/select-address/index",
+    "pages/address-add/index",
+    "pages/order-list/index",
+    "pages/order-details/index",
+    "pages/order/refundApply",
+    "pages/wuliu/index",
+    "pages/my/index",
+    "pages/recharge/index",
+    "pages/withdraw/index",
+    "pages/score-excharge/index",
+    "pages/score-excharge/growth",
+    "pages/asset/index",
+    "pages/score/index",
+    "pages/score/growth",
+    "pages/sign/index",
+    "pages/maidan/index",
+    "pages/fx/apply",
+    "pages/fx/apply-status",
+    "pages/fx/members",
+    "pages/fx/commisionLog",
+    "pages/coupons/index",
+    "pages/invoice/list",
+    "pages/invoice/apply",
+    "pages/deposit/pay",
+    "pages/search/index",
+    "pages/freshman/index",
+    "pages/fav-list/index",
+    "pages/topic/index",
+    "pages/topic-list/index",
+    "pages/my-kanjia/index",
+    "pages/my-pintuan/index"
   ],
   "window": {
-    "navigationStyle": "custom",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "color": "#838383",
@@ -43,24 +61,30 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/cate/cate",
+        "pagePath": "pages/category/index",
         "iconPath": "images/nav/menu-off.png",
         "selectedIconPath": "images/nav/menu-on.png",
         "text": "分类"
       },
       {
-        "pagePath": "pages/cart/cart",
+        "pagePath": "pages/shop-cart/index",
         "iconPath": "images/nav/cart-off.png",
         "selectedIconPath": "images/nav/cart-on.png",
         "text": "购物车"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/my/index",
         "iconPath": "images/nav/my-off.png",
         "selectedIconPath": "images/nav/my-on.png",
         "text": "我的"
       }
     ]
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx56c8f077de74b07c"
+  ],
+  "usingComponents": {
+    "float-menu": "/components/float-menu/index"
   },
   "sitemapLocation": "sitemap.json"
 }

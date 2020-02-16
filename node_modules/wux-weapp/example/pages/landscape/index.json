@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "Landscape",
-    "usingComponents": {
-        "wux-button": "../../dist/button/index",
-        "wux-landscape": "../../dist/landscape/index"
-    }
-}

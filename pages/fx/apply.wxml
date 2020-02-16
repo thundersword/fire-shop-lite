@@ -1,0 +1,31 @@
+<image class="logo" src="/images/fxad.jpeg" mode="widthFix" />
+<view class="cu-bar" style="width: 100%;">
+	<view class="action">
+		<text class="cuIcon-title text-green "></text> 请填写申请信息
+	</view>
+</view>
+<view class="cu-form-group" wx:if="{{ userDetail && userDetail.referrer }}">
+	<view class="title">邀请人</view>
+	<input value="{{userDetail.referrer.nick}} (请确认)" disabled style='color:red;' />
+</view>
+<view class="cu-form-group">
+	<view class="title">姓名<text class="text-red">*</text></view>
+	<input bindinput="nameChange" placeholder="请输入真实姓名" />
+</view>
+<view class="cu-form-group">
+	<view class="title">手机<text class="text-red">*</text></view>
+	<input bindinput="mobileChange" placeholder="请输入手机号码" />
+</view>
+<view class="flex flex-direction padding">
+	<button class="cu-btn lg bg-green"bindtap="bindSave">申请成为分销商</button>
+</view>
+<view class="cu-bar" style="width: 100%;">
+	<view class="action">
+		<text class="cuIcon-title text-green "></text> 提示
+	</view>
+</view>
+<view class="padding bg-brown light">
+	成为分销商之后可以获取佣金
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>
+

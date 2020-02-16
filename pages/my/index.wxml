@@ -1,0 +1,172 @@
+<view class="container">
+	<view class="userinfo">
+		<view class="userinfo-inner">
+			<open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+			<view class="iser-info-box">
+				<view class="userinfo-nickname" wx:if="{{userInfo}}">
+					<open-data class="userinfo-nickname" type="userNickName"></open-data>
+				</view>
+				<view class="login-btn" wx:else bindtap="showAuth">请登录</view>
+				<text wx:if="{{userInfo && score_sign_continuous == 0}}" class="userinfo-score-day" bindtap="score">今日未签到</text>
+				<text wx:if="{{userInfo && score_sign_continuous > 0}}" class="userinfo-score-day" bindtap="score">已连续签到{{score_sign_continuous}}天</text>
+			</view>
+		</view>
+		<image src="../../images/user-bg.jpg"></image>
+	</view>
+	<view class="userinfo-notice" wx:if="{{noticeList.length}}">
+		<image src="../../images/gonggao.png" />
+		<swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="6000">
+			<navigator wx:for-items="{{noticeList.dataList}}" wx:key="id" url="/pages/notice/notice?id={{item.id}}" hover-class="none"
+			 open-type="navigate">
+				<swiper-item>
+					<view class="notice_itemr">{{item.title}}</view>
+				</swiper-item>
+			</navigator>
+		</swiper>
+	</view>
+	<view class="userinfo-item">
+		<image src="../../images/profile_dfunding.png"></image>
+		<navigator url="/pages/order-list/index" hover-class="none">我的订单<image src="../../images/arrow-right.png"></image>
+		</navigator>
+	</view>
+	<view class="cu-list grid col-5 no-border margin-bottom shadow shadow-warp" style="width: 100%;">
+		<view class="cu-item" data-url="/pages/order-list/index?type=0" bindtap="navigateToPage">
+			<view class="cuIcon-pay text-gray text-xxl">
+				<view class="cu-tag badge" wx:if="{{noplay}}">
+					{{noplay}}
+				</view>
+			</view>
+			<text>待付款</text>
+		</view>
+		<view class="cu-item" data-url="/pages/order-list/index?type=1" bindtap="navigateToPage">
+			<view class="cuIcon-send text-gray text-xxl">
+				<view class="cu-tag badge" wx:if="{{notransfer}}">
+					{{notransfer}}
+				</view>
+			</view>
+			<text>待发货</text>
+		</view>
+		<view class="cu-item" data-url="/pages/order-list/index?type=2" bindtap="navigateToPage">
+			<view class="cuIcon-deliver text-gray text-xxl">
+				<view class="cu-tag badge" wx:if="{{noconfirm}}">
+					{{noconfirm}}
+				</view>
+			</view>
+			<text>待收货</text>
+		</view>
+		<view class="cu-item" data-url="/pages/order-list/index?type=3" bindtap="navigateToPage">
+			<view class="cuIcon-evaluate text-gray text-xxl">
+				<view class="cu-tag badge" wx:if="{{noreputation}}">
+					{{noreputation}}
+				</view>
+			</view>
+			<text>待评价</text>
+		</view>
+		<view class="cu-item" data-url="/pages/order-list/index?type=99" bindtap="navigateToPage">
+			<view class="cuIcon-friendfavor text-gray text-xxl">
+				<!-- <view class="cu-tag badge" wx:if="{{noplay}}">
+					{{noplay}}
+				</view> -->
+			</view>
+			<text>售后</text>
+		</view>
+	</view>
+	<view class="cu-bar" style="width: 100%;">
+		<view class="action">
+			<text class="cuIcon-title text-green"></text> 我的资产
+		</view>
+	</view>
+	<view class="cu-list menu shadow bg-white sm-border" style="width: 690rpx;">
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/asset/index" hover-class="none">
+				<text class="cuIcon-recharge text-red"></text>
+				<text class="text-grey">资金明细</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/score/index" hover-class="none">
+				<text class="cuIcon-coin text-green"></text>
+				<text class="text-grey">积分明细</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow">
+			<navigator class="content" url="/pages/coupons/index" hover-class="none">
+				<text class="cuIcon-ticket text-orange"></text>
+				<text class="text-grey">优惠券</text>
+			</navigator>
+		</view>
+	</view>
+	<view class="cu-bar" style="width: 100%;">
+		<view class="action">
+			<text class="cuIcon-title text-green "></text> 分销
+		</view>
+	</view>
+	<view class="cu-list menu shadow bg-white" style="width: 690rpx;">
+		<view class="cu-item arrow" wx:if="{{!userInfo.base.isSeller}}">
+			<navigator class="content" url="/pages/fx/apply-status" hover-class="none">
+				<text class="cuIcon-friendadd text-orange"></text>
+				<text class="text-grey">申请分销</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow" wx:else>
+			<navigator class="content" url="/pages/fx/apply-status" hover-class="none">
+				<text class="cuIcon-friend text-red"></text>
+				<text class="text-grey">分销中心</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow" wx:if="{{userInfo.base.isSeller}}">
+			<navigator class="content" url="/pages/fx/members" hover-class="none">
+				<text class="cuIcon-group text-blue"></text>
+				<text class="text-grey">我的团队</text>
+			</navigator>
+		</view>
+		<view class="cu-item arrow" wx:if="{{userInfo.base.isSeller}}">
+			<navigator class="content" url="/pages/fx/commisionLog" hover-class="none">
+				<text class="cuIcon-refund text-yellow"></text>
+				<text class="text-grey">返佣明细</text>
+			</navigator>
+		</view>
+	</view>
+	<view class="cu-bar" style="width: 100%;">
+		<view class="action">
+			<text class="cuIcon-title text-green "></text> 工具
+		</view>
+	</view>
+	<view class="cu-list grid col-4 shadow bg-white no-border" style="width: 690rpx;">
+		<view class="cu-item" data-url="/pages/select-address/index" bindtap="navigateToPage">
+			<view class="cuIcon-location text-blue text-xxl">
+			</view>
+			<text>地址管理</text>
+		</view>
+		<view class="cu-item" data-url="/pages/maidan/index" bindtap="navigateToPage">
+			<view class="cuIcon-shop text-red text-xxl">
+			</view>
+			<text>优惠买单</text>
+		</view>
+		<view class="cu-item" data-url="/pages/fav-list/index" bindtap="navigateToPage">
+			<view class="cuIcon-favor text-yellow text-xxl">
+			</view>
+			<text>收藏记录</text>
+		</view>
+		<view class="cu-item" data-url="/pages/my-pintuan/index" bindtap="navigateToPage">
+			<view class="cuIcon-goods text-mauve text-xxl">
+			</view>
+			<text>我的拼团</text>
+		</view>
+		<view class="cu-item" data-url="/pages/my-kanjia/index" bindtap="navigateToPage">
+			<view class="cuIcon-tag text-orange text-xxl">
+			</view>
+			<text>我的砍价</text>
+		</view>
+		<view class="cu-item" style="position: relative;">
+			<view class="cuIcon-service text-purple text-xxl">
+			</view>
+			<text>联系客服</text>
+			<button class="contact" open-type="contact"></button>
+		</view>
+	</view>
+	<view class="padding text-center text-sm text-gray">
+		fire-shop-lite {{version}}@染火科技
+	</view>
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

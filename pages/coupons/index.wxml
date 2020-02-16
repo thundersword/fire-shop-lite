@@ -1,0 +1,54 @@
+<scroll-view scroll-x class="bg-white nav">
+	<view class="flex text-center">
+		<view class="cu-item flex-sub {{activeIndex == index ?'text-red cur':''}}" wx:for="{{tabs}}" wx:key="index" bindtap="tabClick" data-id="{{index}}">
+		  {{item}}
+		</view>
+	</view>
+</scroll-view>
+<view wx:if="{{ !coupons || coupons.length == 0 }}" class="empty">
+  <image src="/images/icon/coupons-empty.svg"></image>
+  <view>暂无优惠券</view>
+</view>
+<view class="coupons" wx:for="{{coupons}}" wx:key="id" wx:if="{{activeIndex == 0}}">
+  <image class="icon" src="/images/icon/coupons-active.svg"></image>
+  <view class="profile">
+    <view class="name">
+      <view class="t">代金券</view>
+      <view class="n">{{item.name}}</view>
+    </view>
+    <view class="price">
+      <view class="tj">满{{item.moneyHreshold}}</view>
+      <view class="amount"><text>￥</text>{{item.moneyMin}}</view>
+    </view>
+    <view class="btn" bindtap="getCounpon" data-id="{{item.id}}">立即领取</view>
+  </view>
+</view>
+<view class="coupons" wx:for="{{coupons}}" wx:key="id" wx:if="{{activeIndex == 1}}">
+  <image class="icon" src="/images/icon/coupons-active.svg"></image>
+  <view class="profile">
+    <view class="name">
+      <view class="t">代金券</view>
+      <view class="n">{{item.name}}</view>
+    </view>
+    <view class="price">
+      <view class="tj">满{{item.moneyHreshold}}</view>
+      <view class="amount"><text>￥</text>{{item.money}}</view>
+    </view>
+    <view class="btn" bindtap="toIndexPage">立即使用</view>
+  </view>
+</view>
+<view class="coupons" wx:for="{{coupons}}" wx:key="id" wx:if="{{activeIndex == 2}}">
+  <image class="icon" src="/images/icon/coupons-off.svg"></image>
+  <view class="profile">
+    <view class="name">
+      <view class="t disabled1">代金券</view>
+      <view class="n disabled2">{{item.name}}</view>
+    </view>
+    <view class="price">
+      <view class="tj disabled2">满{{item.moneyHreshold}}</view>
+      <view class="amount disabled2"><text class="disabled2">￥</text>{{item.money}}</view>
+    </view>
+    <view class="btn">{{ item.statusStr }}</view>
+  </view>
+</view>
+<view class="bottom"></view>

@@ -1,12 +1,65 @@
-/**app.wxss**/
+/* @import 'weui/weui.wxss'; */
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
 .container {
   height: 100%;
-}
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
 .wxParse-img {
   display: block !important;
 }
+.space {
+  height:20rpx;
+  background-color: #F2f2f2;
+}
+.safeAreaOldPaddingBttom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safeAreaNewPaddingBttom{
+  padding-bottom: constant(safe-area-inset-bottom);  
+}
 
+.safeAreaOldMarginBttom {
+  margin-bottom: env(safe-area-inset-bottom);
+}
+.safeAreaNewMarginBttom{
+  margin-bottom: constant(safe-area-inset-bottom);  
+}
+
+.no-data {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-data .line {
+  width:132rpx;
+  height:2rpx;
+  background: #999;
+}
+.no-data .txt {
+  font-size:26rpx;
+  color:rgba(153,153,153,1);
+  margin: 0 16rpx;
+}
+.ad-img {
+  width: 100vw;
+}
+.fix-top{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+image{
+	width: 100%;
+	height: 100%;
+}
 .header-container {
   width: 100%;
   height: 130rpx;
@@ -14,15 +67,6 @@
   top: 0;
   left: 0;
   z-index: 9999;
-}
-
-.header-container .header-name {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  line-height: 170rpx;
-  font-size: 30rpx;
-  color: #333;
 }
 
 .iphone .header-container {
@@ -33,7 +77,7 @@
   line-height: 270rpx;
 }
 
-.header-container .goback {
+.header-container .go-back {
   width: 56rpx;
   height: 56rpx;
   margin-top: 50rpx;
@@ -44,35 +88,16 @@
   padding: 6rpx;
 }
 
-.iphone .header-container .goback {
+.iphone .header-container .go-back {
   margin-top: 90rpx;
 }
-.hidden {
-  display: none;
-}
-.flex{
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-.no-more-goods {
-  text-align: center;
-  margin-top: 20%;
-}
-
-.no-order-img {
-  width: 110px;
-  height: 110px;
-}
-
-.no-more-goods .text {
-  font-size: 28rpx;
-  color: #999;
-  margin-top: -5px;
-}
-.fix-top{
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99999;
+.header-container .go-back {
+  width: 56rpx;
+  height: 56rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  margin-left: 20rpx;
+  border: 1rpx solid #fff;
+  border-radius: 50%;
+  padding: 6rpx;
 }

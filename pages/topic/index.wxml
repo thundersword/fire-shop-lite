@@ -1,0 +1,24 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container bg-white">
+  <view class="topic-head">
+    <view class="topic-content">
+      <view class="content-title">{{topics.title}}</view>
+			<view class="topic-info">
+				<view>{{topics.dateAdd}}</view><view class="author" wx:if="{{topics.author}}">{{topics.author}}</view>
+			</view>
+      <view class="content-text">
+        <image class="content-img" mode="widthFix" src="{{topics.pic}}"></image>
+        <view class="content-box">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+        <guess-u-like></guess-u-like>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="goods-button">
+  <image src="../../images/share.png">
+    <button open-type="share"></button>
+  </image>
+</view>

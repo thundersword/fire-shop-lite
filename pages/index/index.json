@@ -1,6 +1,7 @@
 {
+	"enablePullDownRefresh": true,
+	"navigationStyle": "custom",
 	"usingComponents": {
-		"navigation": "/components/navigation/navigation",
-		"authorize": "/components/auth/auth"
+		"navigation": "/components/navigation/navigation"
 	}
 }

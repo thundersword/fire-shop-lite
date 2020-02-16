@@ -1,3 +1,0 @@
-<view class="wux-class {{ prefixCls }}" style="{{ wrapStyle }}">
-	<slot></slot>
-</view>

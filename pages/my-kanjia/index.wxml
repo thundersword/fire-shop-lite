@@ -1,0 +1,18 @@
+<view class="container">
+	<view class="cu-list menu-avatar margin-top-xs" style="width: 100%;">
+		<navigator url="/pages/goods-details/index?id={{item.goodsId}}" class="cu-item" wx:for="{{kjGoodsList}}" wx:key="id">
+			<view class="cu-avatar lg" style="background-image:url({{pics[item.goodsId].pic}});"></view>
+			<view class="content">
+				<view class="text-grey"><text class="text-cut">{{pics[item.goodsId].name}}</text></view>
+				<view class="text-gray text-sm flex">
+					<text>当前价：</text><text class="text-price text-red">{{item.curPrice}}</text>
+					<text class="margin-left">原价：</text><text class="text-price text-red">{{pics[item.goodsId].originalPrice}}</text>
+				</view>
+			</view>
+			<view class="action">
+				<view class="text-red text-xs">{{item.statusStr}}</view>
+			</view>
+		</navigator>
+	</view>
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

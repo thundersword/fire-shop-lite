@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+  		"guess-u-like": "/components/guess-u-like/index"
+  	}
+}

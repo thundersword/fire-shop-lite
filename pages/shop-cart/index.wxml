@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<import src="../template-cart/template-cart.wxml" />
+
+<view class="container">  
+  <template is="{{shippingCarInfo.items.length > 0 ? 'cart-goods-list' : 'no-goods'}}" data="{{...shippingCarInfo, saveHidden, allSelect, noSelect}}"></template>
+  <guess-u-like title="{{title}}" order-by="{{orderBy}}" count="{{count}}" show="{{shippingCarInfo.items.length>0?false:true}}"></guess-u-like>
+</view>
+
+<import src="/template/login/index.wxml" />
+<template is="apifmLogin" data="{{wxlogin: wxlogin}}" />

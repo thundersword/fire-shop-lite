@@ -1,0 +1,19 @@
+<view class="container">
+	<view class="cu-list menu-avatar" style="width: 100%;">
+		<navigator url="/pages/goods-details/index?id={{item.goodsInfo.id}}" class="cu-item margin-top-xs" wx:for="{{ptGoodsList}}" wx:key="id">
+			<view class="cu-avatar lg" style="background-image:url({{item.goodsInfo.pic}});"></view>
+			<view class="content">
+				<view class="text-grey"><text class="text-cut">{{item.goodsInfo.name}}</text></view>
+				<view class="text-gray text-sm flex">
+					<text>拼团价：</text><text class="text-price text-red">{{item.goodsInfo.pingtuanPrice}}</text>
+					<text class="margin-left">原价：</text><text class="text-price text-red">{{item.goodsInfo.originalPrice}}</text>
+				</view>
+			</view>
+			<view class="action">
+				<view class="text-red text-xs">{{item.tuanInfo.statusStr}}</view>
+			</view>
+		</navigator>
+	</view>
+	<view class="cu-load bg-gray {{loadingHidden?'over':'loading'}}"></view>
+</view>
+<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "签到",
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation",
+		"auth": "/components/auth/auth",
+		"calendar": "/components/calendar/index"
+	}
+}

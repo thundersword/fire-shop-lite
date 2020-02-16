@@ -1,15 +1,29 @@
 {
-  "name": "fire-shop-lite",
-  "version": "1.0.0",
-  "description": "",
+  "name": "wechat-app-mall",
+  "version": "7.4.1",
+  "description": "微信小程序商城，微信小程序微店",
   "main": "app.js",
+  "dependencies": {
+    "apifm-wxapi": "^2.6.0",
+    "wxa-plugin-canvas": "^1.1.12"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EastWorld/wechat-app-mall.git"
+  },
+  "keywords": [
+    "微店",
+    "小店",
+    "微商城"
+  ],
+  "author": "gooking",
   "license": "ISC",
-  "dependencies": {
-    "apifm-wxapi": "^2.3.0",
-    "wux-weapp": "^3.8.2"
-  }
+  "bugs": {
+    "url": "https://github.com/EastWorld/wechat-app-mall/issues"
+  },
+  "homepage": "https://github.com/EastWorld/wechat-app-mall#readme"
 }

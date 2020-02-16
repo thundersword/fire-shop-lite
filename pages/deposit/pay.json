@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "支付押金",
+  "usingComponents":{
+	  "auth":"/components/auth/auth"
+  }
+}

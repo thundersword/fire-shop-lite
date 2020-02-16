@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "个人中心",
-    "navigationBarTextStyle": "white",
-	"usingComponents": {
-		"auth": "/components/auth/auth"
-	}
-}

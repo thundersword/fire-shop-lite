@@ -1,11 +1,8 @@
-<!--pages/start/start.wxml-->
-<view class="container" wx:for="{{sales}}" wx:key="id">
-  <view class="tab-image">
-    <image bindtap="tapBanner" data-id="{{item.businessId}}" class="bgImages" src="{{item.picUrl}}" />
-    <view class="gohome" bindtap="goHome">跳过广告 {{second}}</view>
-  </view>
-  <view bindtap="home" class="logo">
-    <view class="title">{{item.title}}</view>
-    <view class="subtitle">{{item.remark}}</view>
-  </view>
+<swiper class="swiper_box" bindchange="swiperchange" indicator-dots="true" indicator-active-color="#fff">
+  <swiper-item wx:for="{{banners}}" wx:key="id">
+    <image mode="aspectFill" bindtap="imgClick" src="{{item.picUrl}}" />
+  </swiper-item>
+</swiper>
+<view class="btn">
+  <button wx:if="{{swiperCurrent + 1 == swiperMaxNumber}}" type="primary" size="mini" bindtap="goToIndex" class="weui-btn mini-btn">进入店铺</button>
 </view>

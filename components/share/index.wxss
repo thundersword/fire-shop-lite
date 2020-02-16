@@ -1,0 +1,19 @@
+/* components/share/index.wxss */
+.share-list .item{
+	position: relative;
+	z-index: 0;
+}
+.share-list .item .share-btn{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: none;
+	border: none;
+	display: block;
+	z-index: 1;
+	top: 0;
+	left: 0;
+}
+.share-list .item .lg{
+	font-size: 50rpx;
+}

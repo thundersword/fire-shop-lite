@@ -1,0 +1,7 @@
+{
+   "navigationBarTitleText": "新增地址",
+   "usingComponents": {
+    "region-picker": "/components/region-picker/index",
+	"auth":"/components/auth/auth"
+  }
+}
