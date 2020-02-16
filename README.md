@@ -3,42 +3,52 @@
 fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)二次开发而来。
 
 主要功能包括：
+
 1.拼团
+
 2.砍价
+
 3.分销
+
+4.商品海报生成
+
 目前版本还未经过全面测试，商用的建议先用1.0版本
 
 # 使用到的开源项目
+
  [微信电商小程序EastWorld /wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
+ 
  [api工厂小程序接口SDK](https://github.com/gooking/apifm-wxapi)
+ 
  [鲜亮的高饱和色彩，专注视觉的小程序组件库ColorUI](https://github.com/weilanwl/ColorUI)
+ 
+ [小程序海报组件-生成朋友圈分享海报并生成图片](https://github.com/jasondu/wxa-plugin-canvas)
+
 
 ## 扫码体验
 
 <img src="https://dcdn.it120.cc/2020/02/16/e14a891d-1b01-4254-bb40-d9576e23afcb.jpg" width="200px">
 
 
-## 联系作者
-
-| 微信好友 | 支付宝好友 |
-| :------: | :------: |
-| <img src="https://dcdn.it120.cc/2020/02/16/6c39cf7a-9480-4e23-baf3-912c8cc62bfa.jpg" width="200px"> | <img src="https://dcdn.it120.cc/2020/02/16/94343ea1-882a-43f6-95a4-192dd131b565.jpg" width="200px"> |
-
 ## 接口 & 后台声明
 
-本项目为小程序商城纯前端项目，由于人力和精力所限，本项目并未有开发配套的后台系统，而是直接使用了 [api 工厂](https://www.it120.cc/?referrer=9384) 提供的免费接口和后台，可以完全满足本项目的所有功能需求。
+本项目为小程序商城纯前端项目，由于人力和精力所限，本项目并未有开发配套的后台系统，而是直接使用了 [api 工厂](https://www.it120.cc/?referrer=9436) 提供的免费接口和后台，可以完全满足本项目的所有功能需求。
 
 ## 初始化测试数据
 
+[注册api工厂](https://www.it120.cc/?referrer=9436)
+
 登录后台，左侧菜单 “工厂设置” --> “数据克隆” --> “将别人的数据克隆给我”
 
-对方商户ID填写  9483
+对方商户ID填写  9436
 
 点击 “立即克隆” ，然后退出后台重新登录
 
 你将立即享有初始化测试数据，方便你进行测试
 
 ## 编译说明
+
+本项目使用了npm模块，请在项目设置中勾选“使用npm模块”
 
 本项目使用基于 ES7 的语法，所以请在开发工具中开启 “增强编译”， 否则会提示以下错误：
 
@@ -86,7 +96,9 @@ module.exports = {
 小程序会自动读取类型为 home 的banner图片作为首页的轮播图；
 ```
 
-7、订阅消息(以前的模板消息)如何使用？请查阅 “api工厂” 的教程：
+7、如果需要使用分享海报功能(海报中需要调用小程序用户头像)，需要将域名wx.qlogo.cn加入downloadFile合法域名
+
+8、订阅消息(以前的模板消息)如何使用？请查阅 “api工厂” 的教程：
 
 [https://www.yuque.com/apifm/doc/sw1dg9](https://www.yuque.com/apifm/doc/sw1dg9)
 
