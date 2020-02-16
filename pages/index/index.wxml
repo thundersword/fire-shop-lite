@@ -2,14 +2,14 @@
 <view class="swiper-container">
 	<swiper class="screen-swiper {{dotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true"
 	 interval="5000" duration="500">
-		<swiper-item wx:for="{{banners}}" wx:key="id">
-			<image src="{{item.picUrl}}" mode="aspectFill" bindtap="tapBanner" data-id="{{item.businessId}}"></image>
+		<swiper-item wx:for="{{banners}}" wx:key="id" bindtap="tapBanner" data-url="{{item.linkUrl}}">
+			<image src="{{item.picUrl}}" mode="aspectFill"></image>
 		</swiper-item>
 	</swiper>
 </view>
 <view class="index-menu-bg padding bg-white">
 	<view class="index-menu flex">
-		<view class="menu-list" wx:for="{{navigation}}" wx:key="id" bindtap="tapSales" data-id="{{item.linkUrl}}">
+		<view class="menu-list" wx:for="{{navigation}}" wx:key="id" bindtap="tapNav" data-url="{{item.linkUrl}}">
 			<image src="{{item.picUrl}}" />
 			<view class="text">{{item.title}}</view>
 		</view>

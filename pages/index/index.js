@@ -25,7 +25,12 @@ Page({
 		navigation: [],
 		banners: []
 	},
-
+	tapNav(e){
+		const url = e.currentTarget.dataset.url
+		wx.navigateTo({
+			url:url
+		})
+	},
 	tabClick: function(e) {
 		wx.navigateTo({
 			url: '/pages/goods/list?categoryId=' + e.currentTarget.id,
@@ -37,11 +42,15 @@ Page({
 		})
 	},
 	tapBanner: function(e) {
-		if (e.currentTarget.dataset.id != 0) {
-			wx.navigateTo({
-				url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
-			})
-		}
+		console.log(e)
+		wx.navigateTo({
+			url:e.currentTarget.dataset.url
+		})
+		// if (e.currentTarget.dataset.id != 0) {
+		// 	wx.navigateTo({
+		// 		url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+		// 	})
+		// }
 	},
 	bindTypeTap: function(e) {
 		this.setData({
