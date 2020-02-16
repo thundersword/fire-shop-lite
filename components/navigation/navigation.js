@@ -4,22 +4,26 @@ Component({
 		//小程序页面的表头
 		title: {
 			type: String,
-			default: 'fire-shop-lite'
+			value: 'fire-shop-lite'
 		},
 		//是否展示返回和主页按钮
 		showIcon: {
 			type: Boolean,
-			default: true
+			value: false
 		},
 		//是否显示标题
 		showTitle: {
 			type: Boolean,
-			default: true
+			value: false
 		},
 		//是否显示搜索框
 		showSearch: {
 			type: Boolean,
-			default: true
+			value: false
+		},
+		disableSearchJump:{
+			type: Boolean,
+			value: false
 		}
 	},
 
@@ -84,6 +88,7 @@ Component({
 			})
 		},
 		headerSearch() {
+			if(this.properties.disableSearchJump) return
 			wx.navigateTo({
 				url: '/pages/search/index'
 			})

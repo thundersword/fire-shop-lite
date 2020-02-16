@@ -23,7 +23,8 @@ Page({
 		cateScrollTop: 0,
 		dotStyle: "square-dot", //swiper指示点样式可选square-dot round-dot
 		navigation: [],
-		banners: []
+		banners: [],
+		disableSearchJump: false,
 	},
 	tapNav(e){
 		const url = e.currentTarget.dataset.url
@@ -157,12 +158,18 @@ Page({
 				backgroundColor: '#ffffff'
 			})
 			app.fadeInOut(this, 'fadeAni', 1)
+			this.setData({
+				disableSearchJump: false
+			})
 		} else {
 			wx.setNavigationBarColor({
 				frontColor: '#ffffff',
 				backgroundColor: '#ffffff'
 			})
 			app.fadeInOut(this, 'fadeAni', 0)
+			this.setData({
+				disableSearchJump: true//隐藏自定义导航栏时点击到搜索框区域时不跳转搜索页面
+			})
 		}
 	},
 

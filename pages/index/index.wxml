@@ -1,4 +1,4 @@
-<navigation id='Navigation' show-search='{{true}}' class="fix-top" animation="{{fadeAni}}"></navigation>
+<navigation id='Navigation' show-search='{{true}}' disable-search-jump="{{disableSearchJump}}" class="fix-top" animation="{{fadeAni}}"></navigation>
 <view class="swiper-container">
 	<swiper class="screen-swiper {{dotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true"
 	 interval="5000" duration="500">
