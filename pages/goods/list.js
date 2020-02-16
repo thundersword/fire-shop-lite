@@ -8,11 +8,17 @@ Page({
     listType: 1, // 1为1个商品一行，2为2个商品一行    
     name: '', // 搜索关键词
     orderBy: '', // 排序规则
+	goods:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  headerSearch(){
+	  wx.navigateTo({
+		  url:"/pages/search/index"
+	  })
+  },
   onLoad: function (options) {
     this.setData({
       name: options.name,

@@ -5,6 +5,32 @@ page,view,image,input {
   display: block;
   box-sizing: border-box;
 }
+.header .search-box {
+	/* border: 1px solid #eee; */
+	border-radius: 27px;
+	background: hsla(0, 0%, 100%, .6);
+	height: 32px;
+	width: 630rpx;
+	padding-left: 20rpx;
+	background: #f7f7f7;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.header .search-box .search-box-text {
+	height: 30px;
+	line-height: 30px;
+	color: #d1d1d1;
+	/* padding-left: 14px; */
+	font-size: 26rpx;
+}
+
+.header .search-box .search-box-image {
+	height: 34rpx;
+	width: 34rpx;
+	margin-left: 14px;
+}
 .header {
   padding: 32rpx;
   background: #fff;
@@ -59,7 +85,7 @@ page,view,image,input {
   height: 220rpx;
   display: flex;
   background: #fff;
-  border-radius: 30rpx;
+ /* border-radius: 30rpx; */
   overflow: hidden;
 }
 .list1 .img {
@@ -103,7 +129,7 @@ page,view,image,input {
   margin: 16rpx 0;
   width: 350rpx;
   background: #fff;
-  border-radius: 30rpx;
+  /* border-radius: 30rpx; */
   overflow: hidden;
 }
 .list2 .img {

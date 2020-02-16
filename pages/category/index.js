@@ -23,8 +23,9 @@ Page({
 		this.getGoodsList(this.data.activeCategoryId);
 	},
 	levelClick: function(e) {
+		console.log(e)
 		wx.navigateTo({
-			url: "/pages/cate-list/cate-list?id=" + e.currentTarget.dataset.id
+			url: "/pages/goods/list?categoryId=" + e.currentTarget.dataset.id
 		})
 	},
 	swiperchange: function(e) {

@@ -101,3 +101,19 @@ image{
   border-radius: 50%;
   padding: 6rpx;
 }
+.no-more-goods {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.no-order-img {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+}
+
+.no-more-goods .text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: -5px;
+}
