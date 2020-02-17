@@ -1,6 +1,7 @@
 // components/share/index.js
 import Poster from 'wxa-plugin-canvas/poster/poster';
 const WXAPI = require('apifm-wxapi');
+const AUTH = require('../../utils/auth')
 var posterConfig = {
 	width: 750,
 	height: 1334,
@@ -210,6 +211,15 @@ Component({
 			})
 		},
 		async onCreatePoster() {
+			AUTH.checkHasLogined( isLogined => {
+				if(!isLogined){
+					wx.showToast({
+						title:"请先登录",
+						icon:"none"
+					})
+					return
+				}
+			})
 			const userInfoRes = await WXAPI.userDetail(wx.getStorageSync('token'));
 			const userInfo = userInfoRes.data;
 			posterConfig.images[0].url = userInfo.base.avatarUrl
@@ -231,8 +241,8 @@ Component({
 			posterConfig.texts[5].text = this.properties.goodsInfo.characteristic?this.properties.goodsInfo.characteristic:"手慢无"
 			
 			const qrcodeRes = await WXAPI.wxaQrcode({
-				scene: this.properties.goodsId + ',' + wx.getStorageSync('uid'),
-				page: 'pages/goods-detail/goods-detail', //注意:如果已上线的小程序,如果此处路径在线上版本不存在的话也无法获取二维码
+				scene: this.properties.goodsInfo.id + ',' + wx.getStorageSync('uid'),
+				page: 'pages/goods-details/index', //注意:如果已上线的小程序,如果此处路径在线上版本不存在的话也无法获取二维码
 				is_hyaline: false,
 				expireHours: 1
 			})

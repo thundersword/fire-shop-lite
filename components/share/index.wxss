@@ -14,6 +14,9 @@
 	top: 0;
 	left: 0;
 }
+.share-list .item .share-btn:after{
+	border: none;
+}
 .share-list .item .lg{
 	font-size: 50rpx;
 }
