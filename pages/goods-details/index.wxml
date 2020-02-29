@@ -207,7 +207,7 @@
 				<image src="../../images/shopping_cart.png"></image>
 				<view class="shop-num">{{shopNum}}</view>
 			</view>
-			<view class="box-list" bindtap="{{favicon == 0 ? 'fav':'del'}}">
+			<view class="box-list" bindtap="{{favicon == 0 ? 'addToFav':'delFav'}}">
 				<image wx:if="{{favicon == 0}}" src="../../images/goods_collect.png"></image>
 				<image wx:if="{{favicon == 1}}" src="../../images/goods_collect_checked.png"></image>
 			</view>
