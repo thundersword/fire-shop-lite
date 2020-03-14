@@ -12,7 +12,7 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 
 4.商品海报生成
 
-目前版本还未经过全面测试，商用的建议先用1.0版本
+
 
 # 使用到的开源项目
 
@@ -133,6 +133,9 @@ module.exports = {
 - REGISTER_OPEN_SELLER （开关类型）
   
   **新注册用户是否自动成为分销商，如果不开启该参数，分销商需要自己申请，你进行审核**
+  - categoryLevel （文本参数）
+  
+  **分类页显示分类级别，可选参数1和2，值为1时，右侧直接显示产品列表，其他值时，显示二级分类**
   
   [《api工厂三级分销插件使用教程》](https://www.yuque.com/apifm/doc/pgfwvu)
 
@@ -155,11 +158,11 @@ module.exports = {
 
 - 工厂后台设置 appid、secret、微信支付商户号和秘钥时候的 token 怎么填？
 
-  **不要填！**
+  **token不要填！**
 
-  **不要填！**
+  **token不要填！**
 
-  **不要填！**
+  **token不要填！**
 
   **重要的事情说三遍，这个小程序用不到，是给服务号使用的，所以大家空着不要填**
 
@@ -232,9 +235,9 @@ module.exports = {
 
 # 使用交流
 
-技术交流QQ群 878573318
-
-<img src="https://box.kancloud.cn/7c84f8cccee146b86a7b9edaa23d4796_540x740.png" width="200px">
+|技术交流QQ群 878573318|联系作者|
+| :------: | :------: |
+|<img src="https://box.kancloud.cn/7c84f8cccee146b86a7b9edaa23d4796_540x740.png" width="200px">|<img src="https://dcdn.it120.cc/2020/02/16/6c39cf7a-9480-4e23-baf3-912c8cc62bfa.jpg" width="200px">|
 
 # 赞赏
 

@@ -17,7 +17,7 @@ Page({
 		search: true,
 		nonehidden: true,
 		searchidden: true,
-		cateLevel: CONFIG.cateLevel,
+		categoryLevel: 2,
 		rightList: {},
 		skuCurGoods: undefined
 	},
@@ -30,7 +30,7 @@ Page({
 		this.getRightList(this.data.activeCategoryId)
 	},
 	getRightList(pid) {
-		if (this.data.cateLevel == 1) {
+		if (this.data.categoryLevel == 1) {
 			this.getGoodsList()
 		} else {
 			this.getSubCate(pid)
@@ -100,7 +100,9 @@ Page({
 	},
 	onLoad: function() {
 
-
+		this.setData({
+			categoryLevel:wx.getStorageSync('categoryLevel')
+		})
 		//获取轮播
 		WXAPI.banners({
 			key: 'mallName',
@@ -114,7 +116,7 @@ Page({
 		})
 		WXAPI.goodsCategory().then(res => {
 			let categories = []
-			if (this.data.cateLevel == 2) {
+			if (this.data.categoryLevel == 2) {
 				categories.push({
 					id: 0,
 					name: "所有分类"
@@ -144,6 +146,7 @@ Page({
 			page: 1,
 			pageSize: 100000
 		})
+		
 		wx.hideLoading()
 		if (res.code == 700) {
 			this.setData({
