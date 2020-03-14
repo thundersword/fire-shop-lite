@@ -12,7 +12,7 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 
 4.商品海报生成
 
-
+国内仓库：[码云仓库](https://gitee.com/dream_debug/fire-shop-lite.git)
 
 # 使用到的开源项目
 
