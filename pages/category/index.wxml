@@ -26,17 +26,62 @@
 						</block>
 					</view>
 				</view>
-				<view if="{{item.level == 2}}" class="type-menu">
+				<view wx:if="{{cateLevel == 2}}" wx:for="{{rightList}}" wx:key="id" wx:for-item="parentItem" class="type-menu">
+					<view class="padding-sm text-black text-bold">{{parentItem.parentCateName}}</view>
+					<view class="type-level-box" wx:for="{{parentItem.list}}" wx:key="id" wx:for-item="item" >
+						<view class="type-level-item " bindtap="levelClick" data-id="{{item.id}}">
+							<image class="type-img" src="{{item.icon}}"></image>
+							<text>{{item.name}}</text>
+						</view>
+					</view>
+				</view>
+				<view wx:if="{{cateLevel == 1}}" class="goods-list">
+					<navigator hover-class="none" wx:for="{{currentGoods}}" wx:key="id" class="item flex padding-sm solid-bottom" url="/pages/goods-details/index?id={{item.id}}">
+						<view class="image">
+							<image src="{{item.pic}}" mode="aspectFill"></image>
+						</view>
+						<view class="right padding-left-sm padding-right">
+							<view class="name text-cut">{{item.name}}</view>
+							<view class="text-price text-red margin-top-sm">{{item.minPrice}}</view>
+							<view class="margin-top-sm text-gray">已售 <text class="text-black">{{item.numberSells}}</text>件</view>
+							<view class="add" catchtap="addShopCar" data-id="{{item.id}}">
+								<text class="cuIcon-roundaddfill text-xxl text-red"></text>
+							</view>
+						</view>
+					</navigator>
+				</view>
+				<!-- <view if="{{item.level == 2}}" class="type-menu">
 					<view class="type-level-box" wx:for-items="{{categorieslist}}" wx:key="id">
 						<view id="{{item.id}}" class="type-level-item " bindtap="levelClick" data-id="{{item.id}}">
 							<image class="type-img" src="{{item.icon}}"></image>
 							<text>{{item.name}}</text>
 						</view>
 					</view>
-				</view>
+				</view> -->
 			</view>
 		</view>
 	</view>
 </view>
 <view class="top-line"></view>
 <view class="bottom-lin"></view>
+<block wx:if="{{skuCurGoods}}">
+  <view class="sku-mask"></view>
+  <view class="sku-container">
+    <image class="close" src="/images/icon/close.svg" bindtap="closeSku"></image>
+    <view class="sku" wx:for="{{skuCurGoods.properties}}" wx:key="id">
+      <view class="t">{{item.name}}</view>
+      <view class="items">
+        <text class="{{small.active? 'active' : ''}}" wx:for="{{item.childsCurGoods}}" wx:for-item="small" wx:key="id" data-pid="{{small.propertyId}}" data-id="{{small.id}}" bindtap="skuSelect">{{small.name}}</text>
+      </view>
+    </view>
+    <view class="num">
+      <view class="t">购买数量</view>
+      <view class="num-box">
+        <text class="a" bindtap="storesJian">-</text>
+        <text class="b">{{skuCurGoods.basicInfo.storesBuy}}</text>
+        <text class="a" bindtap="storesJia">+</text>
+      </view>
+    </view>
+  </view>
+  <view class="sku-btn" bindtap="addCarSku">加入购物车</view>
+</block>
