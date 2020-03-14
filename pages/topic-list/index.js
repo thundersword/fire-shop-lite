@@ -24,7 +24,7 @@ Page({
 				}
 				this.setData({
 					topics: topic,
-					activecmsid: res.data[0].id
+					activecategoryId: res.data[0].id
 				});
 
 			}
@@ -34,16 +34,18 @@ Page({
 	},
 	tapTopic: function(e) {
 		this.setData({
-			activecmsid: e.currentTarget.dataset.id
+			activecategoryId: e.currentTarget.dataset.id
 		});
-		this.gettapList(this.data.activecmsid);
+		this.gettapList(this.data.activecategoryId);
 	},
-	gettapList: function(cmsid) {
-		WXAPI.cmsArticles().then(res => {
+	gettapList: function(categoryId) {
+		WXAPI.cmsArticles({
+			categoryId: categoryId
+		}).then(res => {
 			let content = [];
 			if (res.code == 0) {
 				for (let i = 0; i < res.data.length; i++) {
-					if (res.data[i].categoryId == cmsid) {
+					if (res.data[i].categoryId == categoryId) {
 						content.push(res.data[i]);
 					}
 				}

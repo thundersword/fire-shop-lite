@@ -1,6 +1,6 @@
 <view class="page">
 	<scroll-view class="topic-cat" scroll-x="true">
-		<view class="margin-right item text-center" wx:for="{{topics}}" wx:key="id" bindtap="tapTopic" data-id="/pages/topic/index?id={{item.id}}">
+		<view class="margin-right item text-center" wx:for="{{topics}}" wx:key="id" bindtap="tapTopic" data-id="{{item.id}}">
 			<view class="thumb">
 				<image class="img" src="{{item.icon}}" mode="scaleToFill"></image>
 			</view>
