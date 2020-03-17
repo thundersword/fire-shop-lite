@@ -72,7 +72,7 @@ App({
 			that.globalData.vipLevel = res.data
 		})
 		//  获取商城名称
-		WXAPI.queryConfigBatch('mallName,recharge_amount_min,WITHDRAW_MIN,ALLOW_SELF_COLLECTION,RECHARGE_OPEN,categoryLevel').then(
+		WXAPI.queryConfigBatch('mallName,recharge_amount_min,WITHDRAW_MIN,ALLOW_SELF_COLLECTION,RECHARGE_OPEN,categoryLevel,CATEGORY_BY_TAGS').then(
 			function(res) {
 				if (res.code == 0) {
 					res.data.forEach(config => {

@@ -13,6 +13,7 @@ Page({
 		swiperCurrent: 0,
 		selectCurrent: 0,
 		activeCategoryId: 0,
+		activeCategoryIndex: 0,
 		loadingMoreHidden: true,
 		search: true,
 		nonehidden: true,
@@ -24,9 +25,9 @@ Page({
 
 	tabClick: function(e) {
 		this.setData({
-			activeCategoryId: e.currentTarget.id
+			activeCategoryId: e.currentTarget.id,
+			activeCategoryIndex:e.currentTarget.dataset.index
 		});
-		// this.getGoodsList(this.data.activeCategoryId);
 		this.getRightList(this.data.activeCategoryId)
 	},
 	getRightList(pid) {
@@ -141,11 +142,25 @@ Page({
 		wx.showLoading({
 			title: '加载中',
 		})
-		const res = await WXAPI.goods({
-			categoryId: this.data.activeCategoryId,
-			page: 1,
-			pageSize: 100000
-		})
+		
+		//是否启用tags分类
+		const categoryByTags = wx.getStorageSync('CATEGORY_BY_TAGS');
+		
+		let res = {}
+		if(categoryByTags == 1){
+			res = await WXAPI.goods({
+				tagsLike:this.data.categories[this.data.activeCategoryIndex].name,
+				page:1,
+				pageSize: 100000
+			})
+		}else{
+			res = await WXAPI.goods({
+				categoryId: this.data.activeCategoryId,
+				page: 1,
+				pageSize: 100000
+			})
+		}
+		
 		
 		wx.hideLoading()
 		if (res.code == 700) {

@@ -3,7 +3,7 @@
 	<view class="type-container-boxx">
 		<view class="scroll-view-container">
 			<scroll-view scroll-y="true" scroll-into-view="true" scroll-with-animation="true" class="type-container">
-				<view scroll-y="true" wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}">
+				<view scroll-y="true" wx:for-items="{{categories}}" wx:key="id" class="type-box" bindtap="tabClick" id="{{item.id}}" data-index="{{index}}">
 					<view class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}">
 						{{item.name}}
 					</view>

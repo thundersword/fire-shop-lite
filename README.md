@@ -136,6 +136,9 @@ module.exports = {
 - categoryLevel （文本参数）
   
   **分类页显示分类级别，可选参数1和2，值为1时，右侧直接显示产品列表，其他值时，显示二级分类**
+- CATEGORY_BY_TAGS （开关类型）
+  
+  **是否启用按tags分类，在categoryLevel=1时该参数有效，可用于一个商品属于多分类的场景**
   
   [《api工厂三级分销插件使用教程》](https://www.yuque.com/apifm/doc/pgfwvu)
 
