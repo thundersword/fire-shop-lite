@@ -74,7 +74,10 @@ Page({
 		});
 		this.initShippingAddress()
 	},
-
+	onPullDownRefresh: function() {
+		// 下拉刷新物流地址，workaround添加完地址需要推出页面重新进来，才能出新地址
+		this.initShippingAddress()
+	},
 	onLoad(e) {
 		let _data = {
 			isNeedLogistics: 1
