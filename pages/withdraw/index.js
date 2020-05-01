@@ -2,20 +2,22 @@ const app = getApp()
 const WXAPI = require('apifm-wxapi')
 const AUTH = require('../../utils/auth')
 Page({
-
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		balance: 0,
 		wxlogin: true, //是否隐藏登录弹窗
+        minWithdrawAmount: 100, //最低提现金额
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
 	onLoad: function() {
-		
+        const that = this;
+        WXAPI.queryConfigValue('minWithdrawAmount').then(res=>{
+            if(res.code == 0) {
+                that.setData({
+                    minWithdrawAmount: res.data,
+                })
+            }
+        })
+
 	},
 	afterAuth() {
 		this.setData({
@@ -33,16 +35,6 @@ Page({
 			}
 		})
 	},
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function() {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
 	onShow: function() {
 		AUTH.checkHasLogined( isLogined => {
 			if(!isLogined){
@@ -52,58 +44,35 @@ Page({
 			}
 		})
 	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function() {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function() {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function() {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function() {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function() {
-
-	},
 	bindCancel: function() {
 		wx.navigateBack({})
 	},
 	bindSave: function(e) {
-		
+
 		var that = this;
 		var amount = e.detail.value.amount;
 
-		if (amount == "" || amount * 1 < 100) {
+		if (amount == "") {
 			wx.showModal({
 				title: '错误',
-				content: '请填写正确的提现金额',
+				content: '提现金额不能为空',
 				showCancel: false
 			})
 			return
 		}
-		WXAPI.withDrawApply(wx.getStorageSync('token'), amount).then(res => {
+        console.log("最低提现金额", that.data.minWithdrawAmount)
+
+        if (amount * 1 < that.data.minWithdrawAmount) {
+            var msg = "低于" + that.data.minWithdrawAmount + "无法提现";
+			wx.showModal({
+				title: '错误',
+				content: msg,
+				showCancel: false
+			})
+			return
+        }
+
+        WXAPI.withDrawApply(wx.getStorageSync('token'), amount).then(res => {
 			if (res.code == 0) {
 				wx.showModal({
 					title: '成功',
