@@ -49,6 +49,7 @@ Page({
 				})
 				return
 			}
+			this.initShippingAddress()
 		})
 	},
 	initShippingAddress: function() {

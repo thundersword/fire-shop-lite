@@ -28,16 +28,16 @@ Page({
 		payId: null,
 	},
 	onShow() {
-		// AUTH.checkHasLogined().then(isLogined => {
-		// 	if (isLogined) {
-		// 		this.doneShow()
-		// 	} else {
-		// 		this.setData({
-		// 			wxlogin: isLogined
-		// 		})
+		AUTH.checkHasLogined().then(isLogined => {
+			if (isLogined) {
+				this.initShippingAddress()
+			} else {
+				this.setData({
+					wxlogin: isLogined
+				})
 
-		// 	}
-		// })
+			}
+		})
 	},
 	afterAuth() {
 		this.setData({
