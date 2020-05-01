@@ -14,7 +14,12 @@
 	<view class="goods-info">
 		<view class="goods-left">
 			<view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
-			<view class="goods-characteristic">{{goodsDetail.basicInfo.characteristic}}</view>
+			<view class="goods-characteristic">
+				<text> {{goodsDetail.basicInfo.characteristic}} </text>
+				<block wx:if="{{goodsDetail.basicInfo.weight != 0}}">
+				    <text> \t {{goodsDetail.basicInfo.weight}}千克 </text>
+				</block>
+			</view>
 		</view>
 		<block wx:if="{{goodsDetail.basicInfo.pingtuan == false}}">
 			<view class="goods-price">¥ {{selectSizePrice}}</view>

@@ -2,6 +2,7 @@ const app = getApp()
 const WXAPI = require('apifm-wxapi')
 const AUTH = require('../../utils/auth')
 const wxpay = require('../../utils/pay.js')
+const tools = require('../../utils/tools.js')
 
 Page({
 	data: {
@@ -301,9 +302,17 @@ Page({
 			status: 0
 		}).then(function(res) {
 			if (res.code == 0) {
+				// 过滤不满足满减最低金额的优惠券
 				var coupons = res.data.filter(entity => {
 					return entity.moneyHreshold <= that.data.allGoodsAndYunPrice;
 				});
+				
+				var dayTime = tools.formatTime(new Date());
+				//过滤还没到可以使用时间的优惠券
+				coupons = coupons.filter(entity =>{
+				    return entity.dateStart <= dayTime;
+				});
+				
 				if (coupons.length > 0) {
 					that.setData({
 						hasNoCoupons: false,
