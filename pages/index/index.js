@@ -25,11 +25,12 @@ Page({
 		navigation: [],
 		banners: [],
 		disableSearchJump: true,
+		aliveRooms:[]
 	},
-	tapNav(e){
+	tapNav(e) {
 		const url = e.currentTarget.dataset.url
 		wx.navigateTo({
-			url:url
+			url: url
 		})
 	},
 	tabClick: function(e) {
@@ -45,7 +46,7 @@ Page({
 	tapBanner: function(e) {
 		console.log(e)
 		wx.navigateTo({
-			url:e.currentTarget.dataset.url
+			url: e.currentTarget.dataset.url
 		})
 		// if (e.currentTarget.dataset.id != 0) {
 		// 	wx.navigateTo({
@@ -57,6 +58,14 @@ Page({
 		this.setData({
 			selectCurrent: e.index
 		})
+	},
+	async wxaMpLiveRooms() {
+		const res = await WXAPI.wxaMpLiveRooms()
+		if (res.code == 0 && res.data.length > 0) {
+			this.setData({
+				aliveRooms: res.data
+			})
+		}
 	},
 	onLoad: function(e) {
 		wx.showShareMenu({
@@ -77,6 +86,7 @@ Page({
 		// this.categories()
 		// that.getCoupons()
 		// that.getNotice()
+		this.wxaMpLiveRooms()
 	},
 	async initPage() {
 		wx.showLoading();
@@ -168,7 +178,7 @@ Page({
 			})
 			app.fadeInOut(this, 'fadeAni', 0)
 			this.setData({
-				disableSearchJump: true//隐藏自定义导航栏时点击到搜索框区域时不跳转搜索页面
+				disableSearchJump: true //隐藏自定义导航栏时点击到搜索框区域时不跳转搜索页面
 			})
 		}
 	},

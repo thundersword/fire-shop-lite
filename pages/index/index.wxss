@@ -148,3 +148,7 @@ page {
 .pingtuan .scroll .scroll-item .text view{
 	line-height: 50rpx;
 }
+.live-ad image{
+	height: 120rpx;
+	width: 690rpx;
+}
