@@ -14,6 +14,21 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 
 国内仓库：[码云仓库](https://gitee.com/dream_debug/fire-shop-lite.git)
 
+# 注意事项
+没有直播权限的小伙伴，可以自行去掉直播插件
+1.app.json中去掉直播插件
+~~~
+"live-player-plugin": {
+	"version": "1.0.8", 
+	"provider": "wx2b03c6e691cd7370"
+}
+~~~
+2.pages/index/index.wxml中删除或注释掉直播插件引用
+~~~
+<navigator wx:if="{{aliveRooms.length> 0}}" url="plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id={{aliveRooms[0].roomid}}" class="live-ad padding-tb">
+	<image src="../../images/live_ad.png"></image>
+</navigator>
+~~~
 # 使用到的开源项目
 
  [微信电商小程序EastWorld /wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
