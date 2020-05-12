@@ -16,6 +16,7 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 
 # 注意事项
 没有直播权限的小伙伴，可以自行去掉直播插件
+
 1.app.json中去掉直播插件
 ~~~
 "live-player-plugin": {
