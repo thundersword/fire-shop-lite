@@ -30,6 +30,7 @@
 		"pages/fx/members",
 		"pages/fx/commisionLog",
 		"pages/coupons/index",
+		"pages/coupons/list",
 		"pages/invoice/list",
 		"pages/invoice/apply",
 		"pages/deposit/pay",

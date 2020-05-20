@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["可领券", "已领券", "已失效"],
+    tabs: ["已领券", "已失效"],
     activeIndex: 0,
   },
 
@@ -30,15 +30,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.activeIndex == 0) {
-      this.sysCoupons()
-    }
     AUTH.checkHasLogined().then(isLogined => {
       if (isLogined) {
-        if (this.data.activeIndex == 1) {
+        if (this.data.activeIndex == 0) {
           this.getMyCoupons()
         }
-        if (this.data.activeIndex == 2) {
+        if (this.data.activeIndex == 1) {
           this.invalidCoupons()
         }
       }
@@ -75,13 +72,11 @@ Page({
     this.setData({
       activeIndex: e.currentTarget.dataset.id
     });
+    
     if (this.data.activeIndex == 0) {
-      this.sysCoupons()
-    }
-    if (this.data.activeIndex == 1) {
       this.getMyCoupons()
     }
-    if (this.data.activeIndex == 2) {
+    if (this.data.activeIndex == 1) {
       this.invalidCoupons()
     }
   },

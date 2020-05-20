@@ -1,0 +1,28 @@
+<view class="container">
+	<view class="coupons-bg" wx:for="{{banners}}" wx:key="id">
+		<image class="coupons-image" src="{{item.picUrl}}"></image>
+		<view class="coupons-input flex align-center justify-between">
+			<input class="input" type="coupons" placeholder="请输入礼券码" placeholder-style="color: #f8b551" bindinput="onCouponsInput"
+			 data-id="{{item.businessId}}" />
+			<view class="primary" bindtap="onExchange">兑 换</view>
+		</view>
+	</view>
+	<view class="coupons-list">
+		<view class="coupons-item" wx:for-items="{{coupons}}" wx:key="id" bindtap="gitCoupon" data-id="{{item.id}}">
+			<view class="coupons-item-box">
+				<view class="money-left">{{item.moneyMax}}
+					<text>元</text>
+				</view>
+				<view class="money-right">
+					<view class="money-name">{{item.name}}</view>
+					<view class="money-hold">满{{item.moneyHreshold}}元使用</view>
+				</view>
+				<view class="money-home">立即领取</view>
+			</view>
+			<view class="money-line"></view>
+			<view class="money-fooder" wx:if="{{item.dateEndType == 0}}">{{item.dateEnd}} 前有效</view>
+			<view class="money-fooder" wx:if="{{item.dateEndType == 1}}">领取 {{item.dateEndDays}} 天内有效</view>
+		</view>
+	</view>
+</view>
+<auth is-hidden="{{true}}" bind:afterAuth="afterAuth"></auth>
