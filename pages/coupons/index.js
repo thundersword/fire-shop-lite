@@ -87,7 +87,9 @@ Page({
   },
   sysCoupons: function () { // 读取可领取券列表
     var _this = this;
-    WXAPI.coupons().then(function (res) {
+    WXAPI.coupons({
+		type: 'shop'
+	}).then(function (res) {
       if (res.code == 0) {
         _this.setData({
           coupons: res.data
