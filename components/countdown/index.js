@@ -25,9 +25,9 @@ Component({
 	lifetimes: {
 		attached: function() {
 			const currentTime = new Date()
-			const endTime = this.properties.date.replace("-","/")
-			console.log(endTime)
-			if(currentTime > endTime){
+			const endTime = this.properties.date.replace(/-/g,"/")
+			
+			if(currentTime.getTime() > new Date(endTime).getTime()){
 				wx.showToast({
 					title:"已结束",
 					icon:"none",
