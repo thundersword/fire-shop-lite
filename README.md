@@ -1,3 +1,11 @@
+# 快速预览
+
+ <img src="https://dcdn.it120.cc/2020/05/25/e4d25c03-4bd7-4dc5-9032-9c6d55c7ff6a.gif">
+ 
+ ## 扫码体验
+
+<img src="https://dcdn.it120.cc/2020/02/16/e14a891d-1b01-4254-bb40-d9576e23afcb.jpg" width="200px">
+ 
 # 关于本项目
 
 fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)二次开发而来。
@@ -11,6 +19,10 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 3.分销
 
 4.商品海报生成
+
+5.优惠券
+
+……
 
 国内仓库：[码云仓库](https://gitee.com/dream_debug/fire-shop-lite.git)
 
@@ -30,6 +42,10 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
 	<image src="../../images/live_ad.png"></image>
 </navigator>
 ~~~
+# 文档教程
+
+[文档教程](https://www.kancloud.cn/thundersword/fire-shop-lite/)
+
 # 使用到的开源项目
 
  [微信电商小程序EastWorld /wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
@@ -40,10 +56,6 @@ fire-shop-lite是一个电商小程序前端开源项目，基于[wechat-app-mal
  
  [小程序海报组件-生成朋友圈分享海报并生成图片](https://github.com/jasondu/wxa-plugin-canvas)
 
-
-## 扫码体验
-
-<img src="https://dcdn.it120.cc/2020/02/16/e14a891d-1b01-4254-bb40-d9576e23afcb.jpg" width="200px">
 
 
 ## 接口 & 后台声明

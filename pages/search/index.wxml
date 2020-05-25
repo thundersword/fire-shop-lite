@@ -8,7 +8,7 @@
 			<view hidden="{{search}}" bindtap="searchClose" class="header-search-btn">取消</view>
 		</view>
 	</view>
-	<view class="search-cont-box" wx:if="{{recentSearch.length && searchHidden}}">
+	<view class="search-cont-box" wx:if="{{recentSearch.length && searchHidden}}" style="width: 100%;">
 		<view class="title-and-btn">
 			<view class="title">最近搜索</view>
 			<view class="btn" bindtap="clearHistory">

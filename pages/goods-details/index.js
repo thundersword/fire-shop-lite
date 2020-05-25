@@ -111,7 +111,7 @@ Page({
 				buyNumber: (goodsDetailRes.data.basicInfo.stores > 0) ? 1 : 0
 			}
 			if (goodsKanjiaSetRes.code == 0) {
-				_data.curGoodsKanjia = goodsKanjiaSetRes.data
+				_data.curGoodsKanjia = goodsKanjiaSetRes.data[0]
 				that.data.kjId = goodsKanjiaSetRes.data.id
 				// 获取当前砍价进度
 				if (!that.data.kjJoinUid) {
