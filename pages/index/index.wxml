@@ -56,7 +56,7 @@
 		</navigator>
 	</scroll-view>
 </view>
-<view class="pingtuan" wx:if="{{pingtuanList.length > 0}}">
+<view class="pingtuan" wx:if="{{kanjiaList.length > 0}}">
 	<view class="goods-title bg-yellow light">
 		<view class="line"></view>
 		<view class="text">正在砍价</view>
