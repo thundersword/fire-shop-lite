@@ -36,9 +36,11 @@ Page({
 		})
 	},
 	onShareAppMessage: function(e) {
+		console.log(this.data.topic.pic)
 		return {
 			title: this.data.topicTitle,
 			path: 'pages/topic/index?id=' + this.data.topic.id,
+			imgUrl: this.data.topic.pic,
 			success: function(res) {
 				// 转发成功
 			},
