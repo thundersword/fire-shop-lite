@@ -80,15 +80,12 @@
 			}
 		]
 	},
-	"navigateToMiniProgramAppIdList": [
-		"wx56c8f077de74b07c"
-	],
 	"usingComponents": {
 		"float-menu": "/components/float-menu/index"
 	},
 	"plugins": {
 		"live-player-plugin": {
-			"version": "1.0.8", 
+			"version": "1.1.5", 
 			"provider": "wx2b03c6e691cd7370"
 		}
 	},

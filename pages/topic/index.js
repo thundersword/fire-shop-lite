@@ -4,7 +4,9 @@ const WXAPI = require('apifm-wxapi')
 
 Page({
 	data: {
-		relatedGoods:''
+		relatedGoods:'',
+		topic:null,
+		topicTitle:null
 	},
 
 	toDetailsTap: function(e) {
@@ -13,17 +15,11 @@ Page({
 		})
 	},
 	onLoad: function(e) {
-		if (app.globalData.iphone == true) {
-			this.setData({
-				iphone: 'iphone'
-			})
-		}
-		let topictitle = this.data.topictitle;
 		WXAPI.cmsArticleDetail(e.id).then( res => {
 			if (res.code == 0) {
 				this.setData({
-					topics: res.data,
-					topictitle: res.data.title
+					topic: res.data,
+					topicTitle: res.data.title
 				});
 				wx.setNavigationBarTitle({
 					title:res.data.title
@@ -41,8 +37,8 @@ Page({
 	},
 	onShareAppMessage: function(e) {
 		return {
-			title: this.data.topictitle,
-			path: 'pages/topic/topic?id=' + this.data.topid,
+			title: this.data.topicTitle,
+			path: 'pages/topic/index?id=' + this.data.topic.id,
 			success: function(res) {
 				// 转发成功
 			},
