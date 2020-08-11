@@ -2,12 +2,12 @@
 <view class="container bg-white">
   <view class="topic-head">
     <view class="topic-content">
-      <view class="content-title">{{topics.title}}</view>
+      <view class="content-title">{{topic.title}}</view>
 			<view class="topic-info">
-				<view>{{topics.dateAdd}}</view><view class="author" wx:if="{{topics.author}}">{{topics.author}}</view>
+				<view>{{topic.dateAdd}}</view><view class="author" wx:if="{{topic.author}}">{{topics.author}}</view>
 			</view>
       <view class="content-text">
-        <image class="content-img" mode="widthFix" src="{{topics.pic}}"></image>
+        <image class="content-img" mode="widthFix" src="{{topic.pic}}"></image>
         <view class="content-box">
           <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>
