@@ -15,7 +15,7 @@
 					<text class="lable-amount">¥</text>
 					<input name="amount" class="input" type="number" />
 				</view>
-				<view class="lable-text">提现金额100元起，1～5个工作日到账</view>
+				<view class="lable-text">提现金额{{minWithdrawAmount}}元起，1～5个工作日到账</view>
 			</view>
 		</view>
 		<button class="save-btn" formType="submit">确认提现</button>
