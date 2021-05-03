@@ -2,7 +2,6 @@
 	"disableScroll": true,
 	"navigationStyle": "custom",
 	"usingComponents": {
-		"navigation": "/components/navigation/navigation",
-		"auth": "/components/auth/auth"
+		"navigation": "/components/navigation/navigation"
 	}
 }

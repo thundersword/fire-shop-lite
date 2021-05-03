@@ -27,5 +27,4 @@
 <view class="padding bg-brown light">
 	成为分销商之后可以获取佣金
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>
 

@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "我的砍价",
-  "usingComponents":{
-  	  "auth":"/components/auth/auth"
-  }
+	"navigationBarTitleText": "我的砍价",
+	"usingComponents": {
+
+	}
 }

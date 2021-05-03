@@ -33,11 +33,9 @@ Page({
 	 */
 	onShow: function() {
 		AUTH.checkHasLogined(isLogined => {
-			if (!isLogined) {
-				this.setData({
-					wxlogin: false
-				})
-			}
+			this.setData({
+				wxlogin: isLogined
+			})
 		})
 	},
 

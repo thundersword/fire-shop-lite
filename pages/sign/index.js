@@ -13,6 +13,9 @@ Page({
 			this.setData({
 				wxlogin: isLogined
 			})
+			if(isLogined){
+				this.afterAuth()
+			}
 		})
 	},
 	showAuth() {
@@ -20,10 +23,9 @@ Page({
 			isHidden: false
 		})
 	},
-	afterAuth(e) {
+	afterAuth() {
 		this.setData({
-			isHidden: true,
-			token: e.detail
+			isHidden: true
 		})
 		this.checkScoreSign();
 		this.getUserScore();

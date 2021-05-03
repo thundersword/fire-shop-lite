@@ -186,17 +186,15 @@ Page({
 	},
 	onShow: function() {
 		AUTH.checkHasLogined().then(isLogined => {
-			if(!isLogined){
-				this.setData({
-					wxlogin: false
-				})
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.afterAuth()
 			}
 		})
 	},
 	afterAuth(){
-		this.setData({
-			wxlogin: true
-		})
 		this.doneShow()
 	},
 	doneShow: function() {

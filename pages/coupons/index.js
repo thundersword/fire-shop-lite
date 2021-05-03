@@ -30,16 +30,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    AUTH.checkHasLogined().then(isLogined => {
-      if (isLogined) {
-        if (this.data.activeIndex == 0) {
-          this.getMyCoupons()
-        }
-        if (this.data.activeIndex == 1) {
-          this.invalidCoupons()
-        }
-      }
-    })
+	  AUTH.checkHasLogined(isLogined => {
+	  	this.setData({
+	  		wxlogin: isLogined
+	  	})
+		if (isLogined) {
+		  if (this.data.activeIndex == 0) {
+		    this.getMyCoupons()
+		  }
+		  if (this.data.activeIndex == 1) {
+		    this.invalidCoupons()
+		  }
+		}
+	  })
   },
   /**
    * 生命周期函数--监听页面隐藏

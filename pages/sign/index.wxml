@@ -20,4 +20,3 @@
 	   <calendar bind:afterTapDay="afterTapDay"></calendar>
 	</view>
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

@@ -9,16 +9,9 @@ Page({
 	},
 	onShow(){
 		AUTH.checkHasLogined(isLogined => {
-			if(!isLogined){
-				this.setData({
-					wxlogin: false
-				})
-			}
-		})
-	},
-	afterAuth(){
-		this.setData({
-			wxlogin: true
+			this.setData({
+				wxlogin: isLogined
+			})
 		})
 	},
 	async bindSave(e) {

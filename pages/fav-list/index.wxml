@@ -12,4 +12,3 @@
 		<view class="text">还没有任何收藏呢</view>
 	</view>
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

@@ -1,8 +1,7 @@
 {
-   "navigationBarTitleText": "商品详情",
-   "usingComponents":{
-	   "auth":"/components/auth/auth",
-	   "countdown":"/components/countdown/index",
-	   "share":"/components/share/index"
-   }
+	"navigationBarTitleText": "商品详情",
+	"usingComponents": {
+		"countdown": "/components/countdown/index",
+		"share": "/components/share/index"
+	}
 }

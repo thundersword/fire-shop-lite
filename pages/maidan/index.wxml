@@ -17,4 +17,3 @@
 		</view>
 	</form>
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

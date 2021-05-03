@@ -11,11 +11,12 @@ Page({
 		score_sign_continuous: 0,
 		tabClass: ["", "", "", "", ""],
 		userInfo: null,
-		wxlogin: true, //是否隐藏登录弹窗
 		token: null,
 		version: null,
 		noticeList: [],
-		loaded: false//避免首次打开用户中心重复获取数据
+		loaded: false,//避免首次打开用户中心重复获取数据,
+		// 判断有没有用户详细资料
+		userInfoStatus: 0 // 0 未读取 1 没有详细信息 2 有详细信息
 	},
 	onLoad: function() {
 		this.getNoticeList();
@@ -37,32 +38,52 @@ Page({
 		})
 		//更新订单状态
 	},
-	showAuth() {
-		this.setData({
-			wxlogin: false
-		})
+	updateUserInfo(e) {
+	  wx.getUserProfile({
+	    lang: 'zh_CN',
+	    desc: '用于完善会员资料',
+	    success: res => {
+	      this._updateUserInfo(res.userInfo)
+	    },
+	    fail: err => {
+	      wx.showToast({
+	        title: err.errMsg,
+	        icon: 'none'
+	      })
+	    }
+	  })
 	},
-	/*
-	 *授权登录成功后回调
-	 */
-	afterAuth(e) {
-		this.setData({
-			wxlogin: true,
-		})
-		if(!this.data.loaded){
-			this.getUserApiInfo()
-			// this.getUserAmount()
-			this.checkScoreSign()
-			this.getOrderStatistics()
+	async _updateUserInfo(userInfo) {
+	  const postData = {
+	    token: wx.getStorageSync('token'),
+	    nick: userInfo.nickName,
+	    avatarUrl: userInfo.avatarUrl,
+	    city: userInfo.city,
+	    province: userInfo.province,
+	    gender: userInfo.gender,
+	  }
+	  const res = await WXAPI.modifyUserInfo(postData)
+	  if (res.code != 0) {
+	    wx.showToast({
+	      title: res.msg,
+	      icon: 'none'
+	    })
+	    return
+	  }
+	  wx.showToast({
+	    title: '登陆成功',
+	  })
+	  this.getUserApiInfo()
+	},
+	async getUserApiInfo() {
+		const res = await WXAPI.userDetail(wx.getStorageSync('token'))
+		let _data = {}
+		if (res.data.base.nick && res.data.base.avatarUrl) {
+		  _data.userInfoStatus = 2
+		} else {
+		  _data.userInfoStatus = 1
 		}
-		
-	},
-	getUserApiInfo: function() {
-		WXAPI.userDetail(wx.getStorageSync('token')).then(res => {
-			if (res.code == 0) this.setData({
-				userInfo: res.data
-			})
-		})
+		this.setData(_data)
 	},
 	getUserAmount: function() {
 		WXAPI.userAmount(wx.getStorageSync('token')).then(res => {

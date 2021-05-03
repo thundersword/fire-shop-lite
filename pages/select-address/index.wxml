@@ -22,4 +22,3 @@
     <image class="next" src="/images/icon/next.png"></image>
   </view>
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

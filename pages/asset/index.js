@@ -65,13 +65,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    AUTH.checkHasLogined().then(isLogined => {
-      this.setData({
-        wxlogin: isLogined
-      })
-      if (isLogined) {
-        this.doneShow();
-      }
+    AUTH.checkHasLogined(isLogined => {
+    	this.setData({
+    		wxlogin: isLogined
+    	})
+		if(isLogined){
+			this.doneShow()
+		}
     })
   },
   doneShow: function () {

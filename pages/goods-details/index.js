@@ -71,11 +71,16 @@ Page({
 	onShow() {
 		this.getGoodsDetailAndKanjieInfo(this.data.goodsId)
 		this.pingtuanList(this.data.goodsId) //更新拼团列表
+		AUTH.checkHasLogined(isLogined => {
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.afterAuth()
+			}
+		})
 	},
 	afterAuth() {
-		this.setData({
-			wxlogin: true
-		})
 		this.shippingCartInfo()
 		this.getFav(this.data.goodsId)
 	},

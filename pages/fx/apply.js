@@ -29,22 +29,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    AUTH.checkHasLogined().then(isLogined => {
-    	if (!isLogined) {
-    		this.setData({
-    			wxlogin: false
-    		})
-    		return
-    	}
+    AUTH.checkHasLogined(isLogined => {
+    	this.setData({
+    		wxlogin: isLogined
+    	})
     })
-  },
-  afterAuth() {
-  	this.setData({
-  		wxlogin: true
-  	})
-  },
-  closeAuth(){
-  	wx.navigateBack()
   },
 
   /**

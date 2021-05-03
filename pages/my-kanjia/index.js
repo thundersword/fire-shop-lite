@@ -15,11 +15,11 @@ Page({
 	},
 	onShow(){
 		AUTH.checkHasLogined().then(isLogined => {
-			if (!isLogined) {
-				this.setData({
-					wxlogin: false
-				})
-				return
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.doneShow()
 			}
 		})
 	},
@@ -42,15 +42,6 @@ Page({
 				}
 			}
 		})
-	},
-	afterAuth() {
-		this.setData({
-			wxlogin: true
-		})
-		this.doneShow()
-	},
-	closeAuth(){
-		wx.navigateBack()
 	},
 	mykanjia: function(e) {
 		var that = this;

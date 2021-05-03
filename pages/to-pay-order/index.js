@@ -30,21 +30,13 @@ Page({
 	},
 	onShow() {
 		AUTH.checkHasLogined().then(isLogined => {
-			if (isLogined) {
-				this.initShippingAddress()
-			} else {
-				this.setData({
-					wxlogin: isLogined
-				})
-
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.doneShow()
 			}
 		})
-	},
-	afterAuth() {
-		this.setData({
-			wxlogin: true
-		})
-		this.doneShow()
 	},
 	async doneShow() {
 		let allowSelfCollection = wx.getStorageSync('ALLOW_SELF_COLLECTION')

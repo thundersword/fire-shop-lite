@@ -90,7 +90,6 @@
 	</view>
 </view>
 
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>
 <view class="cu-modal {{showModal?'show':''}}">
 	<view class="cu-dialog">
 		<view class="cu-bar bg-white justify-end">

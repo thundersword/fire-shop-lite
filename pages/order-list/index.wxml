@@ -43,4 +43,3 @@
   <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
 </view>
 <float-menu />
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

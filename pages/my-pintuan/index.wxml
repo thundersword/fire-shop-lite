@@ -16,4 +16,3 @@
 	</view>
 	<view class="cu-load bg-gray {{loadingHidden?'over':'loading'}}"></view>
 </view>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth" bind:closeAuth="closeAuth"></auth>

@@ -1,6 +1,6 @@
 {
 	"navigationStyle": "custom",
 	"usingComponents": {
-		"auth": "/components/auth/auth"
+
 	}
 }

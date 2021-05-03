@@ -17,12 +17,7 @@ Page({
 	onLoad: function() {
 		
 	},
-	afterAuth() {
-		this.setData({
-			wxlogin: true
-		})
-		this.getUserBalance()
-	},
+	
 	getUserBalance() {
 		WXAPI.userAmount(wx.getStorageSync('token')).then(res => {
 			if (res.code == 0) {
@@ -44,11 +39,12 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function() {
-		AUTH.checkHasLogined( isLogined => {
-			if(!isLogined){
-				this.setData({
-					wxlogin: false
-				})
+		AUTH.checkHasLogined().then(isLogined => {
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.getUserBalance()
 			}
 		})
 	},

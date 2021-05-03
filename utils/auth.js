@@ -13,6 +13,21 @@ async function checkSession(){
   })
 }
 
+async function bindSeller() {
+  const token = wx.getStorageSync('token')
+  const referrer = wx.getStorageSync('referrer')
+  if (!token) {
+    return
+  }
+  if (!referrer) {
+    return
+  }
+  const res = await WXAPI.bindSeller({
+    token,
+    uid: referrer
+  })
+}
+
 // 检测登录状态，返回 true / false
 async function checkHasLogined() {
   const token = wx.getStorageSync('token')
@@ -32,61 +47,133 @@ async function checkHasLogined() {
   return true
 }
 
+async function wxaCode(){
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success(res) {
+        return resolve(res.code)
+      },
+      fail() {
+        wx.showToast({
+          title: '获取code失败',
+          icon: 'none'
+        })
+        return resolve('获取code失败')
+      }
+    })
+  })
+}
+
 async function login(page){
   const _this = this
   wx.login({
     success: function (res) {
-      WXAPI.login_wx(res.code).then(function (res) {        
-        if (res.code == 10000) {
-          // 去注册
-          //_this.register(page)
-          return;
-        }
-        if (res.code != 0) {
-          // 登录错误
-          wx.showModal({
-            title: '无法登录',
-            content: res.msg,
-            showCancel: false
-          })
-          return;
-        }
-        wx.setStorageSync('token', res.data.token)
-        wx.setStorageSync('uid', res.data.uid)
-        if ( page ) {
-          page.onShow()
-        }
-      })
+      const componentAppid = wx.getStorageSync('componentAppid')
+      if (componentAppid) {
+        WXAPI.wxappServiceLogin({
+          componentAppid,
+          appid: wx.getStorageSync('appid'),
+          code: res.code
+        }).then(function (res) {        
+          if (res.code == 10000) {
+            // 去注册
+            return;
+          }
+          if (res.code != 0) {
+            // 登录错误
+            wx.showModal({
+              title: '无法登录',
+              content: res.msg,
+              showCancel: false
+            })
+            return;
+          }
+          wx.setStorageSync('token', res.data.token)
+          wx.setStorageSync('uid', res.data.uid)
+          _this.bindSeller()
+          if ( page ) {
+            page.onShow()
+          }
+        })
+      } else {
+        WXAPI.login_wx(res.code).then(function (res) {        
+          if (res.code == 10000) {
+            // 去注册
+            return;
+          }
+          if (res.code != 0) {
+            // 登录错误
+            wx.showModal({
+              title: '无法登录',
+              content: res.msg,
+              showCancel: false
+            })
+            return;
+          }
+          wx.setStorageSync('token', res.data.token)
+          wx.setStorageSync('uid', res.data.uid)
+          _this.bindSeller()
+          if ( page ) {
+            page.onShow()
+          }
+        })
+      }
     }
   })
 }
 
-async function register(page) {
-  let _this = this;
-  wx.login({
-    success: function (res) {
-      let code = res.code; // 微信登录接口返回的 code 参数，下面注册接口需要用到
-      wx.getUserInfo({
-        success: function (res) {
-          let iv = res.iv;
-          let encryptedData = res.encryptedData;
-          let referrer = '' // 推荐人
-          let referrer_storge = wx.getStorageSync('referrer');
-          if (referrer_storge) {
-            referrer = referrer_storge;
-          }
-          // 下面开始调用注册接口
-          WXAPI.register_complex({
+async function authorize() {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success: function (res) {
+        const code = res.code
+        let referrer = '' // 推荐人
+        let referrer_storge = wx.getStorageSync('referrer');
+        if (referrer_storge) {
+          referrer = referrer_storge;
+        }
+        // 下面开始调用注册接口
+        const componentAppid = wx.getStorageSync('componentAppid')
+        if (componentAppid) {
+          WXAPI.wxappServiceAuthorize({
             code: code,
-            encryptedData: encryptedData,
-            iv: iv,
             referrer: referrer
           }).then(function (res) {
-            _this.login(page);
+            if (res.code == 0) {
+              wx.setStorageSync('token', res.data.token)
+              wx.setStorageSync('uid', res.data.uid)
+              resolve(res)
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+              reject(res.msg)
+            }
+          })
+        } else {
+          WXAPI.authorize({
+            code: code,
+            referrer: referrer
+          }).then(function (res) {
+            if (res.code == 0) {
+              wx.setStorageSync('token', res.data.token)
+              wx.setStorageSync('uid', res.data.uid)
+              resolve(res)
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+              reject(res.msg)
+            }
           })
         }
-      })
-    }
+      },
+      fail: err => {
+        reject(err)
+      }
+    })
   })
 }
 
@@ -141,11 +228,12 @@ async function checkAndAuthorize (scope) {
   })  
 }
 
-
 module.exports = {
   checkHasLogined: checkHasLogined,
+  wxaCode: wxaCode,
   login: login,
-  register: register,
   loginOut: loginOut,
-  checkAndAuthorize: checkAndAuthorize
+  checkAndAuthorize: checkAndAuthorize,
+  authorize: authorize,
+  bindSeller: bindSeller
 }

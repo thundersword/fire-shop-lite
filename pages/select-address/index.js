@@ -43,13 +43,12 @@ Page({
 	},
 	onShow: function() {
 		AUTH.checkHasLogined().then(isLogined => {
-			if (!isLogined) {
-				this.setData({
-					wxlogin: false
-				})
-				return
+			this.setData({
+				wxlogin: isLogined
+			})
+			if(isLogined){
+				this.initShippingAddress()
 			}
-			this.initShippingAddress()
 		})
 	},
 	initShippingAddress: function() {

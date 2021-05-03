@@ -267,4 +267,3 @@
 	</view>
 </view>
 <share show="{{showShare}}" goods-info="{{goodsDetail.basicInfo}}"></share>
-<auth is-hidden="{{wxlogin}}" bind:afterAuth="afterAuth"></auth>

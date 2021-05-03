@@ -3,7 +3,19 @@ const CONFIG = require('config.js')
 const AUTH = require('utils/auth')
 App({
 	onLaunch: function() {
-		WXAPI.init(CONFIG.subDomain) // 从根目录的 config.js 文件中读取
+		const subDomain = wx.getExtConfigSync().subDomain
+		const componentAppid = wx.getExtConfigSync().componentAppid
+		if (componentAppid) {
+		  wx.setStorageSync('appid', wx.getAccountInfoSync().miniProgram.appId)
+		  wx.setStorageSync('componentAppid', componentAppid)
+		}
+		if (subDomain) {
+		  WXAPI.init(subDomain)
+		} else {
+		  WXAPI.init(CONFIG.subDomain)
+		  WXAPI.setMerchantId(CONFIG.merchantId)
+		}
+		
 		const that = this;
 		// 检测新版本
 		const updateManager = wx.getUpdateManager()
@@ -155,9 +167,11 @@ App({
 		}
 		// 自动登录
 		AUTH.checkHasLogined().then(isLogined => {
-			if (!isLogined) {
-				AUTH.login()
-			}
+		  if (!isLogined) {
+		    AUTH.login()
+		  } else {
+		    AUTH.bindSeller()
+		  }
 		})
 	},
 	globalData: {
