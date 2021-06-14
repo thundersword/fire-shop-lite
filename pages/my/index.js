@@ -31,6 +31,15 @@ Page({
 				this.setData({
 					loaded: true
 				})
+			}else{
+				AUTH.authorize().then( res => {
+					this.getUserApiInfo()
+					this.checkScoreSign()
+					this.getOrderStatistics()
+					this.setData({
+						loaded: true
+					})
+				})
 			}
 		})
 		this.setData({
@@ -38,6 +47,13 @@ Page({
 		})
 		//更新订单状态
 	},
+	// logout(){
+	// 	WXAPI.loginout(wx.getStorageSync('token')).then( res => {
+	// 		if(res.code == 0){
+	// 			wx.removeStorageSync('token')
+	// 		}
+	// 	})
+	// },
 	updateUserInfo(e) {
 	  wx.getUserProfile({
 	    lang: 'zh_CN',
