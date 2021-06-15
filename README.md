@@ -266,7 +266,7 @@ module.exports = {
 
 # 使用交流
 
-|技术交流QQ群 878573318|联系作者|
+|技术交流QQ群 878573318（口令：fire-shop-lite）|联系作者|
 | :------: | :------: |
 |<img src="https://box.kancloud.cn/7c84f8cccee146b86a7b9edaa23d4796_540x740.png" width="200px">|<img src="https://dcdn.it120.cc/2020/02/16/6c39cf7a-9480-4e23-baf3-912c8cc62bfa.jpg" width="200px">|
 
