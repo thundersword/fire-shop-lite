@@ -33,12 +33,13 @@ Page({
 		})
 	},
 	onShow: function() {
-		AUTH.checkHasLogined(isLogined => {
-			this.setData({
-				wxlogin: isLogined
-			})
+		AUTH.checkHasLogined().then( isLogined =>{
 			if(isLogined){
-				this.afterAuth()
+				this.getList()
+			}else{
+				AUTH.authorize().then( res => {
+					this.getList()
+				})
 			}
 		})
 	}
