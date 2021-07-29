@@ -6,5 +6,3 @@
   <guess-u-like title="{{title}}" order-by="{{orderBy}}" count="{{count}}" show="{{shippingCarInfo.items.length>0?false:true}}"></guess-u-like>
 </view>
 
-<import src="/template/login/index.wxml" />
-<template is="apifmLogin" data="{{wxlogin: wxlogin}}" />

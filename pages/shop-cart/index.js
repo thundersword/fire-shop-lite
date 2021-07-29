@@ -121,14 +121,7 @@ Page({
     const key = e.currentTarget.dataset.key
     const token = wx.getStorageSync('token')
     const res = await WXAPI.shippingCarInfoRemoveItem(token, key)
-    if (res.code != 0) {
-      wx.showToast({
-        title: res.msg,
-        icon:'none'
-      })
-    } else {
-      this.shippingCarInfo()
-    }
+	this.shippingCarInfo()
   },
   async jiaBtnTap(e) {
     const index = e.currentTarget.dataset.index;
