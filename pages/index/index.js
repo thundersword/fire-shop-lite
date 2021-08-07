@@ -25,7 +25,7 @@ Page({
 		navigation: [],
 		banners: [],
 		disableSearchJump: true,
-		aliveRooms:[]
+		aliveRooms: []
 	},
 	tapNav(e) {
 		const url = e.currentTarget.dataset.url
@@ -69,7 +69,8 @@ Page({
 	},
 	onLoad: function(e) {
 		wx.showShareMenu({
-			withShareTicket: true
+			withShareTicket: true,
+			menus: ['shareAppMessage', 'shareTimeline']
 		})
 		// const that = this
 		// if (e && e.query && e.query.inviter_id) { 
@@ -261,6 +262,13 @@ Page({
 		return {
 			title: '"' + wx.getStorageSync('mallName') + '" ' + CONFIG.shareProfile,
 			path: '/pages/index/index?inviter_id=' + wx.getStorageSync('uid')
+		}
+	},
+	//转发到朋友圈
+	onShareTimeline: function() {
+		return {
+			title: '"' + wx.getStorageSync('mallName') + '" ' + CONFIG.shareProfile,
+			query: '/pages/index/index?inviter_id=' + wx.getStorageSync('uid')
 		}
 	},
 	getNotice: function() {
