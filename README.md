@@ -4,7 +4,7 @@
  
  ## 扫码体验
 
-<img src="https://dcdn.it120.cc/2020/02/16/e14a891d-1b01-4254-bb40-d9576e23afcb.jpg" width="200px">
+<img src="https://dcdn.it120.cc/2021/08/17/6930b217-07f2-4245-8d25-812ee89d60b6.jpg" width="200px">
  
 # 关于本项目
 
@@ -272,6 +272,6 @@ module.exports = {
 
 # 赞赏
 
-| 微信赞赏 | 支付宝打赏 |
-| :------: | :------: |
-| <img src="https://dcdn.it120.cc/2020/02/16/256e8788-73b7-40d1-8c1b-e952ff99501e.jpg" width="200px"> | <img src="https://dcdn.it120.cc/2020/02/16/42036389-dd76-4ab5-813e-7c7bd475dbc7.jpg" width="200px">|
+| 微信赞赏 | 支付宝打赏 | 免费领美团饿了么红包 |
+| :------: | :------: |:------: |
+| <img src="https://dcdn.it120.cc/2020/02/16/256e8788-73b7-40d1-8c1b-e952ff99501e.jpg" width="200px"> | <img src="https://dcdn.it120.cc/2020/02/16/42036389-dd76-4ab5-813e-7c7bd475dbc7.jpg" width="200px">|<img src="https://dcdn.it120.cc/2021/08/17/09221b53-bce2-40ab-a7f7-f63508661ae6.jpeg" width="200px">|
